@@ -28,14 +28,13 @@ const Login = () => {
     fetchData();
   }, [user, password]);
 
-  console.log(user.data.datas.find((items:any) => items).title);
 
   const handleLogin = () => {
     if (user) {
-      const filter = user.data.datas.filter(
+      const filter = user.data.datas.find(
         (items: any) => items.email === email
       );
-      console.log(filter);
+      router.push(`/${filter.id}/dashboard`);
     }
   };
 

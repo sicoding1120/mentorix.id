@@ -9,16 +9,18 @@ export class classService {
     res: NextApiResponse,
     error: any
   ) { 
-    const classes = await prisma.class.findMany({
-      include: {
-        Image: true,
-        MateriClass: true,
-        mentors: true,
-        participants: true,
-        ulasan: true,
+    const classes = await prisma.class.findMany(
+    //   {
+    //   include: {
+    //     Image: true,
+    //     MateriClass: true,
+    //     mentors: true,
+    //     participants: true,
+    //     ulasan: true,
         
-      },
-    });
+    //   },
+    // }
+    );
     res.status(200).json(classes as never);
     if (req.statusCode === 404) {
       res.status(404).json(error);

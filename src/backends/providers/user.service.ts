@@ -6,17 +6,17 @@ const RestApi = new ResponseApiRouter();
 export class userService {
   async _getUserAllWithRelations(req: NextApiRequest, res: NextApiResponse, error: any) {
     const users = await prisma.user.findMany(
-      {
-        include: {
-          comment: true,
-          enrolledClasses: true,
-          followers: true,
-          following: true,
-          FotoProfile: true,
-          mentoredClasses: true,
-          progressClass: true
-        }
-      }
+      // {
+      //   include: {
+      //     comment: true,
+      //     enrolledClasses: true,
+      //     followers: true,
+      //     following: true,
+      //     FotoProfile: true,
+      //     mentoredClasses: true,
+      //     progressClass: true
+      //   }
+      // }
     );
     res.status(200).json(RestApi._getSuccess(users as never))
     if (req.statusCode === 500) { 

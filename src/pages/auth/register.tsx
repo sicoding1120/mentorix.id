@@ -20,7 +20,6 @@ const Register = () => {
   console.log(chek, username, password, email);
 
   const validEmail = logic.validateEmail(email);
-  console.log(validEmail);
 
   const handleRegister = async (e: any) => {
     e.preventDefault();

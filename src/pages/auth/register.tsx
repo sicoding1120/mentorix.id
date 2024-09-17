@@ -16,25 +16,25 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [chek, setChek] = useState('');
-  console.log(chek,username,password,email);
+  const [chek, setChek] = useState("");
+  console.log(chek, username, password, email);
 
   const validEmail = logic.validateEmail(email);
   console.log(validEmail);
 
-
-  const handleRegister = async (e:any) => {
+  const handleRegister = async (e: any) => {
     e.preventDefault();
     try {
       const response = await axios.post(
-        "https://my-app-one-pi-53.vercel.app/api/auth/register",
+        "https://mentorixid.vercel.app/api/auth/register",
         { username, password, email }
       );
+      console.log("ok");
     } catch (err) {
-      if(err) throw err
+      if (err) throw err;
     }
-  }
-
+    console.log("ok");
+  };
 
   return (
     <div className="w-full h-screen skeleton flex justify-center items-center">
@@ -49,7 +49,11 @@ const Register = () => {
         </p>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-2">
-            <label className="input input-bordered flex items-center gap-2">
+            <label
+              className={`input ${
+                validEmail === true ? "input-success" : "input-error"
+              } flex items-center gap-2`}
+            >
               <MdEmail />
               <input
                 type="text"
@@ -79,13 +83,25 @@ const Register = () => {
           </div>
           <div className="w-full flex items-center gap-12">
             <div className="flex items-center gap-2">
-              <input type="checkbox" name="" id="" onChange={(e) => setChek(e.target.value)}/>
+              <input
+                type="checkbox"
+                name=""
+                id=""
+                onChange={(e) => setChek(e.target.value)}
+              />
               <p className="text-sm">
                 Saya setuju dengan semua syarat dan ketentuan
               </p>
             </div>
           </div>
-          <button className="btn" title="Register" type="button" onClick={handleRegister}>Register</button>
+          <button
+            className="btn"
+            title="Register"
+            type="button"
+            onClick={handleRegister}
+          >
+            Register
+          </button>
           <div className="flex flex-col justify-center items-center gap-4">
             <p>Daftar Dengan</p>
             <div className="flex gap-4">

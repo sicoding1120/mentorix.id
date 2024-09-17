@@ -12,22 +12,24 @@ export class useAuthRouter {
     const hashPass = await logic.hashingPassword(req.body.password);
     const id = logic.generateUUID();
     const email = req.body.email.includes("@gmail.com") ? req.body.email : undefined
-    
-    const user = await prisma.user.create({
-      data: {
-        id: id,
-        username: req.body.username,
-        password: hashPass,
-        email: req.body.email,
-      },
-    } as never);
-    res.status(200).json(Response._verifyDataSuccess(user));
+    if (email === undefined) {
+      res.status(422).json(Response._createDataFailure(error, 422))
+    }
     if (req.statusCode === 500) {
       res.status(500).json(Response._verifyDataFailureISR(error));
     }
     if (req.statusCode === 404) {
       res.status(404).json(Response._verifyDataFailureNotFound(error));
     }
+    const user = await prisma.user.create({
+      data: {
+        id: id,
+        username: req.body.username,
+        password: hashPass,
+        email: email,
+      },
+    } as never);
+    res.status(200).json(Response._verifyDataSuccess(user));
   }
   async _login(req: NextApiRequest, res: NextApiResponse, error: any) {
     const user = await prisma.user.findUnique({

@@ -11,22 +11,22 @@ export default async function Auth(req: NextApiRequest, res: NextApiResponse) {
   const { query } = req;
   console.log(query.auth?.at(0));
   try {
-    if (query.auth?.at(0) === 'register') {
+    if (query.auth?.at(0) === "register") {
       if (req.method === "POST") {
-        await user._createUSerWithoutRelation(req, res, error);
+        await auth._register(req, res, error);
       }
-      if (req.method === 'GET') {
-        res.status(200).json('hallo world')
+      if (req.method === "GET") {
+        res.status(200).json("hallo world");
       }
       res.status(405).json("bad request");
     }
-    if (query.auth?.at(0) === 'login') {
-      if(req.method === "POST"){
+    if (query.auth?.at(0) === "login") {
+      if (req.method === "POST") {
         await auth._login(req, res, error);
       }
       res.status(405).json("bad request");
     }
-    res.status(405).json({massage: "bad request"});
+    res.status(405).json({ massage: "bad request" });
   } catch (err) {
     if (err) throw err;
   }

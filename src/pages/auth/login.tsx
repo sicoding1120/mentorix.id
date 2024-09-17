@@ -18,20 +18,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [user, setDatas] = useState<any>();
   const [verify, setVerify] = useState(false);
-  
-  useEffect(() => {
-    const logic = new useLogic();
-    const apa = async () => {
-      const compare = await logic.verifyPassword(
-        password,
-        user.data.datas.find((items: any) => items).password
-      );
-      // console.log(compare);
-      setVerify(compare);
-    };
-    apa();
-  }, [password, user],)
-  
 
   useEffect(() => {
     const fetchData = async () => {
@@ -42,11 +28,15 @@ const Login = () => {
     fetchData();
   }, [user, password]);
 
-  // console.log(user.data.datas.find((items: any) => items).password);
+  console.log(user);
 
   const handleLogin = () => {
-    const filter = user.data.datas.filter((items: any) => items.email === email);
-   console.log(filter);
+    if (user) {
+      const filter = user.data.datas.filter(
+        (items: any) => items.email === email
+      );
+      console.log(filter);
+    }
   };
 
   return (

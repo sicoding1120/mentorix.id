@@ -1,5 +1,5 @@
-"use client";
-import React, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import {
   Sidebar,
   SidebarBody,
@@ -18,8 +18,19 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
 import { DarkMode } from "@chakra-ui/react";
+import { Textarea } from "@nextui-org/react";
 
-export function SidebarDemo() {
+const Profile = () => {
+  return (
+    <div>
+      <SidebarProfile></SidebarProfile>
+    </div>
+  );
+};
+
+export default Profile;
+
+const SidebarProfile = () => {
   const links = [
     {
       label: "Dashboard",
@@ -97,8 +108,8 @@ export function SidebarDemo() {
       <Dashboard />
     </div>
   );
-}
-export const Logo = () => {
+};
+const Logo = () => {
   return (
     <Link
       href="#"
@@ -121,7 +132,7 @@ export const Logo = () => {
     </Link>
   );
 };
-export const LogoIcon = () => {
+const LogoIcon = () => {
   return (
     <Link
       href="#"
@@ -142,75 +153,65 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="carousel w-full">
-          <div id="slide1" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide4" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide2" className="btn btn-circle">
-                ❯
-              </a>
+        <div className="flex flex-col gap-4 skeleton rounded-md w-full h-full p-8 overflow-scroll scrollbar-hide">
+          <h2 className="text-3xl font-bold">Detail Profil</h2>
+          <div className="flex gap-6">
+            <div className="rounded-full w-28 h-w-28 overflow-hidden">
+              <Image
+                src={"/assets/logo/favicon.png"}
+                alt={"profil-image"}
+                width={112}
+                height={112}
+              />
+            </div>
+            <div className="flex flex-col gap-2">
+              <button className="btn btn-success px-12 text-white">
+                Unggah Foto
+              </button>
+              <Link href={"/dashboard/avatar"}>Gunakan Karakter Avatar</Link>
             </div>
           </div>
-          <div id="slide2" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide1" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide3" className="btn btn-circle">
-                ❯
-              </a>
+          <p className="text-slate-500 font-medium">
+            Foto profil kamu disarankan memiliki rasio 1 : 1 atau berukuran
+            tidak lebih dari 2MB
+          </p>
+          <form action="#" className="flex flex-col gap-2 py-4 justify-between">
+            <div className="flex gap-4">
+              <div className="flex flex-col gap-2 w-full">
+                <label htmlFor="namaDepan">Nama Depan *</label>
+                <input
+                  type="text"
+                  id="namaDepan"
+                  className="input input-bordered flex items-center"
+                />
+              </div>
+              <div className="flex flex-col gap-2 w-full">
+                <label htmlFor="namaBelakang">Nama Belakang *</label>
+                <input
+                  type="text"
+                  id="namaBelakang"
+                  className="input input-bordered flex items-center"
+                />
+              </div>
             </div>
-          </div>
-          <div id="slide3" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide2" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide4" className="btn btn-circle">
-                ❯
-              </a>
+            <div className="flex flex-col gap-2 w-full">
+              <label htmlFor="Emaik">Alamat Email *</label>
+              <input
+                type="email"
+                id="namaBelakang"
+                className="input input-bordered flex items-center"
+              />
             </div>
-          </div>
-          <div id="slide4" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide3" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide1" className="btn btn-circle">
-                ❯
-              </a>
+
+            <div className="flex flex-col gap-2 w-full py-4">
+              <label htmlFor="Biografi">Biografi</label>
+              <Textarea></Textarea>
             </div>
-          </div>
+            
+            <div className="flex justify-end">
+              <button className="btn btn-success text-white">Simpan Perubahan</button>
+            </div>
+          </form>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 
-import SidebarDemo  from '@/frontends/components/sidebar'
+import { SidebarDemo } from '@/frontends/components/sidebar'
 import React from 'react'
 
 const Dynamic = () => {

@@ -19,11 +19,14 @@ import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
 import { DarkMode } from "@chakra-ui/react";
 import { Textarea } from "@nextui-org/react";
+import Navbar from "@/frontends/components/navbar";
+import Footer from "@/frontends/components/footer";
 
 const Profile = () => {
   return (
     <div>
-      <SidebarProfile></SidebarProfile>
+        <SidebarProfile></SidebarProfile>
+        <Footer />
     </div>
   );
 };
@@ -41,7 +44,7 @@ const SidebarProfile = () => {
     },
     {
       label: "Kelas",
-      href: "class",
+      href: "/courses",
       icon: (
         <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
@@ -207,9 +210,11 @@ const Dashboard = () => {
               <label htmlFor="Biografi">Biografi</label>
               <Textarea></Textarea>
             </div>
-            
+
             <div className="flex justify-end">
-              <button className="btn btn-success text-white">Simpan Perubahan</button>
+              <button className="btn btn-success text-white">
+                Simpan Perubahan
+              </button>
             </div>
           </form>
         </div>

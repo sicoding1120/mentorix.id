@@ -13,7 +13,6 @@ export default async function handler(
       case "GET":
         await user._getUserAllWithRelations(req, res, ApiError);
       case "POST":
-        await user._createUSerWithoutRelation(req, res, ApiError);
     }
   } catch (err) {
     if (err) throw err;

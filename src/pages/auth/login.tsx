@@ -9,29 +9,47 @@ import React, { useEffect, useState } from "react";
 import { FaKey } from "react-icons/fa";
 import axios from "axios";
 import { useRouter } from "next/router";
+import { useLogic } from "@/backends/logic";
+import { compare } from "bcryptjs";
 
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [datas, setDatas] = useState();
+  const [user, setDatas] = useState<any>();
+  const [verify, setVerify] = useState(false);
+
+
+  
+  useEffect(() => {
+    const logic = new useLogic();
+    const apa = async () => {
+      const compare = await logic.verifyPassword(
+        password,
+        user.data.datas.find((items: any) => items).password
+      );
+      // console.log(compare);
+      setVerify(compare);
+    };
+    apa();
+  },[password,user],)
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch('https://mentorixid.vercel.app/api/users');
-      const data = res.json();
-      setDatas(data as never)
-    }
-    fetchData()
-  }, [])
+      const res = await fetch("/api/users");
+      const users = await res.json();
+      setDatas(users);
+    };
+    fetchData();
+  }, [user, password]);
 
-  
-  console.log(datas);
+  // console.log(user.data.datas.find((items: any) => items).password);
 
-  // const handleLogin = () => {
-  //    const filter = datas
-  //  }
-  
+  const handleLogin = () => {
+    const filter = user.data.datas.filter((items: any) => items.email === email);
+   console.log(filter);
+  };
+
   return (
     <div className="w-full h-screen skeleton flex justify-center items-center">
       <form
@@ -47,11 +65,21 @@ const Login = () => {
           <div className="flex flex-col gap-2">
             <label className="input input-bordered flex items-center gap-2">
               <MdEmail />
-              <input type="text" className="grow" placeholder="Email" onChange={(e) => setEmail(e.target.value)}/>
+              <input
+                type="text"
+                className="grow"
+                placeholder="Email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </label>
             <label className="input input-bordered flex items-center gap-2">
               <FaKey />
-              <input type="password" className="grow" placeholder="Password"onChange={(e) => setPassword(e.target.value)} />
+              <input
+                type="password"
+                className="grow"
+                placeholder="Password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </label>
           </div>
           <div className="w-full flex items-center gap-12">
@@ -69,7 +97,9 @@ const Login = () => {
             </Link>
           </div>
           {/* <button className="btn btn-success text-white" onClick={handleLogin}>Login</button> */}
-          <button className="btn btn-success text-white">Login</button>
+          <button className="btn btn-success text-white" onClick={handleLogin}>
+            Login
+          </button>
           <div className="flex flex-col justify-center items-center gap-4">
             <p>Masuk Dengan</p>
             <div className="flex gap-4">

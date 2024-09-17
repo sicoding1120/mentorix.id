@@ -1,0 +1,19 @@
+[{
+        "id": 1,
+        "titleCard": "Bimbingan Langsung Dari Para Mentor Berpengalaman",
+        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "urlImage": "/assets/icons/cardIcon1.png"
+    },
+    {
+        "id": 2,
+        "titleCard": "Akses Lebih Dari 1.5K Video Materi Bimbingan Terkini",
+        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "urlImage": "/assets/icons/cardIcon2.png"
+    },
+    {
+        "id": 3,
+        "titleCard": "Pembaruan Konten Secara Berkala Dengan Materi Terbaru",
+        "detail": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        "urlImage": "/assets/icons/cardIcon1.png"
+    }
+]

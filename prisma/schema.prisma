@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+enum UserRole {
+  STUDENT
+  MENTOR
+  NONROLE
+}
+
+enum Nilai {
+  A
+  B
+  C
+  D
+}
+
+model User {
+  id              String         @id @unique @default(uuid())
+  username        String?
+  followers       UserFollower[] @relation("followers")
+  following       UserFollower[] @relation("following")
+  FotoProfile     Image?         @relation("ProfilePicture")
+  password        String         @unique
+  rixpoin         Int?
+  otp             String?
+  otpExpires      DateTime?
+  fullName        String?
+  email           String         @unique
+  profilePicture  String?
+  bio             String?
+  portfolioLink   String?
+  profileId       String?        @unique @default(uuid())
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  enrolledClasses Class[]        @relation("ClassParticipants")
+  mentoredClasses Class[]        @relation("ClassMentors")
+  comment         Comment[]      @relation("userComment")
+  schollStatus    String?
+}
+
+model MateriClass {
+  id                 String?
+  urlYoutube         String   @unique
+  content            String[]
+  Class              Class?   @relation("MateriClass", fields: [Classid_credential], references: [id_credential])
+  Classid_credential String?
+}
+
+model Image {
+  id        String   @unique @default(uuid())
+  url       String?
+  createdAt DateTime @default(now())
+  User      User?    @relation("ProfilePicture", fields: [userId], references: [id])
+  userId    String?  @unique
+  Class     Class?   @relation("ImageClass", fields: [id], references: [id_credential])
+}
+
+model UserFollower {
+  followerId  String
+  followingId String
+
+  follower  User @relation("followers", fields: [followerId], references: [id])
+  following User @relation("following", fields: [followingId], references: [id])
+
+  // Kunci komposit untuk mencegah duplikat follower-following
+  @@id([followerId, followingId])
+}
+
+model Class {
+  id_credential    String        @id @unique @default(uuid())
+  title            String?
+  price            Int?
+  isDiscount       Boolean?
+  Image            Image?        @relation("ImageClass")
+  discountPrice    Int?
+  difficultyLevel  String?
+  lesson           Int?
+  mentorixPoin     Int?
+  time             Int?
+  progress         Int?
+  authorTeams      String?
+  aboutClass       String?
+  StepClass        String[]
+  materiList       String[]
+  prepareToLearn   String[]
+  nilai            Nilai?        @default(D)
+  isCertivicate    Boolean?
+  urlCertivication String?
+  like             Int?
+  ulasan           Comment[]     @relation("CommentClass")
+  participants     User[]        @relation("ClassParticipants")
+  mentors          User[]        @relation("ClassMentors")
+  MateriClass      MateriClass[] @relation("MateriClass")
+}
+
+model Comment {
+  id                 String   @unique @default(uuid())
+  content            String
+  Class              Class?   @relation("CommentClass", fields: [classId_credential], references: [id_credential])
+  classId_credential String?
+  user               User?    @relation("userComment", fields: [userId], references: [id])
+  createdAt          DateTime @default(now())
+  userId             String
+}

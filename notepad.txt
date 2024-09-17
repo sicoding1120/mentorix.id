@@ -1,0 +1,4 @@
+name of web  =   mentorix
+decs = platform e-learning inovatif dengan bimbingan personal dari para profesional berpengalaman
+
+

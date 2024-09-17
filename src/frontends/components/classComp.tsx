@@ -13,7 +13,7 @@ const Class = () => {
   const { icons } = useIcons();
   const { menu } = useData();
   const { data, error, isLoading } = useSWR(
-    "https://my-app-one-pi-53.vercel.app/api/class",
+    "/api/class",
     fetcher
   );
   const router = useRouter();

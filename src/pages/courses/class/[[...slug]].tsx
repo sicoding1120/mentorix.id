@@ -33,7 +33,6 @@ const Class = ({ data }: { data: any }) => {
 
 export const ClassRouter = ({ data }: { data: any }) => {
   const { query } = useRouter();
-  console.log(query.slug);
   const path = query.slug;
   return (
     <div>

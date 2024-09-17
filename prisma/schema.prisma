@@ -20,6 +20,15 @@ enum UserRole {
   NONROLE
 }
 
+enum TingkatanKemahiran {
+  Basic
+  Standar
+  Normal
+  Intermedia
+  Advence
+  Expert
+}
+
 enum Nilai {
   A
   B
@@ -28,27 +37,52 @@ enum Nilai {
 }
 
 model User {
-  id              String         @id @unique @default(uuid())
-  username        String?
-  followers       UserFollower[] @relation("followers")
-  following       UserFollower[] @relation("following")
-  FotoProfile     Image?         @relation("ProfilePicture")
+  id              String          @id @unique @default(uuid())
+  username        String
+  followers       UserFollower[]  @relation("followers")
+  following       UserFollower[]  @relation("following")
+  FotoProfile     Image?          @relation("ProfilePicture")
   password        String         @unique
   rixpoin         Int?
   otp             String?
   otpExpires      DateTime?
   fullName        String?
-  email           String         @unique
+  lastName        String?
+  email           String          @unique
   profilePicture  String?
+  achivement      Achievement[] 
   bio             String?
   portfolioLink   String?
-  profileId       String?        @unique @default(uuid())
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
-  enrolledClasses Class[]        @relation("ClassParticipants")
-  mentoredClasses Class[]        @relation("ClassMentors")
-  comment         Comment[]      @relation("userComment")
+  profileId       String?         @unique @default(uuid())
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+  progressClass   progressClass[] @relation("progressClass")
+  enrolledClasses Class[]         @relation("ClassParticipants")
+  mentoredClasses Class[]         @relation("ClassMentors")
+  comment         Comment[]       @relation("userComment")
   schollStatus    String?
+}
+
+model Achievement {
+  id        String   @id @unique @default(uuid())
+  title     String
+  description String?
+  createdAt DateTime @default(now())
+  user      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+}
+
+
+model progressClass {
+  id       String  @id @unique @default(uuid())
+  progress Int
+  user_id  String
+  class_id String
+  class    Class   @relation(fields: [class_id], references: [id_credential])
+  user     User    @relation("progressClass",fields: [user_id], references: [id])
+  userId   String?
+
+  @@unique([user_id, class_id])
 }
 
 model MateriClass {
@@ -80,11 +114,11 @@ model UserFollower {
 }
 
 model Class {
-  id_credential    String        @id @unique @default(uuid())
+  id_credential    String          @id @unique @default(uuid())
   title            String?
   price            Int?
   isDiscount       Boolean?
-  Image            Image?        @relation("ImageClass")
+  Image            Image?          @relation("ImageClass")
   discountPrice    Int?
   difficultyLevel  String?
   lesson           Int?
@@ -96,14 +130,15 @@ model Class {
   StepClass        String[]
   materiList       String[]
   prepareToLearn   String[]
-  nilai            Nilai?        @default(D)
+  nilai            Nilai?          @default(D)
   isCertivicate    Boolean?
   urlCertivication String?
   like             Int?
-  ulasan           Comment[]     @relation("CommentClass")
-  participants     User[]        @relation("ClassParticipants")
-  mentors          User[]        @relation("ClassMentors")
-  MateriClass      MateriClass[] @relation("MateriClass")
+  ulasan           Comment[]       @relation("CommentClass")
+  participants     User[]          @relation("ClassParticipants")
+  mentors          User[]          @relation("ClassMentors")
+  MateriClass      MateriClass[]   @relation("MateriClass")
+  progressClass    progressClass[]
 }
 
 model Comment {

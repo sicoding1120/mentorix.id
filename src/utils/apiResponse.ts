@@ -7,7 +7,7 @@ export class ResponseApiRouter {
       status: 200,
       data: {
         totalRecords: classes.length,
-        classes: classes,
+        datas: classes,
       },
       meta: {
         timestamp: new Date().toISOString(),

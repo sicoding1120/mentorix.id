@@ -1,5 +1,6 @@
 import { userService } from "@/backends/providers/user.service";
 import { useAuthRouter } from "@/backends/router/auth";
+import prisma from "@/backends/utils/prisma";
 import { error } from "console";
 import type { NextApiRequest, NextApiResponse } from "next";
 
@@ -25,6 +26,16 @@ export default async function Auth(req: NextApiRequest, res: NextApiResponse) {
         await auth._login(req, res, error);
       }
       res.status(405).json("bad request");
+    }
+    if(query.auth?.at(0) === "profile") {
+      if(req.method === "PUT") {
+        const update = await prisma.user.update({
+          where: {
+            id:req.body.id
+          },
+          data: req.body
+        })
+      }
     }
     res.status(405).json({ massage: "bad request" });
   } catch (err) {

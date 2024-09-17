@@ -5,7 +5,7 @@ import {
 } from "@tabler/icons-react";
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaKey } from "react-icons/fa";
 import axios from "axios";
 import { useRouter } from "next/router";
@@ -14,20 +14,23 @@ const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [datas, setDatas] = useState();
 
-   const handleLogin = async (e: any) => {
-     e.preventDefault();
-     try {
-       const response = await axios.post(
-         "https://mentorixid.vercel.app/api/auth/login",
-         { email,password }
-       );
-       console.log("ok");
-     } catch (err) {
-       if (err) throw err;
-     }
-     console.log("ok");
-  };
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch('https://mentorixid.vercel.app/api/users');
+      const data = res.json();
+      setDatas(data as never)
+    }
+    fetchData()
+  }, [])
+
+  
+  console.log(datas);
+
+  // const handleLogin = () => {
+  //    const filter = datas
+  //  }
   
   return (
     <div className="w-full h-screen skeleton flex justify-center items-center">
@@ -65,7 +68,8 @@ const Login = () => {
               Lupa Password
             </Link>
           </div>
-          <button className="btn btn-success text-white" onClick={handleLogin}>Login</button>
+          {/* <button className="btn btn-success text-white" onClick={handleLogin}>Login</button> */}
+          <button className="btn btn-success text-white">Login</button>
           <div className="flex flex-col justify-center items-center gap-4">
             <p>Masuk Dengan</p>
             <div className="flex gap-4">

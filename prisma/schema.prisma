@@ -47,6 +47,7 @@ model User {
   otp             String?
   otpExpires      DateTime?
   fullName        String?
+  firstName       String?
   lastName        String?
   email           String          @unique
   profilePicture  String?

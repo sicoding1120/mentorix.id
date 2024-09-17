@@ -32,12 +32,14 @@ export class useAuthRouter {
     res.status(200).json(Response._verifyDataSuccess(user));
   }
   async _login(req: NextApiRequest, res: NextApiResponse, error: any) {
+    console.log(req.body);
     const user = await prisma.user.findUnique({
       where: {
-        name: req.body.username,
+        email: req.body.email,
         password: req.body.password,
       },
     } as never);
+    console.log(user);
 
     if (
       !user ||

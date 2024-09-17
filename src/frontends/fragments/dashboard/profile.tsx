@@ -21,12 +21,13 @@ import { DarkMode } from "@chakra-ui/react";
 import { Textarea } from "@nextui-org/react";
 import Navbar from "@/frontends/components/navbar";
 import Footer from "@/frontends/components/footer";
+import axios from "axios";
 
 const Profile = () => {
   return (
     <div>
-        <SidebarProfile></SidebarProfile>
-        <Footer />
+      <SidebarProfile></SidebarProfile>
+      <Footer />
     </div>
   );
 };
@@ -153,6 +154,39 @@ const LogoIcon = () => {
 
 // Dummy dashboard component with content
 const Dashboard = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [file, setFile] = useState("");
+  const [alamatEmail, setAlamatEmail] = useState("");
+  const [bio, setBio] = useState("");
+
+  const handleChange = (e: any) => {
+    const { name, value, files } = e.target;
+    if (name === "file") {
+      setFile(files[0]);
+    } else if (name === "firstName") {
+      setFirstName(value);
+    } else if (name === "lastName") {
+      setLastName(value);
+    } else if (name === "alamatEmail") {
+      setAlamatEmail(value);
+    } else if (name === "bio") {
+      setBio(value);
+    }
+  };
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "https://mentorixid.vercel.app/api/auth/profile",
+        { firstName, lastName, alamatEmail, bio }
+      );
+      console.log("ok");
+    } catch (err) {
+      if (err) throw err;
+    }
+  };
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
@@ -178,13 +212,20 @@ const Dashboard = () => {
             Foto profil kamu disarankan memiliki rasio 1 : 1 atau berukuran
             tidak lebih dari 2MB
           </p>
-          <form action="#" className="flex flex-col gap-2 py-4 justify-between">
+          <form
+            action="#"
+            className="flex flex-col gap-2 py-4 justify-between"
+            onSubmit={handleSubmit}
+          >
             <div className="flex gap-4">
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="namaDepan">Nama Depan *</label>
                 <input
                   type="text"
                   id="namaDepan"
+                  name="firstName"
+                  value={firstName}
+                  onChange={handleChange}
                   className="input input-bordered flex items-center"
                 />
               </div>
@@ -193,26 +234,38 @@ const Dashboard = () => {
                 <input
                   type="text"
                   id="namaBelakang"
+                  name="lastName"
+                  value={lastName}
+                  onChange={handleChange}
                   className="input input-bordered flex items-center"
                 />
               </div>
             </div>
             <div className="flex flex-col gap-2 w-full">
-              <label htmlFor="Emaik">Alamat Email *</label>
+              <label htmlFor="email">Alamat Email *</label>
               <input
                 type="email"
-                id="namaBelakang"
+                id="email"
+                name="alamatEmail"
+                value={alamatEmail}
+                onChange={handleChange}
                 className="input input-bordered flex items-center"
               />
             </div>
 
             <div className="flex flex-col gap-2 w-full py-4">
-              <label htmlFor="Biografi">Biografi</label>
-              <Textarea></Textarea>
+              <label htmlFor="bio">Biografi</label>
+              <textarea
+                id="bio"
+                name="bio"
+                value={bio}
+                onChange={handleChange}
+                className="input input-bordered flex items-center"
+              />
             </div>
 
             <div className="flex justify-end">
-              <button className="btn btn-success text-white">
+              <button className="btn btn-success text-white" type="submit">
                 Simpan Perubahan
               </button>
             </div>

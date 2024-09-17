@@ -15,14 +15,20 @@ const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = async () => {
-    try {
-      const res = await axios.post('/api/users', {email, password })
-      router.push('/auth/confirmEmail')
-    } catch (err) {
-      if(err) throw err
-    }
+   const handleLogin = async (e: any) => {
+     e.preventDefault();
+     try {
+       const response = await axios.post(
+         "https://mentorixid.vercel.app/api/auth/login",
+         { email,password }
+       );
+       console.log("ok");
+     } catch (err) {
+       if (err) throw err;
+     }
+     console.log("ok");
   };
+  
   return (
     <div className="w-full h-screen skeleton flex justify-center items-center">
       <form

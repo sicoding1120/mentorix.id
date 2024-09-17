@@ -3,7 +3,6 @@ import React from "react";
 import CardDemo from "./card";
 import { GiRank1 } from "react-icons/gi";
 import { IoMedalOutline } from "react-icons/io5";
-import axios from "axios";
 import { useRouter } from "next/router";
 
 const DetailClasses = ({

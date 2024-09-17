@@ -18,8 +18,6 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [user, setDatas] = useState<any>();
   const [verify, setVerify] = useState(false);
-
-
   
   useEffect(() => {
     const logic = new useLogic();
@@ -32,11 +30,12 @@ const Login = () => {
       setVerify(compare);
     };
     apa();
-  },[password,user],)
+  }, [password, user],)
+  
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/users");
+      const res = await fetch("https://mentorixid.vercel.app/api/users");
       const users = await res.json();
       setDatas(users);
     };

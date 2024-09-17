@@ -1,7 +1,7 @@
 // import Image from "next/image";
 import React from "react";
 import { Kanit } from "next/font/google";
-import SidebarDemo from "@/frontends/components/sidebar";
+// import SidebarDemo from "@/frontends/components/sidebar";
 
 const kanit = Kanit({
   subsets: ["latin"],
@@ -14,7 +14,7 @@ const Dashboard = ({ children }: { children: React.ReactNode }) => {
       className={`${kanit.className} flex flex-col md:flex-row bg-gray-100`}
     >
       <section className="md:w-1/5 hidden md:block h-screen fixed p-2">
-        <SidebarDemo />
+        {/* <SidebarDemo /> */}
       </section>
       <section className="w-full h-full flex flex-col md:ml-[20%] py-2">
         {children}

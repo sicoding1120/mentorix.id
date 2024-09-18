@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Footer = () => {
@@ -15,6 +16,7 @@ const Footer = () => {
         </aside>
         <nav>
           <h6 className="footer-title">Services</h6>
+          <Link href={"/services"} className="link link-hover">Terms of Services</Link>
           <a className="link link-hover">Branding</a>
           <a className="link link-hover">Design</a>
           <a className="link link-hover">Marketing</a>
@@ -31,7 +33,7 @@ const Footer = () => {
           <h6 className="footer-title">Legal</h6>
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
-          <a className="link link-hover">Cookie policy</a>
+          <Link href={"/FAQ"} className="link link-hover">FAQ</Link>
         </nav>
       </footer>
     </div>

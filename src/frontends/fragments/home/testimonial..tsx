@@ -41,11 +41,11 @@ const Testimonial = () => {
     <Box className="py-8 md:px-24">
       <Text
         fontSize="4xl"
-        textAlign="center"
+        textAlign="start"
         mb={8}
-        className="text-color-c5 dark:text-color-c4"
+        className="text-color-c5 dark:text-color-c4 font-semibold w-1/2"
       >
-        Testimonials from our students
+        Apa yang mereka katakan tentang layanan profesional kami
       </Text>
       <Box className="w-full hidden md:block" mx="auto" p={8} borderRadius="lg">
         <Swiper

@@ -10,7 +10,8 @@ import { FaKey } from "react-icons/fa";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useLogic } from "@/backends/logic";
-import { compare } from "bcryptjs";
+import bcrypt from "bcryptjs";
+
 
 const Login = () => {
   const router = useRouter();
@@ -18,30 +19,35 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [user, setDatas] = useState<any>();
   const [verify, setVerify] = useState(false);
+  const logic = new useLogic();
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("https://mentorixid.vercel.app/api/users");
+      const res = await fetch("/api/users");
       const users = await res.json();
       setDatas(users);
     };
     fetchData();
   }, [user, password]);
 
-
-  const handleLogin = () => {
-    if (user) {
-      const filter = user.data.datas.find(
-        (items: any) => items.email === email
-      );
-      router.push(`/${filter.id}/dashboard`);
-    }
+  const verifyPassword = async (password: string, hashPassword: string = "") => {
+    return await bcrypt.compare(password, hashPassword);
   };
+
+  
+
+  const handleLogin = async () => {
+    const passwordhash = user.data.datas.find((data: any) => data).password
+    console.log(verifyPassword(password,passwordhash));
+    const filter = user.data.datas.filter(
+      (items: any) => items.email == email
+    )
+    console.log(filter);
+  }
 
   return (
     <div className="w-full h-screen skeleton flex justify-center items-center">
-      <form
-        action=""
+      <div
         className="bg-slate-200 p-8 rounded-xl flex flex-col gap-6 shadow-lg"
       >
         <h1 className="text-4xl font-bold">Login</h1>
@@ -84,10 +90,9 @@ const Login = () => {
               Lupa Password
             </Link>
           </div>
-          {/* <button className="btn btn-success text-white" onClick={handleLogin}>Login</button> */}
-          <button className="btn btn-success text-white" onClick={handleLogin}>
+          <div className="btn btn-success text-white" onClick={handleLogin}>
             Login
-          </button>
+          </div>
           <div className="flex flex-col justify-center items-center gap-4">
             <p>Masuk Dengan</p>
             <div className="flex gap-4">
@@ -109,7 +114,7 @@ const Login = () => {
             </p>
           </div>
         </div>
-      </form>
+      </div>
     </div>
   );
 };

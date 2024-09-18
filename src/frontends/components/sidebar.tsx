@@ -30,7 +30,7 @@ export function SidebarDemo() {
     },
     {
       label: "Kelas",
-      href: "class",
+      href: "/dashboard/class",
       icon: (
         <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
@@ -51,7 +51,7 @@ export function SidebarDemo() {
     },
     {
       label: "Keluar",
-      href: "/logout",
+      href: "/auth/logout",
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),

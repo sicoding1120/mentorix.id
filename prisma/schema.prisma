@@ -51,7 +51,7 @@ model User {
   lastName        String?
   email           String          @unique
   profilePicture  String?
-  achivement      Achievement[] 
+  achivement      Achievement[]
   bio             String?
   portfolioLink   String?
   profileId       String?         @unique @default(uuid())

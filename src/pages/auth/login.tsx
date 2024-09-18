@@ -38,7 +38,7 @@ const Login = () => {
 
   const handleLogin = async () => {
     const passwordhash = user.data.datas.find((data: any) => data).password
-    console.log(verifyPassword(password,passwordhash));
+    console.log( await verifyPassword(password,passwordhash));
     const filter = user.data.datas.filter(
       (items: any) => items.email == email
     )

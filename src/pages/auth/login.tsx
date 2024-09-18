@@ -1,16 +1,16 @@
 import {
   IconBrandFacebookFilled,
-  IconBrandGoogle,
   IconBrandGoogleFilled,
 } from "@tabler/icons-react";
 import { MdEmail } from "react-icons/md";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaKey } from "react-icons/fa";
-import axios from "axios";
 import { useRouter } from "next/router";
 import { useLogic } from "@/backends/logic";
 import bcrypt from "bcryptjs";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 
 const Login = () => {
@@ -30,26 +30,34 @@ const Login = () => {
     fetchData();
   }, [user, password]);
 
-  const verifyPassword = async (password: string, hashPassword: string = "") => {
+  const verifyPassword = async (
+    password: string,
+    hashPassword: string = ""
+  ) => {
     return await bcrypt.compare(password, hashPassword);
   };
 
-  
-
   const handleLogin = async () => {
-    const passwordhash = user.data.datas.find((data: any) => data).password
-    console.log( await verifyPassword(password,passwordhash));
-    const filter = user.data.datas.filter(
-      (items: any) => items.email == email
-    )
-    console.log(filter);
-  }
+    const passwordhash = user.data.datas.find((data: any) => data).password;
+    const emailUser = user.data.datas.find((data: any) => data).email;
+    const idUSer = user.data.datas.find((data: any) => data).id;
+    const verifyAccount = await verifyPassword(password, passwordhash);
+   if(emailUser !== email || verifyAccount === false){ 
+     toast.error("ada kesalahan ketika menulis email atau password");
+   } else {
+     const filter = user.data.datas.filter((items: any) => items.email == email);
+     if (filter) {
+       toast.success("berhasil login");
+       router.push(`/auth/verification?user_id=${idUSer}&isLogin=true&isVerify=false`);
+     } else {
+       toast.error("ada kesalahan saat memasukan password dan email");
+     }
+   }
+  };
 
   return (
     <div className="w-full h-screen skeleton flex justify-center items-center">
-      <div
-        className="bg-slate-200 p-8 rounded-xl flex flex-col gap-6 shadow-lg"
-      >
+      <div className="bg-slate-200 p-8 rounded-xl flex flex-col gap-6 shadow-lg">
         <h1 className="text-4xl font-bold">Login</h1>
         <p className="text-slate-500">
           Masuk ke akun anda untuk melanjutkan <br />
@@ -115,6 +123,7 @@ const Login = () => {
           </div>
         </div>
       </div>
+      <ToastContainer/>
     </div>
   );
 };

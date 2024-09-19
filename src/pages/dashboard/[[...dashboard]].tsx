@@ -7,8 +7,7 @@ import React from 'react'
 
 const Dynamic = () => {
   const { query } = useRouter();
-  let content;
-
+  let content;console.log(query );
   switch (query.dashboard?.at(1)) {
     case 'profile':
       content = <Profile />
@@ -17,7 +16,7 @@ const Dynamic = () => {
       content = <Setting />
       break;
     default:
-      content = <SidebarDemo/>
+      content = <SidebarDemo id={query.dashboard?.at(0)} />
   }
   return content
 }

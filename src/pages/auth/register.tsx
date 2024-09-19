@@ -9,7 +9,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FaKey, FaUser } from "react-icons/fa";
 import { useLogic } from "@/backends/logic";
-import Cookies from "js-cookie";
+import { toast } from "react-toastify";
+import { useRouter } from "next/router";
 
 const logic = new useLogic();
 
@@ -18,8 +19,7 @@ const Register = () => {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [chek, setChek] = useState("");
-  console.log(chek, username, password, email);
-
+  const router = useRouter();
   const validEmail = logic.validateEmail(email);
 
   const handleRegister = async (e: any) => {
@@ -29,11 +29,11 @@ const Register = () => {
         "https://mentorixid.vercel.app/api/auth/register",
         { username, password, email }
       );
-      console.log("ok");
+      toast.success("berhasil register");
+      router
     } catch (err) {
       if (err) throw err;
     }
-    console.log("ok");
   };
 
   return (

@@ -18,33 +18,35 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
 import { DarkMode } from "@chakra-ui/react";
+import Cookie from 'js-cookie'
 
-export function SidebarDemo() {
+export function SidebarDemo({ id }: {id:string | any}) {
+  const id_user = Cookie.get(`user_${id}`)
   const links = [
     {
       label: "Dashboard",
-      href: "/dashboard",
+      href: `/dashboard/${id_user}`,
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {
       label: "Kelas",
-      href: "/dashboard/class",
+      href: `/dashboard/${id_user}/class`,
       icon: (
         <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {
       label: "Profil",
-      href: "/dashboard/profile",
+      href: `/dashboard/${id_user}/profile`,
       icon: (
         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {
       label: "Pengaturan",
-      href: "/dashboard/setting",
+      href: `/dashboard/${id_user}/setting`,
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),

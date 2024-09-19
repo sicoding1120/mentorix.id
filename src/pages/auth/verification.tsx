@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const Verification = () => {
   const router = useRouter();
   const { user_id, isLogin, isVerify } = router.query;
@@ -15,10 +14,10 @@ const Verification = () => {
   useEffect(() => {
     let token;
     const generateToken = () => {
-      return Math.floor(Math.random() * (9999 -1000 + 1) + 1000);
+      return Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
     };
 
-    const cookie = Cookie.get(`${user_id}`)
+    const cookie = Cookie.get(`${user_id}`);
 
     if (cookie !== undefined) {
       token = cookie;
@@ -30,9 +29,10 @@ const Verification = () => {
 
   const handleOtp = () => {
     if (otp === tokenotp) {
-      toast.success("verifikasi  berhasil")
-      router.push(`/${user_id}?isLogin=${isLogin}&isVerify=true/dashboard`);
-      return Cookie.set(`${user_id}`, tokenotp, { expires: 7 });
+      toast.success("verifikasi  berhasil");
+      router.push(`/dashboard/${user_id}`);
+      Cookie.set(`user_${user_id}`, `${user_id}`, { expires: 7 });
+      Cookie.set(`${user_id}`, tokenotp, { expires: 7 });
     } else {
       toast.warning("token salah harap coba lagi", {
         position: "top-left",
@@ -82,7 +82,7 @@ const Verification = () => {
           <button className="btn btn-success text-white" onClick={handleOtp}>
             Login
           </button>
-          <ToastContainer/>
+          <ToastContainer />
         </div>
       </div>
     </div>

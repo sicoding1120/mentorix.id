@@ -34,7 +34,7 @@ export class userService {
     const { firstName, lastName, bio } = req.body
     const usersCreate = await prisma.user.update({
       where: {
-        id: id?  id : req.body.id
+        id: req.body.id
       },
       data: {
         firstName: firstName,

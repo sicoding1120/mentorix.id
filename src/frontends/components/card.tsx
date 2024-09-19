@@ -9,14 +9,13 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
   const { icons } = useIcons();
   const router = useRouter();
   const priceNow = price - (price * discountPrice) / 100;
-  console.log(priceNow);  
   return (
-    <div className="w-[300px] h-[450px] bg-white shadow-md rounded-md overflow-hidden">
+    <div className="w-[320px] h-[450px] bg-white shadow-md rounded-md overflow-hidden">
       <div className="w-full h-1/2 bg-red-500 p-4">
         <div></div>
       </div>
       <div className="p-4 flex flex-col justify-between w-full h-1/2 ">
-        <h3 className="text-xl font-semibold capitalize">{title}</h3>
+        <h3 className="text-xl  font-semibold capitalize w-full">{title}</h3>
         <div className="flex gap-4 items-center font-semibold capitalize">
           <MdSignalCellular1Bar />
           {level}

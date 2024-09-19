@@ -23,7 +23,7 @@ const Login = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/users");
+      const res = await fetch("https://mentorixid.vercel.app/api/users");
       const users = await res.json();
       setDatas(users);
     };
@@ -40,8 +40,11 @@ const Login = () => {
   const handleLogin = async () => {
     const passwordhash = user.data.datas.find((data: any) => data).password;
     const emailUser = user.data.datas.find((data: any) => data).email;
+    console.log(emailUser);
     const idUSer = user.data.datas.find((data: any) => data).id;
+    console.log(idUSer);
     const verifyAccount = await verifyPassword(password, passwordhash);
+
    if(emailUser !== email || verifyAccount === false){ 
      toast.error("ada kesalahan ketika menulis email atau password");
    } else {

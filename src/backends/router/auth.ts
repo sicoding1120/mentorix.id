@@ -29,7 +29,7 @@ export class useAuthRouter {
         email: email,
       },
     } as never);
-    res.status(200).json(Response._verifyDataSuccess(user));
+    res.status(201).json(Response._verifyDataSuccess(user));
   }
   async _login(req: NextApiRequest, res: NextApiResponse, error: any) {
     console.log(req.body);

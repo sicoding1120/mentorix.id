@@ -9,6 +9,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { FaKey, FaUser } from "react-icons/fa";
 import { useLogic } from "@/backends/logic";
+import Cookies from "js-cookie";
 
 const logic = new useLogic();
 

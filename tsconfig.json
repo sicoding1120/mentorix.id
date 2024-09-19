@@ -17,6 +17,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/supabase.js"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "src/utils/supabase.js", "src/frontends/components/cardClass.tsx"],
   "exclude": ["node_modules"]
 }

@@ -157,7 +157,6 @@ const Dashboard = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [file, setFile] = useState("");
-  const [alamatEmail, setAlamatEmail] = useState("");
   const [bio, setBio] = useState("");
 
   const handleChange = (e: any) => {
@@ -168,8 +167,6 @@ const Dashboard = () => {
       setFirstName(value);
     } else if (name === "lastName") {
       setLastName(value);
-    } else if (name === "alamatEmail") {
-      setAlamatEmail(value);
     } else if (name === "bio") {
       setBio(value);
     }
@@ -178,9 +175,9 @@ const Dashboard = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
+      const response = await axios.put(
         "https://mentorixid.vercel.app/api/auth/profile",
-        { firstName, lastName, alamatEmail, bio }
+        { firstName, lastName, bio }
       );
       console.log("ok");
     } catch (err) {
@@ -247,7 +244,6 @@ const Dashboard = () => {
                 type="email"
                 id="email"
                 name="alamatEmail"
-                value={alamatEmail}
                 onChange={handleChange}
                 className="input input-bordered flex items-center"
               />

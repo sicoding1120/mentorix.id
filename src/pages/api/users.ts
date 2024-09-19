@@ -12,7 +12,8 @@ export default async function handler(
     switch (req.method) {
       case "GET":
         await user._getUserAllWithRelations(req, res, ApiError);
-      case "POST":
+      case "PUT":
+        await user._updateUsers(req,res,Error)
     }
   } catch (err) {
     if (err) throw err;

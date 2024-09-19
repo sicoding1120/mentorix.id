@@ -39,9 +39,10 @@ const Login = () => {
 
   const handleLogin = async () => {
     const passwordhash = user.data.datas.find((data: any) => data).password;
-    const emailUser = user.data.datas.find((data: any) => data).email;
+    const emailUser = user.data.datas.find((data: any) => data.email == email).email;
+    console.log(user.data.datas);
     console.log(emailUser);
-    const idUSer = user.data.datas.find((data: any) => data).id;
+    const idUSer = user.data.datas.find((data: any) => data == email).id;
     console.log(idUSer);
     const verifyAccount = await verifyPassword(password, passwordhash);
 

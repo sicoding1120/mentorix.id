@@ -12,7 +12,6 @@ import bcrypt from "bcryptjs";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 const Login = () => {
   const router = useRouter();
   const [email, setEmail] = useState("");
@@ -38,21 +37,31 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    const passwordhash = user.data.datas.find((items:any) => items.email == email);
-    const emailUser = user.data.datas.find((data: any) => data.email == email);
-    const idUSer = user.data.datas.find((data: any) => data.email == email);
+    const passwordhash = await user.data.datas.find(
+      (items: any) => items.email == email
+    );
+    const emailUser = await user.data.datas.find(
+      (data: any) => data.email == email
+    );
+    const idUSer = await user.data.datas.find(
+      (data: any) => data.email == email
+    );
     const verifyAccount = await verifyPassword(password, passwordhash.password);
-   if(emailUser !== email || verifyAccount === false){ 
-     toast.error("ada kesalahan ketika menulis email atau password");
-   } else {
-     const filter = user.data.datas.filter((items: any) => items.email == email);
-     if (filter) {
-       toast.success("berhasil login");
-       router.push(`/auth/verification?user_id=${idUSer}&isLogin=true&isVerify=false`);
-     } else {
-       toast.error("ada kesalahan saat memasukan password dan email");
-     }
-   }
+    if (emailUser !== email || verifyAccount === false) {
+      toast.error("ada kesalahan ketika menulis email atau password");
+    } else {
+      const filter = user.data.datas.filter(
+        (items: any) => items.email == email
+      );
+      if (filter) {
+        toast.success("berhasil login");
+        router.push(
+          `/auth/verification?user_id=${idUSer}&isLogin=true&isVerify=false`
+        );
+      } else {
+        toast.error("ada kesalahan saat memasukan password dan email");
+      }
+    }
   };
 
   return (
@@ -123,7 +132,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <ToastContainer/>
+      <ToastContainer />
     </div>
   );
 };

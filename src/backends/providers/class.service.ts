@@ -28,7 +28,11 @@ export class classService {
   }
 
   async _createClass(req: NextApiRequest, res: NextApiResponse, error: any) {
-    const create = await prisma.class.create(req.body);
+    const create = await prisma.class.create(
+      {
+        data: req.body
+      }
+    );
     res.status(201).json(RestApi._createDataSuccess(create as never))
   }
 } 

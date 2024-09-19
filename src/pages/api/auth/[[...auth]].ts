@@ -29,12 +29,7 @@ export default async function Auth(req: NextApiRequest, res: NextApiResponse) {
     }
     if(query.auth?.at(0) === "profile") {
       if(req.method === "PUT") {
-        const update = await prisma.user.update({
-          where: {
-            id:req.body.id
-          },
-          data: req.body
-        })
+       await user._updateUsers(req, res, error)
       }
     }
     res.status(405).json({ massage: "bad request" });

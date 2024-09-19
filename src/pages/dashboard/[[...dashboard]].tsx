@@ -4,6 +4,7 @@ import Profile from '@/frontends/fragments/dashboard/profile';
 import Setting from '@/frontends/fragments/dashboard/setting';
 import { useRouter } from 'next/router'
 import React from 'react'
+import Dashboard from '../../frontends/templates/dashboard';
 
 const Dynamic = () => {
   const { query } = useRouter();

@@ -12,7 +12,6 @@ import {
   IconPaperclip,
   IconSettings,
   IconUserBolt,
-  IconX,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -250,16 +249,6 @@ const Dashboard = () => {
               />
             </div>
 
-            <div className="flex justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-error flex justify-center items-center text-white rounded-full">
-                  <IconX width={14} height={14} />
-                </div>
-                <p className="text-slate-500">Email belum terverifikasi</p>
-              </div>
-              <Link href={"/dashboard/verify"} className="text-primary font-medium">Verifikasi Email</Link>
-            </div>
-
             <div className="flex flex-col gap-2 w-full py-4">
               <label htmlFor="bio">Biografi</label>
               <textarea
@@ -267,7 +256,7 @@ const Dashboard = () => {
                 name="bio"
                 value={bio}
                 onChange={handleChange}
-                className="input input-bordered flex items-center h-32"
+                className="input input-bordered flex items-center"
               />
             </div>
 

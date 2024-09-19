@@ -39,6 +39,7 @@ export class userService {
       data: {
         firstName: firstName,
         lastName: lastName,
+        fullName: `${firstName} ${lastName}`,
         bio: bio
       }
     })

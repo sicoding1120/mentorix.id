@@ -12,7 +12,6 @@ import {
   IconPaperclip,
   IconSettings,
   IconUserBolt,
-  IconX,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -24,7 +23,7 @@ import Navbar from "@/frontends/components/navbar";
 import Footer from "@/frontends/components/footer";
 import axios from "axios";
 
-const Profile = () => {
+const Setting = () => {
   return (
     <div>
       <SidebarProfile></SidebarProfile>
@@ -33,7 +32,7 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default Setting;
 
 const SidebarProfile = () => {
   const links = [
@@ -158,6 +157,7 @@ const Dashboard = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [file, setFile] = useState("");
+  const [alamatEmail, setAlamatEmail] = useState("");
   const [bio, setBio] = useState("");
 
   const handleChange = (e: any) => {
@@ -168,6 +168,8 @@ const Dashboard = () => {
       setFirstName(value);
     } else if (name === "lastName") {
       setLastName(value);
+    } else if (name === "alamatEmail") {
+      setAlamatEmail(value);
     } else if (name === "bio") {
       setBio(value);
     }
@@ -176,9 +178,9 @@ const Dashboard = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const response = await axios.put(
+      const response = await axios.post(
         "https://mentorixid.vercel.app/api/auth/profile",
-        { firstName, lastName, bio }
+        { firstName, lastName, alamatEmail, bio }
       );
       console.log("ok");
     } catch (err) {
@@ -189,94 +191,113 @@ const Dashboard = () => {
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
         <div className="flex flex-col gap-4 skeleton rounded-md w-full h-full p-8 overflow-scroll scrollbar-hide">
-          <h2 className="text-3xl font-bold">Detail Profil</h2>
-          <div className="flex gap-6">
-            <div className="rounded-full w-28 h-w-28 overflow-hidden">
-              <Image
-                src={"/assets/logo/favicon.png"}
-                alt={"profil-image"}
-                width={112}
-                height={112}
-              />
+          <h2 className="text-3xl font-bold">Pengaturan</h2>
+          <div className="flex gap-4 justify-between py-8">
+            <div className="flex flex-col gap-2">
+              <p className="font-medium text-lg">Bahasa</p>
+              <select className="select select-secondary w-full max-w-xs">
+                <option disabled selected>
+                  Pilih Bahasa
+                </option>
+                <option>Indonesia</option>
+                <option>English</option>
+                <option>Sunda</option>
+              </select>
             </div>
             <div className="flex flex-col gap-2">
-              <button className="btn btn-success px-12 text-white">
-                Unggah Foto
-              </button>
-              <Link href={"/dashboard/avatar"}>Gunakan Karakter Avatar</Link>
+              <p className="font-semibold text-lg">Jenis Font</p>
+              <div className="flex justify-between gap-4">
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-start items-center gap-2">
+                    <input
+                      type="radio"
+                      id="Poppins"
+                      name="font"
+                      value="Poppins"
+                      className="radio"
+                    />
+                    <label className="label cursor-pointer" htmlFor="Poppins">
+                      <span className="label-text font-medium">Poppins</span>
+                    </label>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-start items-center gap-2">
+                    <input
+                      type="radio"
+                      id="Lato"
+                      name="font"
+                      value="Lato"
+                      className="radio"
+                    />
+                    <label className="label cursor-pointer" htmlFor="Lato">
+                      <span className="label-text font-medium">Lato</span>
+                    </label>
+                  </div>
+                </div>
+                <div className="flex flex-col gap-4">
+                  <div className="flex justify-start items-center gap-2">
+                    <input
+                      type="radio"
+                      id="Sans Serif"
+                      name="font"
+                      value="Sans Serif"
+                      className="radio"
+                    />
+                    <label
+                      className="label cursor-pointer"
+                      htmlFor="Sans Serif"
+                    >
+                      <span className="label-text font-medium">Sans Serif</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-col gap-2">
+              <p className="font-medium text-lg">Tema</p>
+              <label className="flex cursor-pointer gap-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <circle cx="12" cy="12" r="5" />
+                  <path d="M12 1v2M12 21v2M4.2 4.2l1.4 1.4M18.4 18.4l1.4 1.4M1 12h2M21 12h2M4.2 19.8l1.4-1.4M18.4 5.6l1.4-1.4" />
+                </svg>
+                <input
+                  type="checkbox"
+                  value="dark"
+                  className="toggle theme-controller"
+                />
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+              </label>
             </div>
           </div>
-          <p className="text-slate-500 font-medium">
-            Foto profil kamu disarankan memiliki rasio 1 : 1 atau berukuran
-            tidak lebih dari 2MB
-          </p>
-          <form
-            action="#"
-            className="flex flex-col gap-2 py-4 justify-between"
-            onSubmit={handleSubmit}
-          >
-            <div className="flex gap-4">
-              <div className="flex flex-col gap-2 w-full">
-                <label htmlFor="namaDepan">Nama Depan *</label>
-                <input
-                  type="text"
-                  id="namaDepan"
-                  name="firstName"
-                  value={firstName}
-                  onChange={handleChange}
-                  className="input input-bordered flex items-center"
-                />
-              </div>
-              <div className="flex flex-col gap-2 w-full">
-                <label htmlFor="namaBelakang">Nama Belakang *</label>
-                <input
-                  type="text"
-                  id="namaBelakang"
-                  name="lastName"
-                  value={lastName}
-                  onChange={handleChange}
-                  className="input input-bordered flex items-center"
-                />
-              </div>
+          <div className="flex flex-col gap-4">
+            <h2 className="text-3xl font-bold">Preview</h2>
+            <div className="w-full h-screen rounded-xl skeleton bg-primary-300">
+              {/* Nanti dalemnya iframe landing page */}
             </div>
-            <div className="flex flex-col gap-2 w-full">
-              <label htmlFor="email">Alamat Email *</label>
-              <input
-                type="email"
-                id="email"
-                name="alamatEmail"
-                onChange={handleChange}
-                className="input input-bordered flex items-center"
-              />
-            </div>
-
-            <div className="flex justify-between gap-2">
-              <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-error flex justify-center items-center text-white rounded-full">
-                  <IconX width={14} height={14} />
-                </div>
-                <p className="text-slate-500">Email belum terverifikasi</p>
-              </div>
-              <Link href={"/dashboard/verify"} className="text-primary font-medium">Verifikasi Email</Link>
-            </div>
-
-            <div className="flex flex-col gap-2 w-full py-4">
-              <label htmlFor="bio">Biografi</label>
-              <textarea
-                id="bio"
-                name="bio"
-                value={bio}
-                onChange={handleChange}
-                className="input input-bordered flex items-center h-32"
-              />
-            </div>
-
-            <div className="flex justify-end">
-              <button className="btn btn-success text-white" type="submit">
-                Simpan Perubahan
-              </button>
-            </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>

@@ -38,27 +38,27 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    const passwordhash = user.data.datas.find((data: any) => data.email == email).password;
+    const passwordhash = user.data.datas.filter((items:any) => items.email == email);
     console.log(passwordhash);
-    const emailUser = user.data.datas.find((data: any) => data.email == email).email;
+    const emailUser = user.data.datas.filter((data: any) => data.email == email);
     console.log(user.data.datas);
     console.log(emailUser);
-    const idUSer = user.data.datas.find((data: any) => data.email == email).id;
+    const idUSer = user.data.datas.filter((data: any) => data.email == email);
     console.log(idUSer);
     const verifyAccount = await verifyPassword(password, passwordhash);
     console.log(verifyAccount);
 
-   if(emailUser !== email || verifyAccount === false){ 
-     toast.error("ada kesalahan ketika menulis email atau password");
-   } else {
-     const filter = user.data.datas.filter((items: any) => items.email == email);
-     if (filter) {
-       toast.success("berhasil login");
-       router.push(`/auth/verification?user_id=${idUSer}&isLogin=true&isVerify=false`);
-     } else {
-       toast.error("ada kesalahan saat memasukan password dan email");
-     }
-   }
+  //  if(emailUser !== email || verifyAccount === false){ 
+  //    toast.error("ada kesalahan ketika menulis email atau password");
+  //  } else {
+  //    const filter = user.data.datas.filter((items: any) => items.email == email);
+  //    if (filter) {
+  //      toast.success("berhasil login");
+  //      router.push(`/auth/verification?user_id=${idUSer}&isLogin=true&isVerify=false`);
+  //    } else {
+  //      toast.error("ada kesalahan saat memasukan password dan email");
+  //    }
+  //  }
   };
 
   return (

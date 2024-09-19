@@ -1,6 +1,7 @@
 
 import { SidebarDemo } from '@/frontends/components/sidebar'
 import Profile from '@/frontends/fragments/dashboard/profile';
+import Setting from '@/frontends/fragments/dashboard/setting';
 import { useRouter } from 'next/router'
 import React from 'react'
 
@@ -12,6 +13,9 @@ const Dynamic = () => {
   switch (query.dashboard?.at(0)) {
     case 'profile':
       content = <Profile />
+      break;
+    case 'setting':
+      content = <Setting />
       break;
     default:
       content = <SidebarDemo/>

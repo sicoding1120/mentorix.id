@@ -38,13 +38,15 @@ const Login = () => {
   };
 
   const handleLogin = async () => {
-    const passwordhash = user.data.datas.find((data: any) => data).password;
+    const passwordhash = user.data.datas.find((data: any) => data.email == email).password;
+    console.log(passwordhash);
     const emailUser = user.data.datas.find((data: any) => data.email == email).email;
     console.log(user.data.datas);
     console.log(emailUser);
-    const idUSer = user.data.datas.find((data: any) => data == email).id;
+    const idUSer = user.data.datas.find((data: any) => data.email == email).id;
     console.log(idUSer);
     const verifyAccount = await verifyPassword(password, passwordhash);
+    console.log(verifyAccount);
 
    if(emailUser !== email || verifyAccount === false){ 
      toast.error("ada kesalahan ketika menulis email atau password");

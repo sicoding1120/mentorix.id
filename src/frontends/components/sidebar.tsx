@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Sidebar,
   SidebarBody,
@@ -18,10 +18,14 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
 import { DarkMode } from "@chakra-ui/react";
-import Cookie from 'js-cookie'
+import Cookie from "js-cookie";
 
-export function SidebarDemo({ id }: {id:string | any}) {
-  const id_user = Cookie.get(`user_${id}`)
+export function SidebarDemo({ id }: { id: string | any }) {
+  const [id_us, setIdUs] = useState("");
+  const id_user = Cookie.get(`user_${id}`);
+  useEffect(() => {
+    setIdUs(id_user as never);
+  }, [id_user]);
   const links = [
     {
       label: "Dashboard",
@@ -96,7 +100,7 @@ export function SidebarDemo({ id }: {id:string | any}) {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Dashboard id={id_us} />
     </div>
   );
 }
@@ -140,77 +144,46 @@ export const LogoIcon = () => {
 };
 
 // Dummy dashboard component with content
-const Dashboard = () => {
+const Dashboard = ({ id }: { id: string | any }) => {
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="carousel w-full">
-          <div id="slide1" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide4" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide2" className="btn btn-circle">
-                ❯
-              </a>
+        <div className="w-full h-screen skeleton flex flex-col gap-8 p-24">
+          <div className="flex gap-6">
+            <div className="rounded-full w-28 h-w-28 overflow-hidden">
+              <Image
+                src={"/assets/logo/favicon.png"}
+                alt={"profil-image"}
+                width={112}
+                height={112}
+              />
             </div>
-          </div>
-          <div id="slide2" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1609621838510-5ad474b7d25d.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide1" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide3" className="btn btn-circle">
-                ❯
-              </a>
-            </div>
-          </div>
-          <div id="slide3" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1414694762283-acccc27bca85.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide2" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide4" className="btn btn-circle">
-                ❯
-              </a>
-            </div>
-          </div>
-          <div id="slide4" className="carousel-item relative w-full">
-            <Image
-              alt="image"
-              width={24}
-              height={24}
-              src="https://img.daisyui.com/images/stock/photo-1665553365602-b2fb8e5d1707.webp"
-              className="w-full"
-            />
-            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-              <a href="#slide3" className="btn btn-circle">
-                ❮
-              </a>
-              <a href="#slide1" className="btn btn-circle">
-                ❯
-              </a>
+            <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-4">
+                <Link
+                  href={`/dashboard/${id}/profile`}
+                  className="btn btn-success px-12 text-white"
+                >
+                  Edit Profil
+                </Link>
+                <Link
+                  href={`/dashboard/${id}/sertifikasi`}
+                  className="btn btn-success px-12 text-white"
+                >
+                  Achievment
+                </Link>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="flex gap-2 items-center">
+                  <p className="font-medium">0</p>
+                  <p>Followers</p>
+                </div>
+                <div className="flex gap-2 items-center">
+                  <p className="font-medium">0</p>
+                  <p>Following</p>
+                </div>
+              </div>
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat ipsa facere quis doloremque. Earum modi obcaecati optio molestias sequi animi!</p>
             </div>
           </div>
         </div>

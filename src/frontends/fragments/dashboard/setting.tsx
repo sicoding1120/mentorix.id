@@ -1,6 +1,5 @@
 import React from "react";
 import { useState } from "react";
-import {Autocomplete, AutocompleteItem} from "@nextui-org/react";
 import {
   Sidebar,
   SidebarBody,
@@ -20,6 +19,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
 import { DarkMode } from "@chakra-ui/react";
+import { CheckboxIcon, Textarea } from "@nextui-org/react";
 import Navbar from "@/frontends/components/navbar";
 import Footer from "@/frontends/components/footer";
 import axios from "axios";
@@ -191,120 +191,159 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        {/* <SettingView /> */}
+        <SettingView />
       </div>
     </div>
   );
 };
 
-// const SettingView = () => {
-//   const [theme, setTheme] = useState('Hangat');
-//   const [fontType, setFontType] = useState('Serif');
-//   const [fontSize, setFontSize] = useState('Besar');
-//   const [value, setValue] = React.useState("");
-//   const [touched, setTouched] = React.useState(false);
-//   const animals = 
+const SettingView = () => {
+  const [theme, setTheme] = useState("Hangat");
+  const [fontType, setFontType] = useState("Serif");
+  const [fontSize, setFontSize] = useState("Besar");
 
-//   // const isValid = value === "cat";
+  const isSelected = (current: any, selected: any) => current === selected;
 
-//   // const isSelected = (current : any, selected : any) => current === selected;
+  return (
+    <div className="p-24 rounded-xl shadow-md mx-auto w-full skeleton overflow-scroll scrollbar-hide">
+      <h2 className="text-3xl font-bold mb-6">Pengaturan</h2>
 
-//   return (
-//     // <div className="p-24 rounded-xl shadow-md mx-auto w-full skeleton overflow-scroll scrollbar-hide">
-//     //   <h2 className="text-3xl font-bold mb-6">Pengaturan</h2>
+      <div className="flex flex-col gap-8">
+        {/* Tema */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Tema</h3>
+          <div className="flex justify-between items-center">
+            {["Terang", "Hangat", "Gelap"].map((value, idx) => (
+              <div className="relative" key={idx}>
+                <button
+                  className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                    isSelected(value, theme)
+                      ? "border-green-500 bg-green-50"
+                      : "border-gray-300 bg-white"
+                  }`}
+                  onClick={() => setTheme(value)}
+                >
+                  {isSelected(value, theme) && (
+                    <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
+                  )}
+                  <div className="text-center">
+                    <div
+                      className={`h-14 w-full mb-2 flex justify-center items-center rounded-md ${
+                        value === "Terang"
+                          ? "bg-white"
+                          : value === "Hangat"
+                          ? "bg-yellow-100"
+                          : "bg-gray-800 text-white"
+                      } border`}
+                    >
+                      <span className="block overflow-hidden whitespace-nowrap text-ellipsis px-4">
+                        Belajar di Mentorix
+                      </span>
+                    </div>
+                    <span className="text-sm font-medium">{value}</span>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
 
-//     //   {/* Bahasa */}
-//     //   <Autocomplete
-//     //   label="Favorite Animal"
-//     //   variant="bordered"
-//     //   placeholder="Search an animal"
-//     //   description="The second most popular pet in the world"
-//     //   errorMessage={isValid || !touched ? "" : "You must select a cat"}
-//     //   isInvalid={isValid || !touched ? false : true}
-//     //   defaultItems={animals}
-//     //   selectedKey={value}
-//     //   className="max-w-xs"
-//     //   onSelectionChange={setValue}
-//     //   onClose={() => setTouched(true)}
-//     // >
-//     //   {(item) => <AutocompleteItem key={item.value}>{item.label}</AutocompleteItem>}
-//     // </Autocomplete>
+        {/* Jenis Font */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Jenis Font</h3>
+          <div className="flex justify-between items-center">
+            {["Default", "Serif", "Poppins"].map((value, idx) => (
+              <div className="relative" key={idx}>
+                <button
+                  className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                    isSelected(value, fontType)
+                      ? "border-green-500 bg-green-50"
+                      : "border-gray-300 bg-white"
+                  }`}
+                  onClick={() => setFontType(value)}
+                >
+                  {isSelected(value, fontType) && (
+                    <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
+                  )}
+                  <div className="text-center">
+                    <div
+                      className={`h-14 w-full mb-2 flex justify-center items-center ${
+                        value === "Default"
+                          ? "font-sans"
+                          : value === "Serif"
+                          ? "font-serif"
+                          : "font-dyslexic"
+                      } border`}
+                    >
+                      <span className="block overflow-hidden whitespace-nowrap text-ellipsis">
+                        {value}
+                      </span>
+                    </div>
+                    <span className="text-sm font-medium">{value}</span>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
 
-//     //   {/* Tema */}
-//     //   <div className="mb-8">
-//     //     <h3 className="text-lg font-semibold mb-4">Tema</h3>
-//     //     <div className="flex justify-between items-center">
-//     //       {['Terang', 'Hangat', 'Gelap'].map((value, idx) => (
-//     //         <div className="relative" key={idx}>
-//     //           <button 
-//     //             className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${isSelected(value, theme) ? 'border-green-500 bg-green-50' : 'border-gray-300 bg-white'}`} 
-//     //             onClick={() => setTheme(value)}
-//     //           >
-//     //             {isSelected(value, theme) && (
-//     //               <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
-//     //             )}
-//     //             <div className="text-center">
-//     //               <div className={`h-14 w-full mb-2 flex justify-center items-center rounded-md ${value === 'Terang' ? 'bg-white' : value === 'Hangat' ? 'bg-yellow-100' : 'bg-gray-800 text-white'} border`}>
-//     //                 <span className="block overflow-hidden whitespace-nowrap text-ellipsis px-4">Belajar dengan Dicoding</span>
-//     //               </div>
-//     //               <span className="text-sm font-medium">{value}</span>
-//     //             </div>
-//     //           </button>
-//     //         </div>
-//     //       ))}
-//     //     </div>
-//     //   </div>
+        {/* Ukuran Font */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Ukuran Font</h3>
+          <div className="flex justify-between items-center">
+            {["Besar", "Sedang", "Kecil"].map((value, idx) => (
+              <div className="relative" key={idx}>
+                <button
+                  className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                    isSelected(value, fontSize)
+                      ? "border-green-500 bg-green-50"
+                      : "border-gray-300 bg-white"
+                  }`}
+                  onClick={() => setFontSize(value)}
+                >
+                  {isSelected(value, fontSize) && (
+                    <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
+                  )}
+                  <div className="text-center">
+                    <div
+                      className={`h-14 w-full mb-2 flex justify-center items-center ${
+                        value === "Besar"
+                          ? "text-xl"
+                          : value === "Sedang"
+                          ? "text-lg"
+                          : "text-sm"
+                      } border`}
+                    >
+                      <span>Aa</span>
+                    </div>
+                    <span className="text-sm font-medium">{value}</span>
+                  </div>
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
 
-//     //   {/* Jenis Font */}
-//     //   <div className="mb-8">
-//     //     <h3 className="text-lg font-semibold mb-4">Jenis Font</h3>
-//     //     <div className="flex justify-between items-center">
-//     //       {['Default', 'Serif', 'Poppins'].map((value, idx) => (
-//     //         <div className="relative" key={idx}>
-//     //           <button 
-//     //             className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${isSelected(value, fontType) ? 'border-green-500 bg-green-50' : 'border-gray-300 bg-white'}`} 
-//     //             onClick={() => setFontType(value)}
-//     //           >
-//     //             {isSelected(value, fontType) && (
-//     //               <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
-//     //             )}
-//     //             <div className="text-center">
-//     //               <div className={`h-14 w-full mb-2 flex justify-center items-center ${value === 'Default' ? 'font-sans' : value === 'Serif' ? 'font-serif' : 'font-dyslexic'} border`}>
-//     //                 <span className="block overflow-hidden whitespace-nowrap text-ellipsis">{value}</span>
-//     //               </div>
-//     //               <span className="text-sm font-medium">{value}</span>
-//     //             </div>
-//     //           </button>
-//     //         </div>
-//     //       ))}
-//     //     </div>
-//     //   </div>
+        {/* Bahasa */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Bahasa</h3>
+          <select className="select select-bordered w-full max-w-xs">
+            <option disabled selected>
+              Pilih Bahasa
+            </option>
+            <option>Indonesia</option>
+            <option>English</option>
+            <option>Sunda</option>
+            <option>Jawa</option>
+          </select>
+        </div>
 
-//     //   {/* Ukuran Font */}
-//     //   <div>
-//     //     <h3 className="text-lg font-semibold mb-4">Ukuran Font</h3>
-//     //     <div className="flex justify-between items-center">
-//     //       {['Besar', 'Sedang', 'Kecil'].map((value, idx) => (
-//     //         <div className="relative" key={idx}>
-//     //           <button 
-//     //             className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${isSelected(value, fontSize) ? 'border-green-500 bg-green-50' : 'border-gray-300 bg-white'}`} 
-//     //             onClick={() => setFontSize(value)}
-//     //           >
-//     //             {isSelected(value, fontSize) && (
-//     //               <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
-//     //             )}
-//     //             <div className="text-center">
-//     //               <div className={`h-14 w-full mb-2 flex justify-center items-center ${value === 'Besar' ? 'text-xl' : value === 'Sedang' ? 'text-lg' : 'text-sm'} border`}>
-//     //                 <span>Aa</span>
-//     //               </div>
-//     //               <span className="text-sm font-medium">{value}</span>
-//     //             </div>
-//     //           </button>
-//     //         </div>
-//     //       ))}
-//     //     </div>
-//     //   </div>
-//     // </div>
-//     <></>
-//   );
-// };
+        <div className="flex justify-end">
+          <button className="btn btn-success text-white">
+            Simpan Perubahan
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

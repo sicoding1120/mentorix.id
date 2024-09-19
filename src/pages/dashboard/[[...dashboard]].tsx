@@ -8,9 +8,8 @@ import React from 'react'
 const Dynamic = () => {
   const { query } = useRouter();
   let content;
-  console.log(query);
 
-  switch (query.dashboard?.at(0)) {
+  switch (query.dashboard?.at(1)) {
     case 'profile':
       content = <Profile />
       break;

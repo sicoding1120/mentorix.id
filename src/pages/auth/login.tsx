@@ -47,20 +47,18 @@ const Login = () => {
       (data: any) => data.email == email
     );
     const verifyAccount = await verifyPassword(password, passwordhash.password);
+
     if (emailUser !== email || verifyAccount === false) {
       toast.error("ada kesalahan ketika menulis email atau password");
-    } else {
-      const filter = user.data.datas.filter(
-        (items: any) => items.email == email
+    }
+    const filter = user.data.datas.filter((items: any) => items.email == email);
+    if (filter) {
+      toast.success("berhasil login");
+      router.push(
+        `/auth/verification?user_id=${idUSer.id}&isLogin=true&isVerify=false`
       );
-      if (filter) {
-        toast.success("berhasil login");
-        router.push(
-          `/auth/verification?user_id=${idUSer}&isLogin=true&isVerify=false`
-        );
-      } else {
-        toast.error("ada kesalahan saat memasukan password dan email");
-      }
+    } else {
+      toast.error("ada kesalahan saat memasukan password dan email");
     }
   };
 

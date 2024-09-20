@@ -205,18 +205,18 @@ const SettingView = () => {
   const isSelected = (current: any, selected: any) => current === selected;
 
   return (
-    <div className="p-24 rounded-xl shadow-md mx-auto w-full skeleton overflow-scroll scrollbar-hide">
+    <div className="md:p-24 p-8 rounded-xl shadow-md mx-auto w-full skeleton overflow-scroll scrollbar-hide">
       <h2 className="text-3xl font-bold mb-6">Pengaturan</h2>
 
       <div className="flex flex-col gap-8">
         {/* Tema */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Tema</h3>
-          <div className="flex justify-between items-center">
-            {["Terang", "Hangat", "Gelap"].map((value, idx) => (
+          <div className="flex md:flex-row flex-col gap-2 md:justify-between items-center">
+            {["Default", "Hangat", "Gelap", "Terang"].map((value, idx) => (
               <div className="relative" key={idx}>
                 <button
-                  className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                  className={`relative py-4 px-2 rounded-lg border md:w-64 w-48 md:h-40 h-32 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
                     isSelected(value, theme)
                       ? "border-green-500 bg-green-50"
                       : "border-gray-300 bg-white"
@@ -251,11 +251,11 @@ const SettingView = () => {
         {/* Jenis Font */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Jenis Font</h3>
-          <div className="flex justify-between items-center">
-            {["Default", "Serif", "Poppins"].map((value, idx) => (
+          <div className="flex md:flex-row flex-col gap-2 md:justify-between items-center">
+            {["Default", "Serif", "Poppins", "Dyslexic"].map((value, idx) => (
               <div className="relative" key={idx}>
                 <button
-                  className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                  className={`relative py-4 px-2 rounded-lg border md:w-64 w-48 md:h-40 h-32 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
                     isSelected(value, fontType)
                       ? "border-green-500 bg-green-50"
                       : "border-gray-300 bg-white"
@@ -290,11 +290,11 @@ const SettingView = () => {
         {/* Ukuran Font */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Ukuran Font</h3>
-          <div className="flex justify-between items-center">
-            {["Besar", "Sedang", "Kecil"].map((value, idx) => (
+          <div className="flex md:flex-row flex-col md:justify-between items-center gap-4">
+            {["Default", "Besar", "Sedang", "Kecil"].map((value, idx) => (
               <div className="relative" key={idx}>
                 <button
-                  className={`relative py-4 px-2 rounded-lg border w-64 h-40 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                  className={`relative py-4 px-2 rounded-lg border md:w-64 w-48 md:h-40 h-32 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
                     isSelected(value, fontSize)
                       ? "border-green-500 bg-green-50"
                       : "border-gray-300 bg-white"
@@ -339,7 +339,7 @@ const SettingView = () => {
         </div>
 
         <div className="flex justify-end">
-          <button className="btn btn-success text-white">
+          <button className="btn btn-success text-white md:w-56 w-full">
             Simpan Perubahan
           </button>
         </div>

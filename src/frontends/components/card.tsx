@@ -4,7 +4,6 @@ import { useRouter } from 'next/router';
 import React from 'react'
 import { MdSignalCellular1Bar } from 'react-icons/md';
 
-
 const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
   const { icons } = useIcons();
   const router = useRouter();

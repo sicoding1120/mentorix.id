@@ -28,7 +28,7 @@ const Profile = () => {
   return (
     <div>
       <SidebarProfile></SidebarProfile>
-      <Footer />
+      {/* <Footer /> */}
     </div>
   );
 };
@@ -188,9 +188,9 @@ const Dashboard = () => {
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="flex flex-col gap-4 skeleton rounded-md w-full h-full p-24 overflow-scroll scrollbar-hide">
-          <h2 className="text-3xl font-bold">Detail Profil</h2>
-          <div className="flex gap-6">
+        <div className="flex flex-col gap-4 skeleton rounded-md w-full h-full md:p-24 p-8 overflow-scroll scrollbar-hide">
+          <h2 className="text-3xl font-bold text-center">Detail Profil</h2>
+          <div className="flex gap-6 md:flex-row flex-col justify-center items-center md:justify-start">
             <div className="rounded-full w-28 h-w-28 overflow-hidden">
               <Image
                 src={"/assets/logo/favicon.png"}
@@ -206,16 +206,16 @@ const Dashboard = () => {
               <Link href={"/dashboard/avatar"}>Gunakan Karakter Avatar</Link>
             </div>
           </div>
-          <p className="text-slate-500 font-medium">
+          <p className="text-slate-500 font-medium md:text-start text-center md:text-base text-xs">
             Foto profil kamu disarankan memiliki rasio 1 : 1 atau berukuran
             tidak lebih dari 2MB
           </p>
           <form
             action="#"
-            className="flex flex-col gap-2 py-4 justify-between"
+            className="flex flex-col gap-4 py-4 justify-between"
             onSubmit={handleSubmit}
           >
-            <div className="flex gap-4">
+            <div className="flex md:flex-row flex-col gap-4">
               <div className="flex flex-col gap-2 w-full">
                 <label htmlFor="namaDepan">Nama Depan *</label>
                 <input
@@ -252,14 +252,14 @@ const Dashboard = () => {
 
             <div className="flex justify-between gap-2">
               <div className="flex items-center gap-2">
-                <div className="w-5 h-5 bg-error flex justify-center items-center text-white rounded-full">
+                <div className="md:w-5 w-4 md:h-5 h-4 bg-error flex justify-center items-center text-white rounded-full">
                   <IconX width={14} height={14} />
                 </div>
-                <p className="text-slate-500">Email belum terverifikasi</p>
+                <p className="text-slate-500 md:text-base text-sm">Email belum terverifikasi</p>
               </div>
               <Link
                 href={"/dashboard/verify"}
-                className="text-primary font-medium"
+                className="text-primary font-medium md:text-base text-sm"
               >
                 Verifikasi Email
               </Link>
@@ -278,25 +278,25 @@ const Dashboard = () => {
 
             <div className="flex items-center gap-4">
               <select className="select select-primary w-full max-w-xs">
-                <option disabled selected>
+                <option className="md:text-base text-xs" disabled selected>
                   Jenis Kelamin
                 </option>
-                <option>Laki - Laki</option>
-                <option>Perempuan</option>
-                <option>Tidak Beritahu</option>
+                <option className="md:text-base text-xs">Laki - Laki</option>
+                <option className="md:text-base text-xs">Perempuan</option>
+                <option className="md:text-base text-xs">Tidak Beritahu</option>
               </select>
               <select className="select select-primary w-full max-w-xs">
                 <option disabled selected>
                   Jenjang
                 </option>
-                <option>SMP</option>
-                <option>SMA / SMK</option>
-                <option>Mahasiswa</option>
+                <option className="md:text-base text-xs">SMP</option>
+                <option className="md:text-base text-xs">SMA / SMK</option>
+                <option className="md:text-base text-xs">Mahasiswa</option>
               </select>
             </div>
 
-            <div className="flex justify-end">
-              <button className="btn btn-success text-white" type="submit">
+            <div className="flex md:justify-end">
+              <button className="btn btn-success text-white md:w-56 w-full" type="submit">
                 Simpan Perubahan
               </button>
             </div>

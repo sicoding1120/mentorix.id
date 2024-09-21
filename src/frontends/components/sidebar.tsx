@@ -10,6 +10,7 @@ import {
   IconArrowLeft,
   IconBrandTabler,
   IconPaperclip,
+  IconSearch,
   IconSettings,
   IconUserBolt,
 } from "@tabler/icons-react";
@@ -21,6 +22,7 @@ import { DarkMode } from "@chakra-ui/react";
 import Cookie from "js-cookie";
 import { Accordion, AccordionItem } from "@nextui-org/react";
 import CardDemo from "./card";
+import { FaSearch } from "react-icons/fa";
 
 export function SidebarDemo() {
   const [id_us, setIdUs] = useState("");
@@ -48,6 +50,13 @@ export function SidebarDemo() {
       href: `/dashboard/${id_user}/profile`,
       icon: (
         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Search",
+      href: `/dashboard/${id_user}/Search`,
+      icon: (
+        <IconSearch className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {

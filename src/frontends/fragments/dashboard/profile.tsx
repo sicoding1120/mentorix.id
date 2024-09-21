@@ -10,6 +10,7 @@ import {
   IconArrowLeft,
   IconBrandTabler,
   IconPaperclip,
+  IconSearch,
   IconSettings,
   IconUserBolt,
   IconX,
@@ -37,42 +38,55 @@ const Profile = ({ id }: { id: string | any }) => {
 export default Profile;
 
 const SidebarProfile = ({ id }: { id: string | any }) => {
-  const links = [
-    {
-      label: "Dashboard",
-      href: "/dashboard",
-      icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Kelas",
-      href: "/courses",
-      icon: (
-        <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Profil",
-      href: "/dashboard/profile",
-      icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Pengaturan",
-      href: "/dashboard/setting",
-      icon: (
-        <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
-    },
-    {
-      label: "Keluar",
-      href: "/logout",
-      icon: (
-        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
-    },
+    const [id_us, setIdUs] = useState("");
+    const id_user = Cookies.get(`user_id`);
+    useEffect(() => {
+      setIdUs(id_user as never);
+    }, [id_user]);
+
+ const links = [
+   {
+     label: "Dashboard",
+     href: `/dashboard/${id_user}`,
+     icon: (
+       <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+     ),
+   },
+   {
+     label: "Kelas",
+     href: `/dashboard/${id_user}/class`,
+     icon: (
+       <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+     ),
+   },
+   {
+     label: "Profil",
+     href: `/dashboard/${id_user}/profile`,
+     icon: (
+       <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+     ),
+   },
+   {
+     label: "Search",
+     href: `/dashboard/${id_user}/Search`,
+     icon: (
+       <IconSearch className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+     ),
+   },
+   {
+     label: "Pengaturan",
+     href: `/dashboard/${id_user}/setting`,
+     icon: (
+       <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+     ),
+   },
+   {
+     label: "Keluar",
+     href: "/auth/logout",
+     icon: (
+       <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+     ),
+   },
   ];
   const [open, setOpen] = useState(false);
   return (

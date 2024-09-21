@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   Sidebar,
@@ -11,6 +11,7 @@ import {
   IconBrandTabler,
   IconCheck,
   IconPaperclip,
+  IconSearch,
   IconSettings,
   IconUserBolt,
 } from "@tabler/icons-react";
@@ -23,6 +24,7 @@ import { CheckboxIcon, Textarea } from "@nextui-org/react";
 import Navbar from "@/frontends/components/navbar";
 import Footer from "@/frontends/components/footer";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Setting = () => {
   return (
@@ -36,42 +38,57 @@ const Setting = () => {
 export default Setting;
 
 const SidebarProfile = () => {
+  const [id_us, setIdUs] = useState("");
+  const id_user = Cookies.get(`user_id`); 
+
+  useEffect(() => {
+    setIdUs(id_user as never);
+  }, [id_user]);
+
   const links = [
     {
       label: "Dashboard",
-      href: "/dashboard",
+      href: `/dashboard/${id_user}`,
       icon: (
         <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {
       label: "Kelas",
-      href: "/courses",
+      href: `/dashboard/${id_user}/class`,
       icon: (
         <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {
       label: "Profil",
-      href: "/dashboard/profile",
+      href: `/dashboard/${id_user}/profile`,
       icon: (
         <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {
+      label: "Search",
+      href: `/dashboard/${id_user}/Search`,
+      icon: (
+        <IconSearch className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
+    },
+    {
       label: "Pengaturan",
-      href: "/dashboard/setting",
+      href: `/dashboard/${id_user}/setting`,
       icon: (
         <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
     {
       label: "Keluar",
-      href: "/logout",
+      href: "/auth/logout",
       icon: (
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
+
   ];
   const [open, setOpen] = useState(false);
   return (
@@ -155,39 +172,6 @@ const LogoIcon = () => {
 
 // Dummy dashboard component with content
 const Dashboard = () => {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [file, setFile] = useState("");
-  const [alamatEmail, setAlamatEmail] = useState("");
-  const [bio, setBio] = useState("");
-
-  const handleChange = (e: any) => {
-    const { name, value, files } = e.target;
-    if (name === "file") {
-      setFile(files[0]);
-    } else if (name === "firstName") {
-      setFirstName(value);
-    } else if (name === "lastName") {
-      setLastName(value);
-    } else if (name === "alamatEmail") {
-      setAlamatEmail(value);
-    } else if (name === "bio") {
-      setBio(value);
-    }
-  };
-
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(
-        "https://mentorixid.vercel.app/api/auth/profile",
-        { firstName, lastName, alamatEmail, bio }
-      );
-      console.log("ok");
-    } catch (err) {
-      if (err) throw err;
-    }
-  };
   return (
     <div className="flex flex-1 min-h-screen">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
@@ -327,7 +311,7 @@ const SettingView = () => {
         {/* Bahasa */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Bahasa</h3>
-          <select className="select select-bordered w-full max-w-xs">
+          <select title="ok" className="select select-bordered w-full max-w-xs">
             <option disabled selected>
               Pilih Bahasa
             </option>
@@ -347,3 +331,4 @@ const SettingView = () => {
     </div>
   );
 };
+

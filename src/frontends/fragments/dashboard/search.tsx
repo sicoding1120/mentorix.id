@@ -195,26 +195,43 @@ const SettingView = () => {
 
   const handleFollow = async (id: string) => {
     const idUserFollowing = Cookies.get("user_id");
-    const resS = await axios.post(
-      "https://mentorixid.vercel.app/api/follower",
-      {
-        idUser: id, // ID user yang di-follow
-        followerId: idUserFollowing, // ID user yang mengikuti (dari cookies)
-      }
-    );
 
-    const res = await axios.post(
-      "https://mentorixid.vercel.app/api/following",
-      {
+    if (!idUserFollowing || !id) {
+      console.error("User ID or Follower ID is missing");
+      return;
+    }
+
+    try {
+      // Follow User
+      await axios.post("https://mentorixid.vercel.app/api/follower", {
+        idUser: id, // ID user yang di-follow
+        followerId: idUserFollowing, // ID user yang mengikuti
+      });
+
+      await axios.post("https://mentorixid.vercel.app/api/following", {
         idUser: idUserFollowing, // ID user yang mengikuti
         followingId: id, // ID user yang di-follow
-      }
-    );
-    setIsFollowed(!isFollowed);
+      });
+
+      setIsFollowed(true); // Update state jika berhasil
+    } catch (error) {
+      console.error(
+        "Error following user:",
+        error
+      );
+    }
   };
 
   const handleUnFollow = async (id: string) => {
     const idUserFollowing = Cookies.get("user_id");
+
+    if (!idUserFollowing || !id) {
+      console.error("User ID or Follower ID is missing");
+      return;
+    }
+
+    try {
+      // Unfollow User
       await axios.put("https://mentorixid.vercel.app/api/follower", {
         idUser: id, // ID user yang di-unfollow
         followerId: idUserFollowing, // ID user yang berhenti mengikuti
@@ -225,8 +242,15 @@ const SettingView = () => {
         followingId: id, // ID user yang di-unfollow
       });
 
-      setIsFollowed(!isFollowed);
+      setIsFollowed(false); // Update state jika berhasil
+    } catch (error) {
+      console.error(
+        "Error unfollowing user:",
+        error
+      );
+    }
   };
+
   const handleSearch = () => {
     console.log("cari seseorang di mentorix id .");
   };

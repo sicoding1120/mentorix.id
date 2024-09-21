@@ -13,7 +13,7 @@ export default async function Followers(
         res.status(200).json("hallo world");
       case "POST":
         await user._FollowingUsers(req, res);
-      case "PUT":
+      case "DELETE":
         await user._unFollowingUser(req, res);
     }
     res.status(405).json({ massage: "bad request" });

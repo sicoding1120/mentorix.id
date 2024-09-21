@@ -232,15 +232,15 @@ const SettingView = () => {
 
     try {
       // Unfollow User
-      await axios.put("https://mentorixid.vercel.app/api/follower", {
+      await axios.delete("https://mentorixid.vercel.app/api/follower", {
         idUser: id, // ID user yang di-unfollow
         followerId: idUserFollowing, // ID user yang berhenti mengikuti
-      });
+      } as never);
 
-      await axios.put("https://mentorixid.vercel.app/api/following", {
+      await axios.delete("https://mentorixid.vercel.app/api/following", {
         idUser: idUserFollowing, // ID user yang berhenti mengikuti
         followingId: id, // ID user yang di-unfollow
-      });
+      } as never);
 
       setIsFollowed(false); // Update state jika berhasil
     } catch (error) {

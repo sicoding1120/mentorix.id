@@ -166,23 +166,12 @@ const Dashboard = ({ id }: { id: string | any }) => {
     setId(id);
   }, [id]);
 
-  const handleChange = (e: any) => {
-    const { name, value, files } = e.target;
-    if (name === "file") {
-      setFile(files[0]);
-    } else if (name === "firstName") {
-      setFirstName(value);
-    } else if (name === "lastName") {
-      setLastName(value);
-    } else if (name === "bio") {
-      setBio(value);
-    }
-  };
-
+ 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
       console.log(idUser);
+      console.log(firstName, lastName, bio);
       const response = await axios.post(
         "https://mentorixid.vercel.app/api/profile",
         { idUser,firstName, lastName, bio }
@@ -231,7 +220,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
                   id="namaDepan"
                   name="firstName"
                   value={firstName}
-                  onChange={handleChange}
+                  onChange={(e) => setFirstName(e.target.value)}
                   className="input input-bordered flex items-center"
                 />
               </div>
@@ -242,7 +231,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
                   id="namaBelakang"
                   name="lastName"
                   value={lastName}
-                  onChange={handleChange}
+                  onChange={(e) => setLastName(e.target.value)}
                   className="input input-bordered flex items-center"
                 />
               </div>
@@ -253,7 +242,6 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 type="email"
                 id="email"
                 name="alamatEmail"
-                onChange={handleChange}
                 className="input input-bordered flex items-center"
               />
             </div>
@@ -281,7 +269,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 id="bio"
                 name="bio"
                 value={bio}
-                onChange={handleChange}
+                onChange={(e) => setBio(e.target.value)}
                 className="input input-bordered flex items-center h-32 py-4"
               />
             </div>

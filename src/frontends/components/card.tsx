@@ -10,7 +10,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
   const priceNow = price - (price * discountPrice) / 100;
   return (
     <div className="w-[320px] h-[450px] bg-white shadow-md rounded-md overflow-hidden">
-      <div className="w-full h-1/2 bg-red-500 p-4">
+      <div className="w-full h-1/2 bg-blue-50 skeleton rounded-md p-4">
         <div></div>
       </div>
       <div className="p-4 flex flex-col justify-between w-full h-1/2 ">
@@ -39,7 +39,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
           <p className="text-lg font-semibold ">{parseInt(priceNow.toString())}</p>
         </div>
         <button
-          className="btn w-full capitalize"
+          className="btn btn-success text-white w-full capitalize"
           onClick={() => router.push(`/courses/class/${title}`)}
         >
           detail kelas

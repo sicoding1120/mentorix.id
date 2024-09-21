@@ -70,7 +70,7 @@ export function SidebarDemo({ id }: { id: string | any }) {
     <div
       className={cn(
         "flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-        "h-screen" // for your use case, use `h-screen` instead of `h-[60vh]`
+        "h-screen"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
@@ -152,7 +152,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="w-full h-screen skeleton flex flex-col gap-8 md:p-24 p-8 overflow-scroll scrollbar-hide">
+        <div className="w-full h-screen bg-blue-100 rounded-md flex flex-col gap-8 md:p-24 p-8 overflow-scroll scrollbar-hide">
           <div className="flex md:flex-row flex-col items-center gap-8 md:gap-12">
             <div className="rounded-full w-28 h-w-28">
               <Image
@@ -195,7 +195,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
               </p>
             </div>
           </div>
-          <div className="bg-slate-400 rounded-md flex flex-col gap-2 py-2">
+          <div className="bg-blue-200 rounded-md flex flex-col gap-2 py-2">
             <Accordion defaultExpandedKeys={["2"]}>
               <AccordionItem
                 key="1"
@@ -218,7 +218,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
           </div>
 
           <div>
-            <div className="bg-slate-400 rounded-md flex flex-col gap-4 py-4 px-4">
+            <div className="bg-blue-200 rounded-md flex flex-col gap-4 py-4 px-4">
               <h2 className="text-xl font-semibold">Kelas Saya</h2>
               <div className="flex md:flex-row flex-col md:gap-4 gap-4 items-center w-full">
                 <CardDemo
@@ -247,8 +247,8 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 />
               </div>
               <div className="flex items-center justify-end gap-2">
-              <button className="rounded-full w-12 h-12 bg-primary flex justify-center items-center text-white font-bold text-xl"> {"<"} </button>
-              <button className="rounded-full w-12 h-12 bg-primary flex justify-center items-center text-white font-bold text-xl"> {">"} </button>
+              <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {"<"} </button>
+              <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {">"} </button>
               </div>
             </div>
           </div>

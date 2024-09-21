@@ -181,7 +181,7 @@ const Dashboard = () => {
 };
 
 const SettingView = () => {
-    const [isFollowed, setIsFollowed] = React.useState(false);
+  const [isFollowed, setIsFollowed] = React.useState(false);
 
   const [datas, setDatas] = useState<any>();
   useEffect(() => {
@@ -195,40 +195,37 @@ const SettingView = () => {
 
   const handleFollow = async (id: string) => {
     const idUserFollowing = Cookies.get("user_id");
-    try {
-        await axios.post("https://mentorixid.vercel.app/api/follower", {
-            idUser: id, // ID user yang di-follow
-            followerId: idUserFollowing, // ID user yang mengikuti (dari cookies)
-        });
-        
-        await axios.post("https://mentorixid.vercel.app/api/following", {
-            idUser: idUserFollowing, // ID user yang mengikuti
-            followingId: id, // ID user yang di-follow
-        });
-        setIsFollowed(!isFollowed);
+    const resS = await axios.post(
+      "https://mentorixid.vercel.app/api/follower",
+      {
+        idUser: id, // ID user yang di-follow
+        followerId: idUserFollowing, // ID user yang mengikuti (dari cookies)
+      }
+    );
 
-    } catch (err) {
-        if(err) throw err
-    }
+    const res = await axios.post(
+      "https://mentorixid.vercel.app/api/following",
+      {
+        idUser: idUserFollowing, // ID user yang mengikuti
+        followingId: id, // ID user yang di-follow
+      }
+    );
+    setIsFollowed(!isFollowed);
   };
 
   const handleUnFollow = async (id: string) => {
     const idUserFollowing = Cookies.get("user_id");
-    try {
-        await axios.put("https://mentorixid.vercel.app/api/follower", {
-            idUser: id, // ID user yang di-unfollow
-            followerId: idUserFollowing, // ID user yang berhenti mengikuti
-        });
-        
-        await axios.put("https://mentorixid.vercel.app/api/following", {
-            idUser: idUserFollowing, // ID user yang berhenti mengikuti
-            followingId: id, // ID user yang di-unfollow
-        });
-        
-        setIsFollowed(!isFollowed);
-    } catch (err) {
-        if(err) throw err
-    }
+      await axios.put("https://mentorixid.vercel.app/api/follower", {
+        idUser: id, // ID user yang di-unfollow
+        followerId: idUserFollowing, // ID user yang berhenti mengikuti
+      });
+
+      await axios.put("https://mentorixid.vercel.app/api/following", {
+        idUser: idUserFollowing, // ID user yang berhenti mengikuti
+        followingId: id, // ID user yang di-unfollow
+      });
+
+      setIsFollowed(!isFollowed);
   };
   const handleSearch = () => {
     console.log("cari seseorang di mentorix id .");

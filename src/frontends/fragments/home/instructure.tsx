@@ -6,9 +6,9 @@ import dataRandom from "@/data/dataRandom.json";
 
 const Instructor = () => {
   return (
-    <section className="bg-bg2 bg-cover bg-center bg-no-repeat md:h-screen h-screen py-14 px-24">
+    <section className="bg-bg2 bg-cover bg-center bg-no-repeat md:h-screen h-screen py-14 md:px-24 px-6">
       <Flex className="w-full h-full">
-        <Box className="w-full h-full flex flex-col-reverse md:flex-row md:px-14 px-4 gap-8">
+        <Box className="w-full h-full flex flex-col-reverse md:flex-row md:px-14 px-4 md:gap-8">
           <Flex
             className="md:w-1/2 w-full h-full flex flex-col justify-center items-center"
             flexDirection={"column"}

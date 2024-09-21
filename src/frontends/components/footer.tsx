@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-base-200 text-base-content p-10">
+      <footer className="footer bg-blue-100 text-base-content p-10">
         <aside>
           <Image src={"/assets/logo/MENTORIX2.png"} alt={"Mentorix"} width={100} height={100} />
           <p>

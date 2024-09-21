@@ -9,7 +9,7 @@ export default function PaginationElement({ onchange,page }: { page:number,oncha
               initialPage={1}
               page={page}
         size={"lg"}
-        color="default"
+        color="primary"
         onChange={onchange}
       />
     </div>

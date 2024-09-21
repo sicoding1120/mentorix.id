@@ -12,12 +12,12 @@ const About = () => {
         <Box>
           <Flex flexDirection={"column"} gap={12}>
             <Text className="md:text-5xl text-4xl text-center dark:text-color-c4">
-              About MENTORIX
+              MENTORIX
             </Text>
             <Box>
               {dataRandom.id.Text.data.type.textAbout.map((items, index) => (
                 <Text
-                  className="md:text-xl text-sm text-center text-slate-500 px-32"
+                  className="md:text-xl text-sm md:text-center text-justify text-slate-500 md:px-32 px-6"
                   key={index}
                 >
                   {items.text}

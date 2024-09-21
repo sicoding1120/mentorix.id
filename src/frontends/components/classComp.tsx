@@ -34,7 +34,7 @@ const Class = () => {
   const [category, setCategory] = React.useState("All categories");
   return (
     <main className="w-full h-full">
-      <section className="w-full h-1/3 bg-white flex flex-col gap-6 justify-between items-center">
+      <section className="w-full h-1/3 skeleton bg-blue-100 flex flex-col gap-6 justify-between items-center">
         <div className="w-full h-[60vh] py-8 flex flex-col gap-8 justify-center items-center">
           <h2 className="text-6xl font-semibold ">Jelajahi Koridor Kelas!</h2>
           <p className="w-2/5 text-center text-slate-400 text-lg">
@@ -54,7 +54,7 @@ const Class = () => {
         </div>
       </section>
       <section
-        className="w-full h-full bg-color-coursesTopic flex justify-between gap-8 px-24 py-8"
+        className="w-full h-full bg-white flex justify-between gap-8 px-24 py-8"
         id="koridor"
       >
         <SideBarClass />
@@ -74,157 +74,157 @@ const Class = () => {
               // ))
               <>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
               </>
             ) : (
               <>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton h-32 w-full"></div>
-                  <div className="skeleton h-4 w-28"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-full"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
-                  <div className="skeleton h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
                 </div>
               </>
             )}
@@ -248,7 +248,7 @@ const Class = () => {
 
 export const SideBarClass = () => {
   return (
-    <div className="sticky top-4 w-1/5 h-full py-4 my-24 px-4 bg-white border-2 rounded-md ">
+    <div className="sticky top-4 w-1/5 h-full py-4 my-24 px-4 bg-blue-100 border-2 rounded-md ">
       <h2 className="text-2xl font-medium px-2">Filter Kelas</h2>
       <Accordion>
         <AccordionItem title="Topik">

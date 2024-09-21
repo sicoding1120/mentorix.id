@@ -19,6 +19,8 @@ import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
 import { DarkMode } from "@chakra-ui/react";
 import Cookie from "js-cookie";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import CardDemo from "./card";
 
 export function SidebarDemo({ id }: { id: string | any }) {
   const [id_us, setIdUs] = useState("");
@@ -68,7 +70,7 @@ export function SidebarDemo({ id }: { id: string | any }) {
     <div
       className={cn(
         "flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-        "h-screen" // for your use case, use `h-screen` instead of `h-[60vh]`
+        "h-screen"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
@@ -145,12 +147,14 @@ export const LogoIcon = () => {
 
 // Dummy dashboard component with content
 const Dashboard = ({ id }: { id: string | any }) => {
+  const defaultContent =
+    "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="w-full h-screen skeleton flex flex-col gap-8 p-24">
-          <div className="flex gap-6">
-            <div className="rounded-full w-28 h-w-28 overflow-hidden">
+        <div className="w-full h-screen bg-blue-100 rounded-md flex flex-col gap-8 md:p-24 p-8 overflow-scroll scrollbar-hide">
+          <div className="flex md:flex-row flex-col items-center gap-8 md:gap-12">
+            <div className="rounded-full w-28 h-w-28">
               <Image
                 src={"/assets/logo/favicon.png"}
                 alt={"profil-image"}
@@ -158,17 +162,18 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 height={112}
               />
             </div>
-            <div className="flex flex-col gap-2">
-              <div className="flex items-center gap-4">
+            <div className="flex flex-col gap-4">
+              <div className="flex md:flex-row flex-col items-center gap-4">
+                <h2 className="text-3xl font-bold">ahfary_</h2>
                 <Link
                   href={`/dashboard/${id}/profile`}
-                  className="btn btn-success px-12 text-white"
+                  className="btn btn-success px-12 text-white md:w-40 w-full"
                 >
                   Edit Profil
                 </Link>
                 <Link
                   href={`/dashboard/${id}/sertifikasi`}
-                  className="btn btn-success px-12 text-white"
+                  className="btn btn-success px-12 text-white md:w-40 w-full"
                 >
                   Achievment
                 </Link>
@@ -183,7 +188,68 @@ const Dashboard = ({ id }: { id: string | any }) => {
                   <p>Following</p>
                 </div>
               </div>
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat ipsa facere quis doloremque. Earum modi obcaecati optio molestias sequi animi!</p>
+              <p className="md:w-2/3">
+                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                Repellat ipsa facere quis doloremque. Earum modi obcaecati optio
+                molestias sequi animi!
+              </p>
+            </div>
+          </div>
+          <div className="bg-blue-200 rounded-md flex flex-col gap-2 py-2">
+            <Accordion defaultExpandedKeys={["2"]}>
+              <AccordionItem
+                key="1"
+                aria-label="Accordion 1"
+                title="Lengkapi Profil"
+                className="px-2"
+              >
+                {defaultContent}
+              </AccordionItem>
+              <AccordionItem
+                key="2"
+                aria-label="Accordion 2"
+                title="Lanjutkan Bootcamp"
+                className="px-2"
+              >
+                {defaultContent}
+              </AccordionItem>
+            </Accordion>
+            <Link href={"/courses"} className="flex justify-center items-center text-primary font-medium md:text-base text-sm">Lihat Semua</Link>
+          </div>
+
+          <div>
+            <div className="bg-blue-200 rounded-md flex flex-col gap-4 py-4 px-4">
+              <h2 className="text-xl font-semibold">Kelas Saya</h2>
+              <div className="flex md:flex-row flex-col md:gap-4 gap-4 items-center w-full">
+                <CardDemo
+                  title="Frontend Developer"
+                  level="Beginner"
+                  lesson="10 Lesson"
+                  time={120}
+                  price={20000}
+                  discountPrice={10}
+                />
+                <CardDemo
+                  title="Backend Developer"
+                  level="Beginner"
+                  lesson="10 Lesson"
+                  time={120}
+                  price={20000}
+                  discountPrice={10}
+                />
+                <CardDemo
+                  title="Fullstack Developer"
+                  level="Beginner"
+                  lesson="10 Lesson"
+                  time={120}
+                  price={20000}
+                  discountPrice={10}
+                />
+              </div>
+              <div className="flex items-center justify-end gap-2">
+              <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {"<"} </button>
+              <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {">"} </button>
+              </div>
             </div>
           </div>
         </div>

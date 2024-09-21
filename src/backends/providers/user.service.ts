@@ -89,32 +89,7 @@ export class userService {
         },
       });
 
-      const userFollower = await prisma.user.create({
-        where: {
-            followerId
-        },
-        data: {
-          followers: {
-            connect: {
-              id: followerId
-            }
-          }
-        }
-      } as never)
-
-      const userFollowing = await prisma.user.create({
-        where: {
-            idUser
-        },
-        data: {
-          following: {
-            connect: {
-              id: idUser
-            }
-          }
-        }
-      } as never)
-
+      
       res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
       console.error("Error following user:", error);

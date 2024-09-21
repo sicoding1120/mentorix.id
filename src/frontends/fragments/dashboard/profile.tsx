@@ -23,6 +23,7 @@ import { Textarea } from "@nextui-org/react";
 import Navbar from "@/frontends/components/navbar";
 import Footer from "@/frontends/components/footer";
 import axios from "axios";
+import Cookies from "js-cookie";
 
 const Profile = () => {
   return (
@@ -176,7 +177,7 @@ const Dashboard = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const id_user = localStorage.getItem("user_id")
+      const id_user = Cookies.get("id_user");
       const response = await axios.put(
         "https://mentorixid.vercel.app/api/profile",
         { id_user,firstName, lastName, bio }

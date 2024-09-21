@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import OTPInput, { InputProps } from "react-otp-input";
-import Cookie from "js-cookie";
+import Cookies from "js-cookie";
 import { useRouter } from "next/router";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,7 +17,7 @@ const Verification = () => {
       return Math.floor(Math.random() * (9999 - 1000 + 1) + 1000);
     };
 
-    const cookie = Cookie.get(`${user_id}`);
+    const cookie = Cookies.get(`${user_id}`);
 
     if (cookie !== undefined) {
       token = cookie;
@@ -31,8 +31,8 @@ const Verification = () => {
     if (otp === tokenotp) {
       toast.success("verifikasi  berhasil");
       router.push(`/dashboard/${user_id}`);
-      localStorage.setItem('user_id', user_id as string);
-      Cookie.set(`${user_id}`, tokenotp, { expires: 7 });
+      Cookies.set(`${user_id}`, tokenotp, { expires: 7 });
+      Cookies.set('user_id', user_id as string, { expires: 7 });
     } else {
       toast.warning("token salah harap coba lagi", {
         position: "top-left",

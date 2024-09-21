@@ -8,7 +8,7 @@ import Dashboard from '../../frontends/templates/dashboard';
 
 const Dynamic = () => {
   const { query } = useRouter();
-  let content;console.log(query );
+  let content; console.log(query);
   switch (query.dashboard?.at(1)) {
     case 'profile':
       content = <Profile />
@@ -17,7 +17,7 @@ const Dynamic = () => {
       content = <Setting />
       break;
     default:
-      content = <SidebarDemo id={query.dashboard?.at(0)} />
+      content = <SidebarDemo  />
   }
   return content
 }

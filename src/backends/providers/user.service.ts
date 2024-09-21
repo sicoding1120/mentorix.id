@@ -63,7 +63,6 @@ export class userService {
   async _FollowerUsers(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
     const followerId = req.body.followerId; // Tambahkan id follower di body
-    try {
       const user = await prisma.user.update({
         where: { id: idUser },
         data: {
@@ -73,18 +72,12 @@ export class userService {
         },
       });
       res.status(201).json(RestApi._createDataSuccess(user as never));
-    } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error, 500));
-      }
-    }
   }
 
   async _FollowingUsers(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
     const followingId = req.body.followingId; // Tambahkan id following di body
 
-    try {
       const user = await prisma.user.update({
         where: { id: idUser },
         data: {
@@ -94,11 +87,6 @@ export class userService {
         },
       });
       res.status(201).json(RestApi._createDataSuccess(user as never));
-    } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error, 500));
-      }
-    }
   }
 
   async _unFollowerUser(req: NextApiRequest, res: NextApiResponse) {

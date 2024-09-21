@@ -192,7 +192,6 @@ const SettingView = () => {
   }, []);
 
   const handleFollow = async (e?: any, id?: string) => {
-    e.preventDefault();
     // setIsFollowed(!isFollowed);
     const idUserFollowing = Cookies.get("user_id");
     try {
@@ -213,7 +212,6 @@ const SettingView = () => {
     }
   };
   const handleUnFollow = async (e?: any, id?: string) => {
-    e.preventDefault();
     // setIsFollowed(!isFollowed);
     const idUserFollowing = Cookies.get("user_id");
 

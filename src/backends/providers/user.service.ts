@@ -19,6 +19,7 @@ export class userService {
         FotoProfile: true,
         mentoredClasses: true,
         progressClass: true,
+        achivement: true
       },
     });
     res.status(200).json(RestApi._getSuccess(users as never));
@@ -88,6 +89,32 @@ export class userService {
         },
       });
 
+      const userFollower = await prisma.user.create({
+        where: {
+            followerId
+        },
+        data: {
+          followers: {
+            connect: {
+              id: followerId
+            }
+          }
+        }
+      } as never)
+
+      const userFollowing = await prisma.user.create({
+        where: {
+            idUser
+        },
+        data: {
+          following: {
+            connect: {
+              id: idUser
+            }
+          }
+        }
+      } as never)
+
       res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
       console.error("Error following user:", error);
@@ -146,6 +173,32 @@ export class userService {
           followingId,
         },
       });
+
+      const userFollower = await prisma.user.create({
+        where: {
+            idUser
+        },
+        data: {
+          followers: {
+            connect: {
+              id: idUser
+            }
+          }
+        }
+      } as never)
+
+      const userFollowing = await prisma.user.create({
+        where: {
+            followingId
+        },
+        data: {
+          following: {
+            connect: {
+              id: followingId
+            }
+          }
+        }
+      } as never)
 
       res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {

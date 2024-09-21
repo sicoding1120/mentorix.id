@@ -63,30 +63,30 @@ export class userService {
   async _FollowerUsers(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
     const followerId = req.body.followerId; // Tambahkan id follower di body
-      const user = await prisma.user.update({
-        where: { id: idUser },
-        data: {
-          followers: {
-            connect: { followerId: followerId }, // Connect follower
-          }as never,
-        },
-      });
-      res.status(201).json(RestApi._createDataSuccess(user as never));
+    const user = await prisma.user.update({
+      where: { id: idUser },
+      data: {
+        followers: {
+          connect: { followerId: followerId }, // Connect follower
+        } as never,
+      },
+    });
+    res.status(201).json(RestApi._createDataSuccess(user as never));
   }
 
   async _FollowingUsers(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
     const followingId = req.body.followingId; // Tambahkan id following di body
 
-      const user = await prisma.user.update({
-        where: { id: idUser },
-        data: {
-          following: {
-            connect: { followingId: followingId }, // Connect following
-          }as never,
-        },
-      });
-      res.status(201).json(RestApi._createDataSuccess(user as never));
+    const user = await prisma.user.update({
+      where: { id: idUser },
+      data: {
+        following: {
+          connect: { followingId: followingId }, // Connect following
+        } as never,
+      },
+    });
+    res.status(201).json(RestApi._createDataSuccess(user as never));
   }
 
   async _unFollowerUser(req: NextApiRequest, res: NextApiResponse) {
@@ -102,11 +102,11 @@ export class userService {
           } as never,
         },
       });
-      res.status(201).json(RestApi._createDataSuccess(user as never));
+      console.log("Unfollow successful:", user);
+      res.status(200).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error, 500));
-      }
+      console.error("Error in unfollowing user:", error);
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 
@@ -123,11 +123,10 @@ export class userService {
           } as never,
         },
       });
-      res.status(201).json(RestApi._createDataSuccess(user as never));
+      res.status(200).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error, 500));
-      }
+      console.error("Error in unfollowing user:", error);
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 }

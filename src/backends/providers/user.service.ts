@@ -14,8 +14,16 @@ export class userService {
       include: {
         comment: true,
         enrolledClasses: true,
-        followers: true,
-        following: true,
+        followers: {
+          include: {
+            follower: true,
+          }
+        },
+        following: {
+          include: {
+            following: true,
+          }
+        },
         FotoProfile: true,
         mentoredClasses: true,
         progressClass: true,

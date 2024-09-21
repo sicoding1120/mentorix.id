@@ -6,7 +6,10 @@ const user = new userService();
 
 export default async function Auth(req: NextApiRequest, res: NextApiResponse) {
   try {
-    switch (req.method) {
+      switch (req.method) {
+          case "GET": 
+              
+              res.status(200).json("hallo world");
         case "PUT":
             await user._updateProfileUsers(req, res, error)
     }

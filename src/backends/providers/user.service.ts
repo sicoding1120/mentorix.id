@@ -30,11 +30,11 @@ export class userService {
     }
   }
 
-  async _updateUsers(req:NextApiRequest, res:NextApiResponse, error:any, id?:number) {
-    const { firstName, lastName, bio } = req.body
+  async _updateProfileUsers(req:NextApiRequest, res:NextApiResponse, error:any, id?:number) {
+    const { id_user,firstName, lastName, bio } = req.body
     const usersCreate = await prisma.user.update({
       where: {
-        id: req.body.id
+        id: id_user
       },
       data: {
         firstName: firstName,
@@ -43,6 +43,7 @@ export class userService {
         bio: bio
       }
     })
+    console.log(usersCreate);
     res.status(200).json(RestApi._updateDataSuccess(usersCreate as never))
     if(req.statusCode === 500) {
       res.status(500).json(RestApi._updateDataFailureISR(error as never))

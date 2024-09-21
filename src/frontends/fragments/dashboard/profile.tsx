@@ -176,11 +176,12 @@ const Dashboard = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
+      const id_user = localStorage.getItem("user_id")
       const response = await axios.put(
-        "https://mentorixid.vercel.app/api/auth/profile",
-        { firstName, lastName, bio }
+        "https://mentorixid.vercel.app/api/profile",
+        { id_user,firstName, lastName, bio }
       );
-      console.log("ok");
+      
     } catch (err) {
       if (err) throw err;
     }

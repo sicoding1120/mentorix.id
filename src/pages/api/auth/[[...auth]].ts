@@ -29,7 +29,7 @@ export default async function Auth(req: NextApiRequest, res: NextApiResponse) {
     }
     if(query.auth?.at(0) === "profile") {
       if(req.method === "PUT") {
-       await user._updateUsers(req, res, error)
+       await user._updateProfileUsers(req, res, error)
       }
     }
     res.status(405).json({ massage: "bad request" });

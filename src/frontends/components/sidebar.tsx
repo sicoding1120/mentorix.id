@@ -24,7 +24,7 @@ import CardDemo from "./card";
 
 export function SidebarDemo({ id }: { id: string | any }) {
   const [id_us, setIdUs] = useState("");
-  const id_user = Cookie.get(`user_${id}`);
+  const id_user = localStorage.getItem(`user_id`);
   useEffect(() => {
     setIdUs(id_user as never);
   }, [id_user]);

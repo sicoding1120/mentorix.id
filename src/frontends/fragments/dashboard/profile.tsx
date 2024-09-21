@@ -176,12 +176,14 @@ const Dashboard = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-      const id_user = Cookies.get("id_user");
-      const response = await axios.put(
-        "https://mentorixid.vercel.app/api/profile",
-        { id_user,firstName, lastName, bio }
-      );
-      console.log("ok");
+    const id_user = Cookies.get("id_user");
+    console.log(id_user);
+    const response = await axios.put(
+      "https://mentorixid.vercel.app/api/profile",
+      { id_user, firstName, lastName, bio }
+    );
+    console.log(response);
+    console.log("ok");
   };
   return (
     <div className="flex flex-1">
@@ -283,7 +285,10 @@ const Dashboard = () => {
               >
                 <option disabled selected></option>
               </select>
-              <select title="Jenjang" className="select select-primary w-full max-w-xs">
+              <select
+                title="Jenjang"
+                className="select select-primary w-full max-w-xs"
+              >
                 <option className="md:text-base text-xs" disabled selected>
                   Jenis Kelamin
                 </option>

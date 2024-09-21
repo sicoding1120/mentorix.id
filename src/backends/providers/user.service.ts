@@ -98,5 +98,45 @@ export class userService {
       }
     }
   }
-  
+
+  async _unFollowerUser(req: NextApiRequest, res: NextApiResponse) {
+    const { idUser } = req.body;
+    try {
+      const followers = await prisma.user.update({
+        where: {
+          id: idUser,
+        },
+        data: {
+          followers: {
+            disconnect: true,
+          },
+        } as never,
+      });
+      res.status(201).json(RestApi._createDataSuccess(followers as never));
+    } catch (error) {
+      if (error) {
+        res.status(500).json(RestApi._createDataFailure(error as never, 500));
+      }
+    }
+  }
+  async _unFollowingUser(req: NextApiRequest, res: NextApiResponse) {
+    const { idUser } = req.body;
+    try {
+      const followers = await prisma.user.update({
+        where: {
+          id: idUser,
+        },
+        data: {
+          following: {
+            disconnect: true,
+          },
+        } as never,
+      });
+      res.status(201).json(RestApi._createDataSuccess(followers as never));
+    } catch (error) {
+      if (error) {
+        res.status(500).json(RestApi._createDataFailure(error as never, 500));
+      }
+    }
+  }
 }

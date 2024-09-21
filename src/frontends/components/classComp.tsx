@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import CardDemo from "./card";
-import useSWR from "swr";
-import { Tabs, Tab } from "@nextui-org/react";
 import { useIcons } from "@/hook/useIcons";
 import { useData } from "@/hook/useData";
 import PaginationElement from "./pagination";
@@ -13,15 +11,12 @@ const Class = () => {
   const { icons } = useIcons();
   const { menu } = useData();
   const [data, setData] = useState<any>();
-  // const { data, error, isLoading } = useSWR(
-  //   "/api/class",
-  //   fetcher
-  // );
+  
 
   const router = useRouter();
   useEffect(() => {
     const ClassesData = async () => {
-      const res = await fetch("/api/class");
+      const res = await fetch("https://mentorixid.vercel.app/api/class");
       const data = await res.json();
       setData(data as Promise<any>);
     };
@@ -61,89 +56,17 @@ const Class = () => {
         <div className="flex w-4/5 h-full flex-col gap-16 pl-8 justify-center py-24">
           <div className="w-full h-full grid grid-cols-3 ">
             {data ? (
-              // data?.data?.datas.map((items: any, index: number) => (
-              //   <CardDemo
-              //     key={index}
-              //     title={items.title}
-              //     level={items.difficultyLevel}
-              //     lesson={items.lesson}
-              //     time={items.time}
-              //     price={items.price}
-              //     discountPrice={items.discountPrice}
-              //   />
-              // ))
-              <>
-                <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                </div>
-                <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                </div>
-                <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                </div>
-                <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                </div>
-                <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                </div>
-                <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                </div>
-                <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                </div>
-              </>
+              data?.data?.datas.map((items: any, index: number) => (
+                <CardDemo
+                  key={index}
+                  title={items.title}
+                  level={items.difficultyLevel}
+                  lesson={items.lesson}
+                  time={items.time}
+                  price={items.price}
+                  discountPrice={items.discountPrice}
+                />
+              ))
             ) : (
               <>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">

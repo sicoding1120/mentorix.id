@@ -6,10 +6,8 @@ import {
   SidebarLink,
 } from "@/frontends/components/ui/sidebar";
 import {
-  Icon24Hours,
   IconArrowLeft,
   IconBrandTabler,
-  IconCheck,
   IconPaperclip,
   IconSearch,
   IconSettings,
@@ -19,9 +17,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
-import { DarkMode } from "@chakra-ui/react";
-import { CheckboxIcon, Textarea } from "@nextui-org/react";
-import Navbar from "@/frontends/components/navbar";
+// import { DarkMode } from "@chakra-ui/react";
+// import { CheckboxIcon, Textarea } from "@nextui-org/react";
+// import Navbar from "@/frontends/components/navbar";
 import Footer from "@/frontends/components/footer";
 import axios from "axios";
 import Cookies from "js-cookie";
@@ -195,15 +193,21 @@ const SettingView = () => {
 
   const handleFollow = async (e?: any, id?: string) => {
     e.preventDefault();
-      // setIsFollowed(!isFollowed);
-     const idUserFollowing  = Cookies.get('user_id')
+    // setIsFollowed(!isFollowed);
+    const idUserFollowing = Cookies.get("user_id");
     try {
-      const responseFollower = await axios.post("https://mentorixid.vercel.app/api/follower", {
-        idUser: id,
-      });
-      const responseFollowing = await axios.post("https://mentorixid.vercel.app/api/following", {
-        idUser: idUserFollowing,
-      });
+      const responseFollower = await axios.post(
+        "https://mentorixid.vercel.app/api/follower",
+        {
+          idUser: id,
+        }
+      );
+      const responseFollowing = await axios.post(
+        "https://mentorixid.vercel.app/api/following",
+        {
+          idUser: idUserFollowing,
+        }
+      );
     } catch (err) {
       if (err) throw err;
     }
@@ -211,10 +215,21 @@ const SettingView = () => {
   const handleUnFollow = async (e?: any, id?: string) => {
     e.preventDefault();
     // setIsFollowed(!isFollowed);
+    const idUserFollowing = Cookies.get("user_id");
+
     try {
-      const response = await axios.post("/api/follow", {
-        followerId: id,
-      });
+      const responseFollower = await axios.put(
+        "https://mentorixid.vercel.app/api/follow",
+        {
+          followerId: id,
+        }
+      );
+      const responseFollowing = await axios.put(
+        "https://mentorixid.vercel.app/api/follow",
+        {
+          followingId: idUserFollowing,
+        }
+      );
     } catch (err) {
       if (err) throw err;
     }

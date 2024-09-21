@@ -176,15 +176,21 @@ const Dashboard = () => {
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
-    const id_user = Cookies.get("id_user");
-    console.log(id_user);
-    const response = await axios.put(
-      "https://mentorixid.vercel.app/api/profile",
-      { id_user, firstName, lastName, bio }
-    );
-    console.log(response);
-    console.log("ok");
+    try {
+      const id_user = Cookies.get("id_user");
+      console.log(id_user);
+
+      const response = await axios.post(
+        "https://mentorixid.vercel.app/api/profile",
+        { firstName, lastName, bio }
+      );
+      console.log(response);
+      console.log("ok");
+    } catch (err) {
+      if (err) throw err;
+    }
   };
+
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">

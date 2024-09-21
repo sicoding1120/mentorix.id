@@ -177,14 +177,14 @@ const Dashboard = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const id_user = Cookies.get("id_user");
+      const id_user = await Cookies.get("id_user");
       console.log(id_user);
 
-      const response = await axios.post(
-        "https://mentorixid.vercel.app/api/profile",
-        { firstName, lastName, bio }
-      );
-      console.log(response);
+      // const response = await axios.post(
+      //   "https://mentorixid.vercel.app/api/profile",
+      //   { firstName, lastName, bio }
+      // );
+      // console.log(response);
       console.log("ok");
     } catch (err) {
       if (err) throw err;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 import {
   Sidebar,
@@ -25,10 +25,10 @@ import Footer from "@/frontends/components/footer";
 import axios from "axios";
 import Cookies from "js-cookie";
 
-const Profile = () => {
+const Profile = ({ id }: { id: string | any }) => {
   return (
     <div>
-      <SidebarProfile></SidebarProfile>
+      <SidebarProfile id={id as string}></SidebarProfile>
       {/* <Footer /> */}
     </div>
   );
@@ -36,7 +36,7 @@ const Profile = () => {
 
 export default Profile;
 
-const SidebarProfile = () => {
+const SidebarProfile = ({ id }: { id: string | any }) => {
   const links = [
     {
       label: "Dashboard",
@@ -111,7 +111,7 @@ const SidebarProfile = () => {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Dashboard id={id as string} />
     </div>
   );
 };
@@ -155,11 +155,16 @@ const LogoIcon = () => {
 };
 
 // Dummy dashboard component with content
-const Dashboard = () => {
+const Dashboard = ({ id }: { id: string | any }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [file, setFile] = useState("");
   const [bio, setBio] = useState("");
+  const [idUser, setId] = useState("");
+
+  useEffect(() => {
+    setId(id);
+  }, [id]);
 
   const handleChange = (e: any) => {
     const { name, value, files } = e.target;
@@ -177,14 +182,11 @@ const Dashboard = () => {
   const handleSubmit = async (e: any) => {
     e.preventDefault();
     try {
-      const id_user = await Cookies.get("id_user");
-      console.log(id_user);
-
-      // const response = await axios.post(
-      //   "https://mentorixid.vercel.app/api/profile",
-      //   { firstName, lastName, bio }
-      // );
-      // console.log(response);
+      console.log(idUser);
+      const response = await axios.post(
+        "https://mentorixid.vercel.app/api/profile",
+        { idUser,firstName, lastName, bio }
+      );
       console.log("ok");
     } catch (err) {
       if (err) throw err;

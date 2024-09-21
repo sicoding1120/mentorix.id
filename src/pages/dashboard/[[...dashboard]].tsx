@@ -11,7 +11,7 @@ const Dynamic = () => {
   let content; console.log(query);
   switch (query.dashboard?.at(1)) {
     case 'profile':
-      content = <Profile />
+      content = <Profile id={query.dashboard?.at(0)}/>
       break;
     case 'setting':
       content = <Setting />

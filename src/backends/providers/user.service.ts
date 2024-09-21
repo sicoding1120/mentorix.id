@@ -31,10 +31,10 @@ export class userService {
   }
 
   async _updateProfileUsers(req:NextApiRequest, res:NextApiResponse, error:any, id?:number) {
-    const { id_user,firstName, lastName, bio } = req.body
+    const { idUser,firstName, lastName, bio } = req.body
     const usersCreate = await prisma.user.update({
       where: {
-        id: id_user
+        id: idUser
       },
       data: {
         firstName: firstName,

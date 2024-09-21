@@ -59,93 +59,122 @@ export class userService {
       }
     }
   }
-
   async _FollowerUsers(req: NextApiRequest, res: NextApiResponse) {
-    const { idUser, followerId } = req.body; // Ambil followerId dari body
+    const { idUser, followerId } = req.body;
 
     if (!idUser || !followerId) {
       return res.status(400).json({ message: "Missing idUser or followerId" });
     }
 
     try {
-      const user = await prisma.user.update({
-        where: { id: idUser },
-        data: {
-          followers: {
-            connect: { followerId: followerId }, // Pastikan menggunakan ID yang valid
-          }as never,
+      // Cek jika relasi sudah ada
+      const existingRelation = await prisma.userFollower.findUnique({
+        where: {
+          followerId_followingId: {
+            followerId,
+            followingId: idUser,
+          },
         },
       });
+
+      if (existingRelation) {
+        return res.status(400).json({ message: "Already following this user" });
+      }
+
+      const user = await prisma.userFollower.create({
+        data: {
+          followerId,
+          followingId: idUser,
+        },
+      });
+
       res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
       console.error("Error following user:", error);
-    }
-  }
-
-  async _FollowingUsers(req: NextApiRequest, res: NextApiResponse) {
-    const { idUser, followingId } = req.body; // Ambil followingId dari body
-
-    if (!idUser || !followingId) {
-      return res.status(400).json({ message: "Missing idUser or followingId" });
-    }
-
-    try {
-      const user = await prisma.user.update({
-        where: { id: idUser },
-        data: {
-          following: {
-            connect: { followingId: followingId }, // Pastikan menggunakan ID yang valid
-          }as never,
-        },
-      });
-      res.status(201).json(RestApi._createDataSuccess(user as never));
-    } catch (error) {
-      console.error("Error following user:", error);
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 
   async _unFollowerUser(req: NextApiRequest, res: NextApiResponse) {
-    const { idUser, followerId } = req.body; // Ambil followerId dari body
+    const { idUser, followerId } = req.body;
 
     if (!idUser || !followerId) {
       return res.status(400).json({ message: "Missing idUser or followerId" });
     }
 
     try {
-      const user = await prisma.user.update({
-        where: { id: idUser },
-        data: {
-          followers: {
-            disconnect: { followerId: followerId }, // Pastikan menggunakan ID yang valid
-          }as never,
+      const user = await prisma.userFollower.delete({
+        where: {
+          followerId_followingId: {
+            followerId,
+            followingId: idUser,
+          },
         },
       });
-      console.log("Unfollow successful:", user);
+
       res.status(200).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      console.error("Error in unfollowing user:", error);
+      console.error("Error unfollowing user:", error);
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
-
-  async _unFollowingUser(req: NextApiRequest, res: NextApiResponse) {
-    const { idUser, followingId } = req.body; // Ambil followingId dari body
+  async _FollowingUsers(req: NextApiRequest, res: NextApiResponse) {
+    const { idUser, followingId } = req.body;
 
     if (!idUser || !followingId) {
       return res.status(400).json({ message: "Missing idUser or followingId" });
     }
 
     try {
-      const user = await prisma.user.update({
-        where: { id: idUser },
-        data: {
-          following: {
-            disconnect: { followingId: followingId }, // Pastikan menggunakan ID yang valid
-          } as never,
+      // Cek jika relasi sudah ada
+      const existingRelation = await prisma.userFollower.findUnique({
+        where: {
+          followerId_followingId: {
+            followerId: idUser,
+            followingId,
+          },
         },
       });
+
+      if (existingRelation) {
+        return res.status(400).json({ message: "Already following this user" });
+      }
+
+      const user = await prisma.userFollower.create({
+        data: {
+          followerId: idUser,
+          followingId,
+        },
+      });
+
+      res.status(201).json(RestApi._createDataSuccess(user as never));
+    } catch (error) {
+      console.error("Error following user:", error);
+      res.status(500).json(RestApi._createDataFailure(error, 500));
+    }
+  }
+
+  async _unFollowingUser(req: NextApiRequest, res: NextApiResponse) {
+    const { idUser, followingId } = req.body;
+
+    if (!idUser || !followingId) {
+      return res.status(400).json({ message: "Missing idUser or followingId" });
+    }
+
+    try {
+      const user = await prisma.userFollower.delete({
+        where: {
+          followerId_followingId: {
+            followerId: idUser,
+            followingId,
+          },
+        },
+      });
+
       res.status(200).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      console.error("Error in unfollowing user:", error);
+      console.error("Error unfollowing user:", error);
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 }

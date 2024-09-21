@@ -27,11 +27,7 @@ export default async function Auth(req: NextApiRequest, res: NextApiResponse) {
       }
       res.status(405).json("bad request");
     }
-    if(query.auth?.at(0) === "profile") {
-      if(req.method === "PUT") {
-       await user._updateProfileUsers(req, res, error)
-      }
-    }
+    
     res.status(405).json({ massage: "bad request" });
   } catch (err) {
     if (err) throw err;

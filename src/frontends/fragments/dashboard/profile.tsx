@@ -167,20 +167,18 @@ const Dashboard = ({ id }: { id: string | any }) => {
   }, [id]);
 
  
-  const handleSubmit = async (e: any) => {
-    e.preventDefault();
-    try {
-      console.log(idUser);
-      console.log(firstName, lastName, bio);
-      const response = await axios.post(
-        "https://mentorixid.vercel.app/api/profile",
-        { idUser,firstName, lastName, bio }
-      );
-      console.log("ok");
-    } catch (err) {
-      if (err) throw err;
-    }
-  };
+ const handleSubmit = async (e: any) => {
+   e.preventDefault();
+   try {
+     const response = await axios.put(
+       "https://mentorixid.vercel.app/api/profile", // URL endpoint yang mendukung PUT
+       { idUser, firstName, lastName, bio } // Data yang dikirim ke server
+     );
+     console.log("Response:", response.data); // Melihat hasil respon dari server
+   } catch (err) {
+     if(err) throw err
+   }
+ };
 
   return (
     <div className="flex flex-1">

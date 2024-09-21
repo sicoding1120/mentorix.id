@@ -10,7 +10,7 @@ export default async function Auth(req: NextApiRequest, res: NextApiResponse) {
       case "GET":
         res.status(200).json("hallo world");
       case "PUT":
-        await user._updateProfileUsers(req, res, error);
+        await user._updateProfileUsers(req, res);
     }
     res.status(405).json({ massage: "bad request" });
   } catch (err) {

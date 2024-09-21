@@ -30,26 +30,30 @@ export class userService {
     }
   }
 
-  async _updateProfileUsers(req:NextApiRequest, res:NextApiResponse, error:any, id?:number) {
-    const { idUser,firstName, lastName, bio } = req.body
-    const usersCreate = await prisma.user.update({
-      where: {
-        id: idUser
-      },
-      data: {
-        firstName: firstName,
-        lastName: lastName,
-        fullName: `${firstName} ${lastName}`,
-        bio: bio
+  async _updateProfileUsers(req: NextApiRequest, res: NextApiResponse) {
+    const { idUser, firstName, lastName, bio } = req.body;
+
+    try {
+      // Proses update user di database
+      const usersUpdate = await prisma.user.update({
+        where: {
+          id: idUser,
+        },
+        data: {
+          firstName: firstName,
+          lastName: lastName,
+          fullName: `${firstName} ${lastName}`,
+          bio: bio,
+        },
+      });
+
+      // Jika berhasil, kirimkan response sukses
+      res.status(200).json(RestApi._updateDataSuccess(usersUpdate as never));
+    } catch (error) {
+     if(error) {
+        // Tangani error internal lainnya
+        res.status(500).json(RestApi._updateDataFailureISR(error as never));
       }
-    })
-    console.log(usersCreate);
-    res.status(200).json(RestApi._updateDataSuccess(usersCreate as never))
-    if(req.statusCode === 500) {
-      res.status(500).json(RestApi._updateDataFailureISR(error as never))
-    }
-    if (req.statusCode === 404) {
-      res.status(404).json(RestApi._updateDataFailureNotFound(error as never))
     }
   }
 }

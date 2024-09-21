@@ -79,7 +79,6 @@ export class userService {
       res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
       console.error("Error following user:", error);
-      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 
@@ -102,7 +101,6 @@ export class userService {
       res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
       console.error("Error following user:", error);
-      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 
@@ -126,7 +124,6 @@ export class userService {
       res.status(200).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
       console.error("Error in unfollowing user:", error);
-      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 
@@ -149,7 +146,6 @@ export class userService {
       res.status(200).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
       console.error("Error in unfollowing user:", error);
-      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 }

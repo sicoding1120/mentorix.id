@@ -62,81 +62,77 @@ export class userService {
 
   async _FollowerUsers(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
+    const followerId = req.body.followerId; // Tambahkan id follower di body
+
     try {
-      const followers = await prisma.user.create({
+      const user = await prisma.user.update({
+        where: { id: idUser },
         data: {
           followers: {
-            connect: {
-              followerId: idUser,
-            } as never,
-          },
-        } as never,
+            connect: { followerId: followerId }, // Connect follower
+          }as never,
+        },
       });
-      res.status(201).json(RestApi._createDataSuccess(followers as never));
+      res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error as never, 500));
-      }
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
+
   async _FollowingUsers(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
+    const followingId = req.body.followingId; // Tambahkan id following di body
+
     try {
-      const followers = await prisma.user.create({
+      const user = await prisma.user.update({
+        where: { id: idUser },
         data: {
           following: {
-            connect: {
-              followingId: idUser,
-            } as never,
-          },
-        } as never,
+            connect: { followingId: followingId }, // Connect following
+          }as never,
+        },
       });
-      res.status(201).json(RestApi._createDataSuccess(followers as never));
+      res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error as never, 500));
-      }
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 
   async _unFollowerUser(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
+    const followerId = req.body.followerId; // Tambahkan id follower di body
+
     try {
-      const followers = await prisma.user.update({
-        where: {
-          id: idUser,
-        },
+      const user = await prisma.user.update({
+        where: { id: idUser },
         data: {
           followers: {
-            disconnect: true,
-          },
-        } as never,
+            disconnect: { followerId: followerId }, // Disconnect follower
+          } as never,
+        },
       });
-      res.status(201).json(RestApi._createDataSuccess(followers as never));
+      res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error as never, 500));
-      }
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
+
   async _unFollowingUser(req: NextApiRequest, res: NextApiResponse) {
     const { idUser } = req.body;
+    const followingId = req.body.followingId; // Tambahkan id following di body
+
     try {
-      const followers = await prisma.user.update({
-        where: {
-          id: idUser,
-        },
+      const user = await prisma.user.update({
+        where: { id: idUser },
         data: {
           following: {
-            disconnect: true,
-          },
-        } as never,
+            disconnect: { followingId: followingId }, // Disconnect following
+          } as never,
+        },
       });
-      res.status(201).json(RestApi._createDataSuccess(followers as never));
+      res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {
-      if (error) {
-        res.status(500).json(RestApi._createDataFailure(error as never, 500));
-      }
+      res.status(500).json(RestApi._createDataFailure(error, 500));
     }
   }
 }

@@ -65,7 +65,7 @@ export default function CardUser({
           radius="full"
           size="sm"
           variant={isFollowed ? "bordered" : "solid"}
-          onPress={isFollowed ? handleFollow : handleUnFollow}
+          onPress={isFollowed ? handleUnFollow : handleFollow}
         >
           {isFollowed ? "Unfollow" : "Follow"}
         </Button>

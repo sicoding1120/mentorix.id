@@ -208,7 +208,7 @@ const SettingView = () => {
         setIsFollowed(!isFollowed);
 
     } catch (err) {
-      console.error(err);
+        if(err) throw err
     }
   };
 
@@ -227,7 +227,7 @@ const SettingView = () => {
         
         setIsFollowed(!isFollowed);
     } catch (err) {
-      console.error(err);
+        if(err) throw err
     }
   };
   const handleSearch = () => {

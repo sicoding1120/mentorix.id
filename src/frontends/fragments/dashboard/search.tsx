@@ -195,17 +195,17 @@ const SettingView = () => {
 
   const handleFollow = async (id: string) => {
     const idUserFollowing = Cookies.get("user_id");
-    setIsFollowed(!isFollowed);
     try {
-      await axios.post("https://mentorixid.vercel.app/api/follower", {
-        idUser: id, // ID user yang di-follow
-        followerId: idUserFollowing, // ID user yang mengikuti (dari cookies)
-      });
-
-      await axios.post("https://mentorixid.vercel.app/api/following", {
-        idUser: idUserFollowing, // ID user yang mengikuti
-        followingId: id, // ID user yang di-follow
-      });
+        await axios.post("https://mentorixid.vercel.app/api/follower", {
+            idUser: id, // ID user yang di-follow
+            followerId: idUserFollowing, // ID user yang mengikuti (dari cookies)
+        });
+        
+        await axios.post("https://mentorixid.vercel.app/api/following", {
+            idUser: idUserFollowing, // ID user yang mengikuti
+            followingId: id, // ID user yang di-follow
+        });
+        setIsFollowed(!isFollowed);
 
     } catch (err) {
       console.error(err);
@@ -214,18 +214,18 @@ const SettingView = () => {
 
   const handleUnFollow = async (id: string) => {
     const idUserFollowing = Cookies.get("user_id");
-    setIsFollowed(!isFollowed);
     try {
-      await axios.put("https://mentorixid.vercel.app/api/unfollower", {
-        idUser: id, // ID user yang di-unfollow
-        followerId: idUserFollowing, // ID user yang berhenti mengikuti
-      });
-
-      await axios.put("https://mentorixid.vercel.app/api/unfollowing", {
-        idUser: idUserFollowing, // ID user yang berhenti mengikuti
-        followingId: id, // ID user yang di-unfollow
-      });
-      
+        await axios.put("https://mentorixid.vercel.app/api/follower", {
+            idUser: id, // ID user yang di-unfollow
+            followerId: idUserFollowing, // ID user yang berhenti mengikuti
+        });
+        
+        await axios.put("https://mentorixid.vercel.app/api/following", {
+            idUser: idUserFollowing, // ID user yang berhenti mengikuti
+            followingId: id, // ID user yang di-unfollow
+        });
+        
+        setIsFollowed(!isFollowed);
     } catch (err) {
       console.error(err);
     }

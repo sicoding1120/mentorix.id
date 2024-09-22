@@ -16,7 +16,7 @@ export default function CardUser({
   id,
   handleFollow,
     handleUnFollow,
-  isFollowed,
+  // isFollowed,
 }: {
   follower: number;
   following: number;
@@ -24,9 +24,9 @@ export default function CardUser({
   id: string;
   handleFollow: () => void;
         handleUnFollow: () => void;
-  isFollowed: boolean;
+  // isFollowed: boolean;
 }) {
-//   const [isFollowed, setIsFollowed] = React.useState(false);
+  const [isFollowed, setIsFollowed] = React.useState(false);
 
   const truncate = (str: any, length: any) => {
     if (str.length > length) {
@@ -65,7 +65,7 @@ export default function CardUser({
           radius="full"
           size="sm"
           variant={isFollowed ? "bordered" : "solid"}
-          onPress={isFollowed ? handleUnFollow : handleFollow}
+          onPress={isFollowed ? () => { handleUnFollow; setIsFollowed(!isFollowed) } : () => { handleFollow; setIsFollowed(!isFollowed) }}
         >
           {isFollowed ? "Unfollow" : "Follow"}
         </Button>

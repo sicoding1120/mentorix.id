@@ -209,7 +209,7 @@ const SettingView = () => {
         followingId: id, // ID user yang di-follow
       });
 
-      setIsFollowed(true); // Mengubah state di frontend
+      // setIsFollowed(true); // Mengubah state di frontend
     } catch (error) {
       console.error("Error following user:", error);
     }
@@ -231,7 +231,7 @@ const SettingView = () => {
         followingId: id, // ID user yang di-unfollow
       } as never);
 
-      setIsFollowed(false); // Mengubah state di frontend
+      // setIsFollowed(false); // Mengubah state di frontend
     } catch (error) {
       console.error("Error unfollowing user:", error);
     }
@@ -267,7 +267,7 @@ const SettingView = () => {
             key={index}
             handleFollow={() => handleFollow(data.id)}
             handleUnFollow={() => handleUnFollow(data.id)}
-            isFollowed={isFollowed}
+            // isFollowed={isFollowed}
           />
         ))}
       </div>

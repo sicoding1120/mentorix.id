@@ -92,7 +92,7 @@ export class userService {
 
       const user = await prisma.userFollower.create({
         data: {
-          followerId,
+          followerId: followerId,
           followingId: idUser,
         },
       });
@@ -157,31 +157,6 @@ export class userService {
         },
       });
 
-      const userFollower = await prisma.user.create({
-        where: {
-            idUser
-        },
-        data: {
-          followers: {
-            connect: {
-              id: idUser
-            }
-          }
-        }
-      } as never)
-
-      const userFollowing = await prisma.user.create({
-        where: {
-            followingId
-        },
-        data: {
-          following: {
-            connect: {
-              id: followingId
-            }
-          }
-        }
-      } as never)
 
       res.status(201).json(RestApi._createDataSuccess(user as never));
     } catch (error) {

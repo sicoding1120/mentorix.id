@@ -30,9 +30,9 @@ const Class = () => {
   return (
     <main className="w-full h-full">
       <section className="w-full h-1/3 skeleton bg-blue-100 flex flex-col gap-6 justify-between items-center">
-        <div className="w-full h-[60vh] py-8 flex flex-col gap-8 justify-center items-center">
-          <h2 className="text-6xl font-semibold ">Jelajahi Koridor Kelas!</h2>
-          <p className="w-2/5 text-center text-slate-400 text-lg">
+        <div className="w-full h-[60vh] py-8 px-4 flex flex-col gap-8 justify-center items-center">
+          <h2 className="md:text-6xl text-3xl font-semibold text-center">Jelajahi Koridor Kelas!</h2>
+          <p className="md:w-2/5 text-center text-slate-400 text-lg w-full">
             MENTORIX menyediakan berbagai macam kelas yang sudah berbasis
             industri untuk meningkatkan keterampilan digital kamu.
           </p>
@@ -40,7 +40,7 @@ const Class = () => {
             <input
               type="text"
               placeholder="Search"
-              className="input input-bordered w-24 md:w-auto"
+              className="input input-bordered md:w-auto w-full"
             />
             <Link href={"#koridor"} className="btn btn-success text-white">
               jelajah
@@ -49,12 +49,12 @@ const Class = () => {
         </div>
       </section>
       <section
-        className="w-full h-full bg-white flex justify-between gap-8 px-24 py-8"
+        className="w-full h-full bg-white flex md:flex-row flex-col justify-between gap-8 md:px-24 px-4 py-8"
         id="koridor"
       >
         <SideBarClass />
-        <div className="flex w-4/5 h-full flex-col gap-16 pl-8 justify-center py-24">
-          <div className="w-full h-full grid grid-cols-3 ">
+        <div className="flex w-4/5 h-full flex-col gap-16 pl-8 justify-center md:py-24">
+          <div className="w-full h-full grid md:grid-cols-3 grid-cols-1">
             {data ? (
               data?.data?.datas.map((items: any, index: number) => (
                 <CardDemo
@@ -171,7 +171,7 @@ const Class = () => {
 
 export const SideBarClass = () => {
   return (
-    <div className="sticky top-4 w-1/5 h-full py-4 my-24 px-4 bg-blue-100 border-2 rounded-md ">
+    <div className="sticky top-4 md:w-1/5 h-full w-full py-4 my-24 px-4 bg-blue-100 border-2 rounded-md">
       <h2 className="text-2xl font-medium px-2">Filter Kelas</h2>
       <Accordion>
         <AccordionItem title="Topik">

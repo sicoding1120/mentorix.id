@@ -37,9 +37,9 @@ export default function CardUser({
 
 
   return (
-    <Card className="max-w-[340px]">
+    <Card className="md:max-w-[340px] w-full">
       <CardHeader className="justify-between overflow-scroll scrollbar-hide">
-        <div className="flex gap-5">
+        <div className="flex md:flex-row flex-col gap-5">
           <Avatar
             isBordered
             radius="full"

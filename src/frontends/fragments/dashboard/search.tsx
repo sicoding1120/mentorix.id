@@ -257,7 +257,7 @@ const SettingView = () => {
           </button>
         </div>
       </div>
-      <div className="w-full px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
+      <div className="w-full md:px-6 px-2 grid grid-cols-2 md:grid-cols-4 gap-4">
         {datas?.data?.datas?.map((data: any, index: number) => (
           <CardUser
             follower={data.following.length}

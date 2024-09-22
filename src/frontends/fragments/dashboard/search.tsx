@@ -243,7 +243,7 @@ const SettingView = () => {
   return (
     <section className=" h-screen md:p-8 p-8 flex flex-col gap-8 rounded-xl shadow-md mx-auto w-full bg-blue-100 overflow-scroll scrollbar-hide">
       <div className="flex flex-col gap-4 items-center">
-        <h3 className="text-2xl capitalize ">
+        <h3 className="text-2xl capitalize text-center">
           cari seseorang di mentorix id .
         </h3>
         <div className="flex border-2 gap-4 px-4 py-2 w-2/3 h-full border-black rounded-lg">
@@ -257,7 +257,7 @@ const SettingView = () => {
           </button>
         </div>
       </div>
-      <div className="w-full px-6 grid grid-cols-4 gap-4">
+      <div className="w-full px-6 grid grid-cols-2 md:grid-cols-4 gap-4">
         {datas?.data?.datas?.map((data: any, index: number) => (
           <CardUser
             follower={data.following.length}

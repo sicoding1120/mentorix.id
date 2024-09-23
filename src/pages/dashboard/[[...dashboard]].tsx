@@ -18,7 +18,7 @@ const Dynamic = () => {
     if (!Cookies.get("user_id")) {
       window.location.href = "/dashboard/profile";
     } 
-    window.location.href = "/login";
+    window.location.href = "/auth/login";
   }, []);
   let content: any;
   console.log(query);

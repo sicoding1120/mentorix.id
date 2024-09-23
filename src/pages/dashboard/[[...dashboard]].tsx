@@ -13,12 +13,12 @@ const Dynamic = () => {
   // membuat midleware agar apabila user belum login maka tidak bisa mengakses url dashboard
   // tapi kalu udah login akan langsung diarahkan ke halaman dashboard
   // necek sudah login apa belumnya di cookies
+  // kalo udah login jangan direload" berulang kali
   useEffect(() => {
     if (!Cookies.get("user_id")) {
       window.location.href = "/login";
-    } else {
-      window.location.href = "/dashboard/profile";
-    }
+    } 
+    window.location.href = "/dashboard/profile";
   }, []);
   let content: any;
   console.log(query);

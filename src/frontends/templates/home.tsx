@@ -12,15 +12,16 @@ import Navbar from "../components/navbar";
 const Home = () => {
   return (
     <div>
-      <div className="flex flex-col gap-4">
-        <div className="skeleton bg-blue-100">
+      <Navbar />
+      <div className="flex flex-col">
+        <div className="bg-bgLanding bg-cover bg-center bg-no-repeat">
           <HeroSection />
         </div>
-        <div className="py-24">
+        <div>
           <Sponsor />
         </div>
         <About />
-        <div className="skeleton bg-blue-100">
+        <div className="bg-color-primary">
           <Instructor />
         </div>
         <div className="py-24">

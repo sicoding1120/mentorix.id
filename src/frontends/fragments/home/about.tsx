@@ -7,17 +7,17 @@ import dataRandom from "@/data/dataRandom.json";
 
 const About = () => {
   return (
-    <section className="w-full md:h-screen h-full flex justify-center items-center md:px-14 px-4">
+    <section className="w-full md:h-screen h-full flex justify-center items-center md:px-14 px-4 bg-color-primary bg-opacity-80 text-white">
       <Flex gap={24} flexDirection={"column"} className="">
         <Box>
           <Flex flexDirection={"column"} gap={12}>
-            <Text className="md:text-5xl text-4xl text-center dark:text-color-c4">
+            <Text className="md:text-5xl text-4xl text-center font-semibold">
               MENTORIX
             </Text>
             <Box>
               {dataRandom.id.Text.data.type.textAbout.map((items, index) => (
                 <Text
-                  className="md:text-xl text-sm md:text-center text-justify text-slate-500 md:px-32 px-6"
+                  className="md:text-xl text-sm md:text-center text-justify text-color-background md:px-32 px-6"
                   key={index}
                 >
                   {items.text}

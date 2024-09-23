@@ -1,44 +1,38 @@
-import React from "react";
+import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
+import Image from "next/image";
 
-const Navbar = () => {
+export default function App() {
   return (
-    <div>
-      <div className="navbar bg-neutral-100 fixed top-0 z-30">
-        <div className="flex-1">
-          <a className="btn btn-success text-xl text-white">MENTORIX</a>
-        </div>
-        <div className="flex-1">
-          <div className="form-control">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered w-24 md:w-auto"
-            />
-          </div>
-        </div>
-        <div className="flex-none">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Link</a>
-            </li>
-            <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="bg-base-100 rounded-t-none p-2">
-                  <li>
-                    <a>Link 1</a>
-                  </li>
-                  <li>
-                    <a>Link 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    <Navbar className="bg-color-primary bg-opacity-80 text-white py-2">
+      <NavbarBrand className="gap-2">
+        <Image src={"/assets/logo/MENTORIX2.png"} alt={"Mentorix"} width={50} height={50} />
+        <p className="font-bold text-inherit">MENTORIX</p>
+      </NavbarBrand>
+      <NavbarContent className="hidden sm:flex gap-4" justify="center">
+        <NavbarItem>
+          <Link color="foreground" href="#" className="text-white">
+            Kursus
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#" className="text-white">
+            Komunitas
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link color="foreground" href="#" className="text-white">
+            Blog
+          </Link>
+        </NavbarItem>
+      </NavbarContent>
+      <NavbarContent justify="end">
+        <NavbarItem className="hidden lg:flex">
+          <Link href="#" className="text-white">Sign In</Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#" className="text-white btn btn-success">Sign Up</Link>
+        </NavbarItem>
+      </NavbarContent>
+    </Navbar>
   );
-};
-
-export default Navbar;
+}

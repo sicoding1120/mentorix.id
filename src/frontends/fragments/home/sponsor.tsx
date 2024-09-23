@@ -6,9 +6,9 @@ import dataRandom from "@/data/dataRandom.json";
 
 const Sponsor = () => {
   return (
-    <section className="w-full md:h-[50vh] h-[90vh] flex justify-center items-center md:mt-0 mt-24 md:px-14 px-4 dark:bg-color-c7">
+    <section className="w-full h-1/2 flex justify-center items-center md:mt-0 mt-24 md:px-14 px-4 py-24 bg-color-background">
       <Flex flexDirection={"column"} gap={8}>
-        <Text className="md:text-5xl text-3xl text-center dark:text-color-c4">
+        <Text className="md:text-5xl text-3xl text-center text-color-primary">
           Sudah Berkolaborasi Dengan +32 Lembaga
         </Text>
         <Flex gap={4} className="text-center md:flex-row flex-col items-center">

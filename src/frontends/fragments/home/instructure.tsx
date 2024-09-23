@@ -18,7 +18,7 @@ const Instructor = () => {
                 {dataRandom.id.Text.data.type.Text[2].map((items, index) => (
                   <p
                     key={index}
-                    className="font-semibold md:text-6xl text-xl text-center md:text-start dark:text-color-c4"
+                    className="font-semibold md:text-6xl text-xl text-center md:text-start text-color-accent"
                   >
                     {items.text}
                   </p>
@@ -28,7 +28,7 @@ const Instructor = () => {
                 {dataRandom.id.Text.data.type.subText[2].map((items, index) => (
                   <p
                     key={index}
-                    className="font-normal text-sm md:text-lg md:text-start text-center text-color-text-1"
+                    className="font-normal text-sm md:text-lg md:text-start text-center text-color-background"
                   >
                     {items.text}
                   </p>

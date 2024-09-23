@@ -5,7 +5,7 @@ import React from "react";
 const Footer = () => {
   return (
     <div>
-      <footer className="footer bg-blue-100 text-base-content p-10">
+      <footer className="footer bg-color-primary text-color-background p-10">
         <aside>
           <Image src={"/assets/logo/MENTORIX2.png"} alt={"Mentorix"} width={100} height={100} />
           <p>
@@ -15,7 +15,7 @@ const Footer = () => {
           </p>
         </aside>
         <nav>
-          <h6 className="footer-title">Services</h6>
+          <h6 className="font-semibold text-lg text-white">Services</h6>
           <Link href={"/services"} className="link link-hover">Terms of Services</Link>
           <a className="link link-hover">Branding</a>
           <a className="link link-hover">Design</a>
@@ -23,14 +23,14 @@ const Footer = () => {
           <a className="link link-hover">Advertisement</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Company</h6>
+          <h6 className="font-semibold text-lg text-white">Company</h6>
           <a className="link link-hover">About us</a>
           <a className="link link-hover">Contact</a>
           <a className="link link-hover">Jobs</a>
           <a className="link link-hover">Press kit</a>
         </nav>
         <nav>
-          <h6 className="footer-title">Legal</h6>
+          <h6 className="font-semibold text-lg text-white">Legal</h6>
           <a className="link link-hover">Terms of use</a>
           <a className="link link-hover">Privacy policy</a>
           <Link href={"/FAQ"} className="link link-hover">FAQ</Link>

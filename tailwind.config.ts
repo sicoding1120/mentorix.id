@@ -1,4 +1,4 @@
-import type { Config } from 'tailwindcss'
+import type { Config } from "tailwindcss";
 import { nextui } from "@nextui-org/react";
 
 const config: Config = {
@@ -12,8 +12,14 @@ const config: Config = {
     extend: {
       colors: {
         color: {
-          coursesTopic: "#f8f8f8",
+          primary: "#2C3E50",
+          secondary: "#ECF0F1",
+          accent: "#F39C12 ",
+          background: "#C7D0D2",
         },
+      },
+      backgroundImage: {
+        bgLanding: 'url(/assets/background/lndingbg.jpg)'
       },
       animation: {
         move: "move 5s linear infinite",
@@ -40,4 +46,4 @@ const config: Config = {
     themeRoot: ":root", // The element that receives theme color CSS variables
   },
 };
-export default config
+export default config;

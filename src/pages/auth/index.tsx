@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router'
 import React, { useEffect } from 'react'
+import Cokkies from "js-cookie"
 
 const Auth = () => {
     // const router = useRouter();

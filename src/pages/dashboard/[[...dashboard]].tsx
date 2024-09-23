@@ -2,13 +2,19 @@ import { SidebarDemo } from "@/frontends/components/sidebar";
 import Profile from "@/frontends/fragments/dashboard/profile";
 import Setting from "@/frontends/fragments/dashboard/setting";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
 import Dashboard from "../../frontends/templates/dashboard";
 import Search from "@/frontends/fragments/dashboard/search";
 
 
 const Dynamic = () => {
   const { query } = useRouter();
+  // membuat midleware agar apabila user belum login maka tidak bisa mengakses url dashboard
+  useEffect(() => {
+    if (!query.dashboard?.at(1)) {
+      window.location.href = "/";
+    }
+  })
   let content: any;
   console.log(query);
   switch (query.dashboard?.at(1)) {

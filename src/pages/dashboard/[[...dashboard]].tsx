@@ -5,21 +5,10 @@ import { useRouter } from "next/router";
 import React, { useEffect } from "react";
 import Dashboard from "../../frontends/templates/dashboard";
 import Search from "@/frontends/fragments/dashboard/search";
-import Cookies from "js-cookie";
 
 
 const Dynamic = () => {
   const { query } = useRouter();
-  // membuat midleware agar apabila user belum login maka tidak bisa mengakses url dashboard
-  // tapi kalu udah login akan langsung diarahkan ke halaman dashboard
-  // necek sudah login apa belumnya di cookies
-  // kalo udah login jangan direload" berulang kali
-  useEffect(() => {
-    if (!Cookies.get("user_id")) {
-      window.location.href = "/auth/login";
-    } 
-    window.location.href = "/dashboard/profile";
-  }, []);
   let content: any;
   console.log(query);
   switch (query.dashboard?.at(1)) {

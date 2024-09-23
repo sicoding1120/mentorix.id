@@ -16,9 +16,9 @@ const Dynamic = () => {
   // kalo udah login jangan direload" berulang kali
   useEffect(() => {
     if (!Cookies.get("user_id")) {
-      window.location.href = "/dashboard/profile";
+      window.location.href = "/auth/login";
     } 
-    window.location.href = "/auth/login";
+    window.location.href = "/dashboard/profile";
   }, []);
   let content: any;
   console.log(query);

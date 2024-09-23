@@ -19,7 +19,9 @@ const config: Config = {
         },
       },
       backgroundImage: {
-        bgLanding: 'url(/assets/background/lndingbg.jpg)'
+        bgLanding: 'url(/assets/background/lndingbg.jpg)',
+        bgprivacy: 'url(/assets/background/privacy.jpg)',
+        bgblog: 'url(/assets/background/blog.jpg)',
       },
       animation: {
         move: "move 5s linear infinite",

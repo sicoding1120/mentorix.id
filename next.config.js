@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['img.daisyui.com'], // Tambahkan domain eksternal di sini
+    domains: ['img.daisyui.com', 'images.unsplash.com'], // Tambahkan domain eksternal di sini
   },
 }
 

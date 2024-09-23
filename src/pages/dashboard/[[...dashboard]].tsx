@@ -19,7 +19,7 @@ const Dynamic = () => {
     } else {
       window.location.href = "/dashboard/profile";
     }
-  })
+  }, []);
   let content: any;
   console.log(query);
   switch (query.dashboard?.at(1)) {

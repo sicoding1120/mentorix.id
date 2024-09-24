@@ -1,9 +1,10 @@
 import Navbar from "@/frontends/components/navbar";
 import React from "react";
+import { Accordion, AccordionItem } from "@nextui-org/react";
+import Link from "next/link";
 
-const MateriClass = ({ data }: { data: any }) => {
-  const materi = data.data.classes.map((data: any) => data);
-  console.log(materi);
+const MateriClass = ({ data, id,title }: { data: any; id?:string | number| any, title:string | any }) => {
+  const judulClass = title
   return (
     <div className="w-full h-screen">
       <Navbar />
@@ -47,13 +48,24 @@ const MateriClass = ({ data }: { data: any }) => {
           </div>
           {/* bikin sidebar */}
           <div className="w-1/4 flex flex-col p-4 border-2 h-[85vh] overflow-scroll scrollbar-hide rounded-md">
-            <ul className="list-disc flex flex-col gap-4 pl-6">
-              {materi.map((data: any) =>
-                data.materiList.map((title: any) => (
-                  <li key={title}>{title}</li>
+            
+            <Accordion defaultExpandedKeys={["1"]}>
+              <AccordionItem key='1' aria-label="Accordion 1" title={"Materi Kelas"}>
+                <ul className="list-disc flex flex-col gap-4 pl-6">
+              {
+                data?.materiList?.map((title: any) => (
+                  <Link href={`/dashboard/${judulClass}/learn/${title}`} key={title} className="hover:text-blue-500 cursor-pointer">{title}</Link>
                 ))
-              )}
+              }
             </ul>
+              </AccordionItem>
+              <AccordionItem aria-label="Accordion 2" title={"ujian Akhir kelas"}></AccordionItem>
+              <AccordionItem aria-label="Accordion 2" title={"selesai"}>
+                <ul className="list-disc flex flex-col gap-4 pl-6">
+                  <li>terima sertifikat mu dari mentorix</li>
+                </ul>
+              </AccordionItem>
+            </Accordion>
           </div>
         </div>
       </div>

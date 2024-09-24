@@ -6,12 +6,13 @@ import React, { useEffect, useState } from "react";
 
 
 const Class = ({ data }: { data: any }) => {
+  console.log(data);
   return (
     <div>
-      hallo
       {data ? (
-        data.data.classes.map((data: any, index: any) => (
+        data?.map((data: any, index: any) => (
           <DetailClasses
+            id={data.id_credential}
             key={index}
             desc={data.aboutClass}
             title={data.title}
@@ -31,16 +32,29 @@ const Class = ({ data }: { data: any }) => {
   );
 };
 
-export const ClassRouter = ({ data }: { data: any }) => {
+export const ClassRouter = () => {
+  const [datas,setDatas] = useState<any>()
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://mentorixid.vercel.app/api/class");
+      const data = await res.json();
+      setDatas(data);
+    }
+    fetchData();
+  }, [])
   const { query } = useRouter();
   const path = query.slug;
+
+  const filterData = datas?.data?.datas.filter((data: any) => data.title == path?.at(0));
+  const findClass = filterData?.find((data: any) => data.title == path?.at(0));
+  console.log(findClass?.materiList);
   return (
     <div>
       {path?.at(0) ? (
         path?.at(1) ? (
-          <MateriClass data={data}/>
+          <MateriClass data={findClass} id={query.slug?.at(2)}title={findClass?.title} />
         ) : (
-          <Class data={data} />
+          <Class data={filterData} />
         )
       ) :null}
     </div>

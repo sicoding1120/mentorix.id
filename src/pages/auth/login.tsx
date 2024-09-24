@@ -36,6 +36,10 @@ const Login = () => {
     return await bcrypt.compare(password, hashPassword);
   };
 
+  const handleInfo = () => {
+    return toast.info("fitur ini sedang dalam perbaikan");
+  }
+
   const handleLogin = async () => {
     const passwordhash = await user.data.datas.find(
       (items: any) => items.email == email
@@ -111,10 +115,10 @@ const Login = () => {
           <div className="flex flex-col justify-center items-center gap-4">
             <p>Masuk Dengan</p>
             <div className="flex gap-4">
-              <button className="btn btn-white">
+              <button className="btn btn-white" onClick={handleInfo}>
                 <IconBrandGoogleFilled /> Google
               </button>
-              <button className="btn btn-white">
+              <button className="btn btn-white" onClick={handleInfo}>
                 <IconBrandFacebookFilled /> Facebook
               </button>
             </div>

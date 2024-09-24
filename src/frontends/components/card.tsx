@@ -9,7 +9,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
   const router = useRouter();
   const priceNow = price - (price * discountPrice) / 100;
   return (
-    <div className="w-[320px] h-[450px] bg-white shadow-md rounded-md overflow-hidden">
+    <div className="w-[300px] h-[450px] bg-white shadow-md rounded-md overflow-hidden">
       <div className="w-full h-1/2 bg-blue-50 skeleton rounded-md p-4">
         <div></div>
       </div>
@@ -26,7 +26,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
           </div>
           <div className="flex gap-2 items-center">
             <icons.timer size={20} />
-            {time / 60} hours {time % 60} minutes
+            {Math.floor(time / 60)} hours {time % 60} minutes
           </div>
         </div>
         <div className="flex justify-between">

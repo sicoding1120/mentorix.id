@@ -35,4 +35,33 @@ export class classService {
     );
     res.status(201).json(RestApi._createDataSuccess(create as never))
   }
+
+  async _updatePesertaClass(req: NextApiRequest, res: NextApiResponse, error: any) {
+    const update = await prisma.class.update({
+      where: {
+        id_credential: req.body.id_class
+      },
+      data: {
+        participants: {
+          connect: {
+            id: req.body.id_user
+          }
+        }
+      }
+    })
+    const updateUser = await prisma.user.update({
+      where: {
+        id: req.body.id_user
+      },
+      data: {
+        enrolledClasses: {
+          connect: {
+            id_credential: req.body.id_class
+          }
+        }
+      }
+       
+    })
+    res.status(200).json(RestApi._updateDataSuccess(update as never))
+  }
 } 

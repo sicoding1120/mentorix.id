@@ -31,6 +31,7 @@ const Verification = () => {
     if (otp === tokenotp) {
       toast.success("verifikasi  berhasil");
       router.push(`/dashboard/${user_id}`);
+      Cookies.set("status_login", "true", {expires: 7})
       Cookies.set(`${user_id}`, tokenotp, { expires: 7 });
       Cookies.set('user_id', user_id as string, { expires: 7 });
     } else {

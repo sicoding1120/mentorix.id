@@ -22,6 +22,10 @@ const Register = () => {
   const router = useRouter();
   const validEmail = logic.validateEmail(email);
 
+  const handleInfo = () => {
+    return toast.info("fitur ini sedang dalam perbaikan");
+  }
+
   const handleRegister = async (e: any) => {
     e.preventDefault();
     try {
@@ -105,10 +109,10 @@ const Register = () => {
           <div className="flex flex-col justify-center items-center gap-4">
             <p>Daftar Dengan</p>
             <div className="flex gap-4">
-              <button className="btn btn-white">
+              <button className="btn btn-white" onClick={handleInfo}>
                 <IconBrandGoogleFilled /> Google
               </button>
-              <button className="btn btn-white">
+              <button className="btn btn-white" onClick={handleInfo}>
                 <IconBrandFacebookFilled /> Facebook
               </button>
             </div>

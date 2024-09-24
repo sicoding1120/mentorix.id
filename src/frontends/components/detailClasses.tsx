@@ -1,11 +1,14 @@
 import { useIcons } from "@/hook/useIcons";
-import React from "react";
+import React, { useEffect } from "react";
 import CardDemo from "./card";
 import { GiRank1 } from "react-icons/gi";
 import { IoMedalOutline } from "react-icons/io5";
 import { useRouter } from "next/router";
+import Cookies from "js-cookie";
+import axios from "axios";
 
 const DetailClasses = ({
+  id,
   title,
   time,
   lesson,
@@ -14,8 +17,9 @@ const DetailClasses = ({
   prepareToLearn,
   level,
   mentorixPoin,
-  materiList
+  materiList,
 }: {
+  id: string | any;
   title: string | any;
   time: number;
   lesson: number;
@@ -23,11 +27,32 @@ const DetailClasses = ({
   stepClass: string[] | any;
   prepareToLearn: string[] | any;
   level: string | any;
-    mentorixPoin: string | number | any;
-  materiList:String[] | any
+  mentorixPoin: string | number | any;
+  materiList: String[] | any;
 }) => {
   const { icons } = useIcons();
   const router = useRouter();
+  const [data, setData] = React.useState<any>();
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("https://mentorixid.vercel.app/api/class");
+      const data = await res.json();
+      setData(data);
+    };
+
+    fetchData();
+  }, []);
+
+  const handleJoinClass = async (id: string | any) => {
+    const cookie = Cookies.get("user_id");
+    const datas = {
+      id_user: cookie,
+      id_class: id,
+    };
+    const res = await axios.put("https://mentorixid.vercel.app/api/class", datas);
+    console.log("ok");
+  };
   return (
     <main className="w-full h-full">
       <section
@@ -50,10 +75,15 @@ const DetailClasses = ({
             </div>
             <div className="flex gap-2 items-center text-slate-400">
               <icons.timer size={20} />
-              {time / 60} hours {time % 60} minutes
+              {Math.floor(time / 60)} hours {time % 60} minutes
             </div>
           </div>
-          <button className="btn w-1/4 text-lg capitalize" onClick={() => router.push(`/courses/class/${title}/learn`)}>ikuti kelas</button>
+          <button
+            className="btn w-1/4 text-lg capitalize"
+            onClick={() => handleJoinClass(id)}
+          >
+            ikuti kelas
+          </button>
         </div>
       </section>
       <section className="w-full h-full flex gap-8 px-16">
@@ -123,12 +153,13 @@ const DetailClasses = ({
                 </button>
               </div>
               <div className="flex flex-col gap-1">
-                {materiList.slice(0,3).map((data:any,index:number) => (
-                  <div key={index} className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg">
+                {materiList.slice(0, 3).map((data: any, index: number) => (
+                  <div
+                    key={index}
+                    className="flex justify-between items-center pl-7 pr-3 gap-6 bg-slate-100 w-full h-[50px] rounded-lg"
+                  >
                     <ul className="list-disc">
-                      <li className="font-semibold">
-                        {data}
-                      </li>
+                      <li className="font-semibold">{data}</li>
                     </ul>
                   </div>
                 ))}

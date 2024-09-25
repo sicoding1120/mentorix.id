@@ -137,7 +137,6 @@ export const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        // Conditional rendering for logo image source
         src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
@@ -170,7 +169,6 @@ export const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
-// Dummy dashboard component with content
 const Dashboard = ({ id }: { id: string | any }) => {
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";

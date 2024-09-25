@@ -135,7 +135,6 @@ const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm py-1 relative z-20"
     >
       <Image
-        // Change the image source based on dark mode
         src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
@@ -159,7 +158,6 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm py-1 relative z-20"
     >
       <Image
-        // Change the image source based on dark mode
         src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
@@ -169,7 +167,6 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
-// Dummy dashboard component with content
 const Dashboard = ({ id, isDarkMode }: { id: string | any, isDarkMode: boolean }) => {
   return (
     <div className="flex flex-col w-full md:p-12 p-4 bg-white dark:bg-slate-500 dark:text-white">

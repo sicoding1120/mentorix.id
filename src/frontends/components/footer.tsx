@@ -6,7 +6,6 @@ const Footer = () => {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
-    // Memeriksa apakah body memiliki kelas 'dark'
     const darkMode = document.body.classList.contains("dark");
     setIsDarkMode(darkMode);
   }, []);
@@ -16,7 +15,7 @@ const Footer = () => {
       <footer className="footer bg-base-200 dark:bg-color-primary dark:text-color-background p-10">
         <aside>
           <Image
-            src={isDarkMode ? "/assets/logo/mentorix2.png" : "/assets/logo/mentorix.png"} // Menggunakan ternary untuk memilih src
+            src={isDarkMode ? "/assets/logo/mentorix2.png" : "/assets/logo/mentorix.png"}
             alt={"logo"}
             width={112}
             height={112}

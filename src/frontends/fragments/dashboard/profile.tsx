@@ -163,7 +163,6 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
-// Dummy dashboard component with content
 const Dashboard = ({ id }: { id: string | any }) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

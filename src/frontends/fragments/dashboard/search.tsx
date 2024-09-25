@@ -38,7 +38,7 @@ const SidebarProfile = () => {
   const [id_us, setIdUs] = useState("");
   const id_user = Cookies.get(`user_id`);
   const [open, setOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   useEffect(() => {
     setIdUs(id_user as never);
@@ -130,7 +130,6 @@ const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        // Conditional rendering for logo image source
         src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
@@ -154,7 +153,6 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        // Conditional rendering for logo image source
         src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
@@ -164,7 +162,7 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
-// Dummy dashboard component with content
+
 const Dashboard = () => {
   return (
     <div className="flex flex-1 min-h-screen">

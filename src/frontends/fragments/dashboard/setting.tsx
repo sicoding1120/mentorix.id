@@ -128,7 +128,6 @@ const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        // Conditional rendering for logo image source
         src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
@@ -152,7 +151,6 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        // Conditional rendering for logo image source
         src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
@@ -184,7 +182,7 @@ const SettingView = () => {
     } else {
       document.body.classList.remove("dark");
     }
-  }, [theme]); // Run effect when 'theme' changes
+  }, [theme]); 
 
   return (
     <div className="md:p-24 p-8 rounded-xl shadow-md mx-auto w-full bg-base-200 dark:bg-color-primary dark:text-white overflow-scroll scrollbar-hide">

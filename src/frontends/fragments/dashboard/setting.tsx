@@ -1,5 +1,4 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Sidebar,
   SidebarBody,
@@ -36,6 +35,8 @@ export default Setting;
 const SidebarProfile = () => {
   const [id_us, setIdUs] = useState("");
   const id_user = Cookies.get(`user_id`);
+  const [open, setOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
 
   useEffect(() => {
     setIdUs(id_user as never);
@@ -45,54 +46,40 @@ const SidebarProfile = () => {
     {
       label: "Dashboard",
       href: `/dashboard/${id_user}`,
-      icon: (
-        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
+      icon: <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
     },
     {
       label: "Blogs",
       href: `/dashboard/${id_user}/blogs`,
-      icon: (
-        <IconTable className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      )
+      icon: <IconTable className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
     },
     {
       label: "Kelas",
       href: `/dashboard/${id_user}/class`,
-      icon: (
-        <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
+      icon: <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
     },
     {
       label: "Profil",
       href: `/dashboard/${id_user}/profile`,
-      icon: (
-        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
+      icon: <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
     },
     {
       label: "Search",
       href: `/dashboard/${id_user}/Search`,
-      icon: (
-        <IconSearch className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
+      icon: <IconSearch className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
     },
     {
       label: "Pengaturan",
       href: `/dashboard/${id_user}/setting`,
-      icon: (
-        <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
+      icon: <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
     },
     {
       label: "Keluar",
       href: "/auth/logout",
-      icon: (
-        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      ),
+      icon: <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
     },
   ];
-  const [open, setOpen] = useState(false);
+
   return (
     <div
       className={cn(
@@ -101,9 +88,9 @@ const SidebarProfile = () => {
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10">
+        <SidebarBody className="justify-between gap-10 bg-base-200 dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            {open ? <Logo /> : <LogoIcon />}
+            {open ? <Logo isDarkMode={isDarkMode} /> : <LogoIcon isDarkMode={isDarkMode} />}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} className="font-medium" />
@@ -134,14 +121,15 @@ const SidebarProfile = () => {
   );
 };
 
-const Logo = () => {
+const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={"/assets/logo/MENTORIX.png"}
+        // Conditional rendering for logo image source
+        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
         height={50}
@@ -157,14 +145,15 @@ const Logo = () => {
   );
 };
 
-const LogoIcon = () => {
+const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={"/assets/logo/MENTORIX.png"}
+        // Conditional rendering for logo image source
+        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
         height={50}

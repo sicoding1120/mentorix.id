@@ -157,7 +157,7 @@ export const MobileSidebar = ({
 
 export const SidebarLink = ({
   link,
-  className,
+  className,  
   ...props
 }: {
   link: Links;

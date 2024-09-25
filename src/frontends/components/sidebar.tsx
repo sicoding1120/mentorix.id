@@ -19,9 +19,9 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
-import { DarkMode } from "@chakra-ui/react";
+import { useColorMode } from "@chakra-ui/react";
+import { Accordion, AccordionItem } from "@chakra-ui/react";
 import Cookie from "js-cookie";
-import { Accordion, AccordionItem } from "@nextui-org/react";
 import CardDemo from "./card";
 import { FaSearch } from "react-icons/fa";
 
@@ -31,6 +31,10 @@ export function SidebarDemo() {
   useEffect(() => {
     setIdUs(id_user as never);
   }, [id_user]);
+
+  const { colorMode } = useColorMode();
+  const isDarkMode = colorMode === "dark";
+
   const links = [
     {
       label: "Dashboard",
@@ -82,7 +86,9 @@ export function SidebarDemo() {
       ),
     },
   ];
+
   const [open, setOpen] = useState(false);
+
   return (
     <div
       className={cn(
@@ -91,9 +97,9 @@ export function SidebarDemo() {
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10">
+        <SidebarBody className="justify-between gap-10 bg-base-200 dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            {open ? <Logo /> : <LogoIcon />}
+            {open ? <Logo isDarkMode={isDarkMode} /> : <LogoIcon isDarkMode={isDarkMode} />}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} className="font-medium" />
@@ -123,15 +129,16 @@ export function SidebarDemo() {
     </div>
   );
 }
-export const Logo = () => {
+
+export const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        // isikan argument darkmode
-        src={"/assets/logo/MENTORIX.png"}
+        // Conditional rendering for logo image source
+        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
         height={50}
@@ -146,14 +153,15 @@ export const Logo = () => {
     </Link>
   );
 };
-export const LogoIcon = () => {
+
+export const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={"/assets/logo/MENTORIX.png"}
+        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
         alt="logo"
         width={50}
         height={50}
@@ -212,8 +220,8 @@ const Dashboard = ({ id }: { id: string | any }) => {
               </p>
             </div>
           </div>
-          <div className="bg-blue-200 dark:bg-slate-400 rounded-md flex flex-col gap-2 py-2">
-            <Accordion defaultExpandedKeys={["2"]}>
+          <div className="bg-blue-200 dark:bg-slate-500 rounded-md flex flex-col gap-2 py-2">
+            <Accordion>
               <AccordionItem
                 key="1"
                 aria-label="Accordion 1"
@@ -235,8 +243,8 @@ const Dashboard = ({ id }: { id: string | any }) => {
           </div>
 
           <div>
-            <div className="bg-blue-200 dark:bg-slate-400 rounded-md flex flex-col gap-4 py-4 px-4">
-              <h2 className="text-xl font-semibold text-color-primary">Kelas Saya</h2>
+            <div className="bg-blue-200 dark:bg-slate-500 rounded-md flex flex-col gap-4 py-4 px-4">
+              <h2 className="text-xl font-semibold dark:text-white">Kelas Saya</h2>
               <div className="flex md:flex-row flex-col md:gap-4 gap-4 items-center w-full">
                 <CardDemo
                   title="Frontend Developer"
@@ -264,8 +272,8 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 />
               </div>
               <div className="flex items-center justify-end gap-2">
-              <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {"<"} </button>
-              <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {">"} </button>
+                <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {"<"} </button>
+                <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {">"} </button>
               </div>
             </div>
           </div>

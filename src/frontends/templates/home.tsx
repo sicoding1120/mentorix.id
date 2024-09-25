@@ -14,14 +14,14 @@ const Home = () => {
     <div>
       <Navbar />
       <div className="flex flex-col">
-        <div className="bg-bgLanding bg-cover bg-center bg-no-repeat">
+        <div className="bg-bgLanding bg-fixed bg-cover bg-center bg-no-repeat">
           <HeroSection />
         </div>
-        <div>
+        <div className="dark:bg-color-background bg-white">
           <Sponsor />
         </div>
         <About />
-        <div className="bg-color-primary">
+        <div className="bg-bgjoin bg-cover bg-center bg-no-repeat">
           <Instructor />
         </div>
         <div className="py-24">

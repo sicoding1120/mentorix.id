@@ -14,14 +14,18 @@ const config: Config = {
         color: {
           primary: "#2C3E50",
           secondary: "#ECF0F1",
-          accent: "#F39C12 ",
+          accent: "#F39C12",
           background: "#C7D0D2",
+        },
+        blue: {
+          500: '#3B82F6', // Tambahkan warna blue-500
         },
       },
       backgroundImage: {
         bgLanding: 'url(/assets/background/lndingbg.jpg)',
         bgprivacy: 'url(/assets/background/privacy.jpg)',
         bgblog: 'url(/assets/background/blog.jpg)',
+        bgjoin: 'url(/assets/background/bg-join.png)',
       },
       animation: {
         move: "move 5s linear infinite",
@@ -38,14 +42,15 @@ const config: Config = {
   plugins: [require("daisyui"), nextui()],
 
   daisyui: {
-    themes: false, // false: only light + dark | true: all themes | array: specific themes like this ["light", "dark", "cupcake"]
-    darkTheme: "light", // name of one of the included themes for dark mode
-    base: true, // applies background color and foreground color for root element by default
-    styled: true, // include daisyUI colors and design decisions for all components
-    utils: true, // adds responsive and modifier utility classes
-    prefix: "", // prefix for daisyUI classnames (components, modifiers and responsive class names. Not colors)
-    logs: true, // Shows info about daisyUI version and used config in the console when building your CSS
-    themeRoot: ":root", // The element that receives theme color CSS variables
+    themes: false,
+    darkTheme: "dark",
+    base: true,
+    styled: true,
+    utils: true,
+    prefix: "",
+    logs: true,
+    themeRoot: ":root",
   },
 };
+
 export default config;

@@ -6,7 +6,6 @@ import {
   SidebarLink,
 } from "@/frontends/components/ui/sidebar";
 import {
-  Icon24Hours,
   IconArrowLeft,
   IconBrandTabler,
   IconCheck,
@@ -19,17 +18,13 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
-import { DarkMode } from "@chakra-ui/react";
-import { CheckboxIcon, Textarea } from "@nextui-org/react";
-import Navbar from "@/frontends/components/navbar";
-import Footer from "@/frontends/components/footer";
-import axios from "axios";
 import Cookies from "js-cookie";
+import Footer from "@/frontends/components/footer";
 
 const Setting = () => {
   return (
     <div>
-      <SidebarProfile></SidebarProfile>
+      <SidebarProfile />
       <Footer />
     </div>
   );
@@ -39,7 +34,7 @@ export default Setting;
 
 const SidebarProfile = () => {
   const [id_us, setIdUs] = useState("");
-  const id_user = Cookies.get(`user_id`); 
+  const id_user = Cookies.get(`user_id`);
 
   useEffect(() => {
     setIdUs(id_user as never);
@@ -88,14 +83,13 @@ const SidebarProfile = () => {
         <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
       ),
     },
-
   ];
   const [open, setOpen] = useState(false);
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
-        "h-screen" // for your use case, use `h-screen` instead of `h-[60vh]`
+        "flex flex-col md:flex-row bg-base-200 dark:bg-color-primary w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
+        "h-screen"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
@@ -131,6 +125,7 @@ const SidebarProfile = () => {
     </div>
   );
 };
+
 const Logo = () => {
   return (
     <Link
@@ -138,7 +133,6 @@ const Logo = () => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        // isikan argument darkmode
         src={"/assets/logo/MENTORIX.png"}
         alt="logo"
         width={50}
@@ -154,6 +148,7 @@ const Logo = () => {
     </Link>
   );
 };
+
 const LogoIcon = () => {
   return (
     <Link
@@ -170,7 +165,6 @@ const LogoIcon = () => {
   );
 };
 
-// Dummy dashboard component with content
 const Dashboard = () => {
   return (
     <div className="flex flex-1 min-h-screen">
@@ -182,14 +176,21 @@ const Dashboard = () => {
 };
 
 const SettingView = () => {
-  const [theme, setTheme] = useState("Hangat");
-  const [fontType, setFontType] = useState("Serif");
-  const [fontSize, setFontSize] = useState("Besar");
+  const [theme, setTheme] = useState<string>("Default");
+  const [fontType, setFontType] = useState<string>("Serif");
 
-  const isSelected = (current: any, selected: any) => current === selected;
+  const isSelected = (current: string, selected: string) => current === selected;
+
+  useEffect(() => {
+    if (theme === "Gelap") {
+      document.body.classList.add("dark");
+    } else {
+      document.body.classList.remove("dark");
+    }
+  }, [theme]); // Run effect when 'theme' changes
 
   return (
-    <div className="md:p-24 p-8 rounded-xl shadow-md mx-auto w-full bg-blue-100 overflow-scroll scrollbar-hide">
+    <div className="md:p-24 p-8 rounded-xl shadow-md mx-auto w-full bg-base-200 dark:bg-color-primary dark:text-white overflow-scroll scrollbar-hide">
       <h2 className="text-3xl font-bold mb-6">Pengaturan</h2>
 
       <div className="flex flex-col gap-8">
@@ -197,31 +198,31 @@ const SettingView = () => {
         <div>
           <h3 className="text-lg font-semibold mb-4">Tema</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:justify-between items-center">
-            {["Default", "Hangat", "Gelap", "Terang"].map((value, idx) => (
+            {["Default", "Gelap"].map((value, idx) => (
               <div className="relative" key={idx}>
                 <button
                   className={`relative py-4 px-2 rounded-lg border md:w-64 w-36 md:h-40 h-28 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
                     isSelected(value, theme)
-                      ? "border-green-500 bg-green-50"
-                      : "border-gray-300 bg-white"
+                      ? "border-green-500 bg-green-100 dark:bg-green-200"
+                      : "border-gray-300 bg-white dark:bg-color-background"
                   }`}
                   onClick={() => setTheme(value)}
                 >
                   {isSelected(value, theme) && (
-                    <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
+                    <span className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full">
+                      ✓
+                    </span>
                   )}
                   <div className="text-center">
                     <div
-                      className={`h-14 md:w-full w-24 mb-2 flex justify-center items-center rounded-md ${
-                        value === "Terang"
-                          ? "bg-white"
-                          : value === "Hangat"
-                          ? "bg-yellow-100"
-                          : "bg-gray-800 text-white"
+                      className={`h-14 w-full mb-2 flex justify-center items-center rounded-md ${
+                        value === "Gelap"
+                          ? "bg-color-primary text-white"
+                          : "bg-white"
                       } border`}
                     >
                       <span className="block overflow-hidden whitespace-nowrap text-ellipsis px-4">
-                        Belajar di Mentorix
+                        Tema {value}
                       </span>
                     </div>
                     <span className="text-sm font-medium">{value}</span>
@@ -232,37 +233,26 @@ const SettingView = () => {
           </div>
         </div>
 
-        {/* Jenis Font */}
+        {/* Font Type */}
         <div>
           <h3 className="text-lg font-semibold mb-4">Jenis Font</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:justify-between items-center">
-            {["Default", "Serif", "Poppins", "Dyslexic"].map((value, idx) => (
+            {["Serif", "Sans-serif", "Monospace"].map((value, idx) => (
               <div className="relative" key={idx}>
                 <button
                   className={`relative py-4 px-2 rounded-lg border md:w-64 w-36 md:h-40 h-28 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
                     isSelected(value, fontType)
-                      ? "border-green-500 bg-green-50"
-                      : "border-gray-300 bg-white"
+                      ? "border-green-500 bg-green-100 dark:bg-green-200"
+                      : "border-gray-300 bg-white dark:bg-color-background"
                   }`}
                   onClick={() => setFontType(value)}
                 >
                   {isSelected(value, fontType) && (
-                    <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
+                    <span className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full">
+                      ✓
+                    </span>
                   )}
                   <div className="text-center">
-                    <div
-                      className={`h-14 w-full mb-2 flex justify-center items-center ${
-                        value === "Default"
-                          ? "font-sans"
-                          : value === "Serif"
-                          ? "font-serif"
-                          : "font-dyslexic"
-                      } border`}
-                    >
-                      <span className="block overflow-hidden whitespace-nowrap text-ellipsis">
-                        {value}
-                      </span>
-                    </div>
                     <span className="text-sm font-medium">{value}</span>
                   </div>
                 </button>
@@ -271,57 +261,7 @@ const SettingView = () => {
           </div>
         </div>
 
-        {/* Ukuran Font */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Ukuran Font</h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 md:justify-between items-center gap-4">
-            {["Default", "Besar", "Sedang", "Kecil"].map((value, idx) => (
-              <div className="relative" key={idx}>
-                <button
-                  className={`relative py-4 px-2 rounded-lg border md:w-64 w-36 md:h-40 h-28 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
-                    isSelected(value, fontSize)
-                      ? "border-green-500 bg-green-50"
-                      : "border-gray-300 bg-white"
-                  }`}
-                  onClick={() => setFontSize(value)}
-                >
-                  {isSelected(value, fontSize) && (
-                    <IconCheck className="absolute top-2 left-2 h-6 w-6 text-white bg-success rounded-full" />
-                  )}
-                  <div className="text-center">
-                    <div
-                      className={`h-14 w-full mb-2 flex justify-center items-center ${
-                        value === "Besar"
-                          ? "text-xl"
-                          : value === "Sedang"
-                          ? "text-lg"
-                          : "text-sm"
-                      } border`}
-                    >
-                      <span>Aa</span>
-                    </div>
-                    <span className="text-sm font-medium">{value}</span>
-                  </div>
-                </button>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Bahasa */}
-        <div>
-          <h3 className="text-lg font-semibold mb-4">Bahasa</h3>
-          <select title="ok" className="select select-bordered w-full max-w-xs">
-            <option disabled selected>
-              Pilih Bahasa
-            </option>
-            <option>Indonesia</option>
-            <option>English</option>
-            <option>Sunda</option>
-            <option>Jawa</option>
-          </select>
-        </div>
-
+        {/* Tombol simpan */}
         <div className="flex justify-end">
           <button className="btn btn-success text-white md:w-56 w-full">
             Simpan Perubahan
@@ -331,4 +271,3 @@ const SettingView = () => {
     </div>
   );
 };
-

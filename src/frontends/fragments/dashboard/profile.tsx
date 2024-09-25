@@ -197,7 +197,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
   return (
     <div className="flex flex-1">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="flex flex-col gap-4 bg-blue-100 rounded-md w-full h-full md:p-24 p-8 overflow-scroll scrollbar-hide">
+        <div className="flex flex-col gap-4 bg-base-200 dark:bg-color-primary dark:text-white rounded-md w-full h-full md:p-24 p-8 overflow-scroll scrollbar-hide">
           <h2 className="text-3xl font-bold text-center">Detail Profil</h2>
           <div className="flex gap-6 md:flex-row flex-col justify-center items-center md:justify-start">
             <div className="rounded-full w-28 h-w-28 overflow-hidden">
@@ -215,7 +215,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
               <Link href={"/dashboard/avatar"}>Gunakan Karakter Avatar</Link>
             </div>
           </div>
-          <p className="text-slate-500 font-medium md:text-start text-center md:text-base text-xs">
+          <p className="text-slate-500 dark:text-color-background font-medium md:text-start text-center md:text-base text-xs">
             Foto profil kamu disarankan memiliki rasio 1 : 1 atau berukuran
             tidak lebih dari 2MB
           </p>
@@ -226,7 +226,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
           >
             <div className="flex md:flex-row flex-col gap-4">
               <div className="flex flex-col gap-2 w-full">
-                <label htmlFor="namaDepan">Nama Depan *</label>
+                <label className="font-semibold" htmlFor="namaDepan">Nama Depan *</label>
                 <input
                   type="text"
                   id="namaDepan"
@@ -237,7 +237,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 />
               </div>
               <div className="flex flex-col gap-2 w-full">
-                <label htmlFor="namaBelakang">Nama Belakang *</label>
+                <label className="font-semibold" htmlFor="namaBelakang">Nama Belakang *</label>
                 <input
                   type="text"
                   id="namaBelakang"
@@ -249,7 +249,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
               </div>
             </div>
             <div className="flex flex-col gap-2 w-full">
-              <label htmlFor="email">Alamat Email *</label>
+              <label className="font-semibold" htmlFor="email">Alamat Email *</label>
               <input
                 type="email"
                 id="email"
@@ -263,20 +263,20 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 <div className="md:w-5 w-4 md:h-5 h-4 bg-error flex justify-center items-center text-white rounded-full">
                   <IconX width={14} height={14} />
                 </div>
-                <p className="text-slate-500 md:text-base text-sm">
+                <p className="text-slate-500 dark:text-color-background md:text-base text-sm">
                   Email belum terverifikasi
                 </p>
               </div>
               <Link
                 href={"/dashboard/verify"}
-                className="text-primary font-medium md:text-base text-sm"
+                className="text-blue-500 font-medium md:text-base text-sm"
               >
                 Verifikasi Email
               </Link>
             </div>
 
             <div className="flex flex-col gap-2 w-full py-4">
-              <label htmlFor="bio">Biografi</label>
+              <label className="font-semibold" htmlFor="bio">Biografi</label>
               <textarea
                 id="bio"
                 name="bio"
@@ -289,13 +289,18 @@ const Dashboard = ({ id }: { id: string | any }) => {
             <div className="flex items-center gap-4">
               <select
                 title={"Jenis Kelamin"}
-                className="select select-primary w-full max-w-xs"
+                className="select select-primary w-full max-w-xs dark:text-color-primary"
               >
-                <option disabled selected></option>
+                <option disabled selected>
+                  Pilih Bahasa
+                </option>
+                <option>Indonesia</option>
+                <option>English</option>
+                <option>Sunda</option>
               </select>
               <select
                 title="Jenjang"
-                className="select select-primary w-full max-w-xs"
+                className="select select-primary w-full max-w-xs dark:text-color-primary"
               >
                 <option className="md:text-base text-xs" disabled selected>
                   Jenis Kelamin
@@ -305,7 +310,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 <option className="md:text-base text-xs">Tidak Beritahu</option>
               </select>
               <select
-                className="select select-primary w-full max-w-xs"
+                className="select select-primary w-full max-w-xs dark:text-color-primary"
                 title="Jenjang"
               >
                 <option disabled selected>
@@ -317,7 +322,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
               </select>
             </div>
 
-            <div className="flex md:justify-end">
+            <div className="flex md:justify-end py-4">
               <button
                 className="btn btn-success text-white md:w-56 w-full"
                 type="submit"

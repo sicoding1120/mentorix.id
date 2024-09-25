@@ -18,7 +18,7 @@ const Instructor = () => {
                 {dataRandom.id.Text.data.type.Text[2].map((items, index) => (
                   <p
                     key={index}
-                    className="font-semibold md:text-6xl text-xl text-center md:text-start text-color-accent"
+                    className="font-semibold md:text-6xl text-xl text-center md:text-start text-white"
                   >
                     {items.text}
                   </p>
@@ -34,7 +34,7 @@ const Instructor = () => {
                   </p>
                 ))}
               </Flex>
-              <button className="btn btn-success md:w-[218px] md:h-[40px] h-[40px] capitalize bg-color-c2 text-white hover:bg-color-c1 hover:text-color-c5 border-none shadow-lg">
+              <button className="btn bg-color-primary hover:bg-color-primary hover:bg-opacity-70 transition-all md:w-[218px] md:h-[40px] h-[40px] capitalize bg-color-c2 text-white hover:bg-color-c1 hover:text-color-c5 border-none shadow-lg">
                 Bergabung
               </button>
             </Box>

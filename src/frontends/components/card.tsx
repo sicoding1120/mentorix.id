@@ -14,7 +14,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
         <div></div>
       </div>
       <div className="p-4 flex flex-col justify-between w-full h-1/2 ">
-        <h3 className="text-xl  font-semibold capitalize w-full">{title}</h3>
+        <h3 className="text-xl  font-semibold capitalize w-full dark:text-color-primary">{title}</h3>
         <div className="flex gap-4 items-center font-semibold capitalize">
           <MdSignalCellular1Bar />
           {level}
@@ -31,7 +31,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
         </div>
         <div className="flex justify-between">
           <div className="flex gap-2 items-center">
-            <Badge colorScheme="green" className="text-sm">
+            <Badge colorScheme="green" className="text-sm dark:text-color-primary">
               {discountPrice}%
             </Badge>
             <p className="text-lg font-semibold line-through">{price}</p>

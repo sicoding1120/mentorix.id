@@ -3,14 +3,14 @@ import Profile from "@/frontends/fragments/dashboard/profile";
 import Setting from "@/frontends/fragments/dashboard/setting";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import Dashboard from "../../frontends/templates/dashboard";
+import Dashboard from '../../frontends/templates/dashboard';
 import Search from "@/frontends/fragments/dashboard/search";
-
+import Blogs from "@/frontends/fragments/dashboard/blogs";
 
 const Dynamic = () => {
   const { query } = useRouter();
   let content: any;
-  console.log(query);
+  console.log(query.Dashboard?.at(1));
   switch (query.dashboard?.at(1)) {
     case "profile":
       content = <Profile id={query.dashboard?.at(0)} />;
@@ -20,6 +20,9 @@ const Dynamic = () => {
       break;
     case "Search":
       content = <Search />;
+      break;
+    case "blogs":
+      content = <Blogs id={query.dashboard?.at(0)} />;
       break;
     default:
       content = <SidebarDemo />;

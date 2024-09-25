@@ -12,6 +12,7 @@ import {
   IconPaperclip,
   IconSearch,
   IconSettings,
+  IconTable,
   IconUserBolt,
   IconX,
 } from "@tabler/icons-react";
@@ -51,6 +52,13 @@ const SidebarProfile = ({ id }: { id: string | any }) => {
      icon: (
        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
      ),
+   },
+   {
+     label: "Blogs",
+     href: `/dashboard/${id_user}/blogs`,
+     icon: (
+       <IconTable className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+     )
    },
    {
      label: "Kelas",

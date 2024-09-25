@@ -54,7 +54,7 @@ const Class = () => {
       >
         <SideBarClass />
         <div className="flex w-4/5 h-full flex-col gap-16 pl-8 justify-center md:py-24">
-          <div className="w-full h-full grid md:grid-cols-3 grid-cols-1">
+          <div className="w-full h-full grid md:grid-cols-3 gap-16 grid-cols-1">
             {data ? (
               data?.data?.datas.map((items: any, index: number) => (
                 <CardDemo

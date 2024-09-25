@@ -6,6 +6,7 @@ import {
   SidebarLink,
 } from "@/frontends/components/ui/sidebar";
 import {
+  Icon24Hours,
   IconArrowLeft,
   IconBrandTabler,
   IconPaperclip,
@@ -13,35 +14,36 @@ import {
   IconSettings,
   IconTable,
   IconUserBolt,
+  IconX,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
-// import { DarkMode } from "@chakra-ui/react";
-// import { CheckboxIcon, Textarea } from "@nextui-org/react";
-// import Navbar from "@/frontends/components/navbar";
+import { DarkMode } from "@chakra-ui/react";
+import { Textarea } from "@nextui-org/react";
+import Navbar from "@/frontends/components/navbar";
 import Footer from "@/frontends/components/footer";
 import axios from "axios";
 import Cookies from "js-cookie";
-import { FaSearch } from "react-icons/fa";
-import CardUser from "@/frontends/components/cardUSer";
+import BlogCard from "@/frontends/components/blogCard";
+import DropDownSelect from "@/frontends/components/ui/dropdown";
+import BlogForm from "@/frontends/components/ui/BlogsForm";
 
-const Search = () => {
+const Blogs = ({ id }: { id: string | any }) => {
   return (
     <div>
-      <SidebarProfile></SidebarProfile>
-      <Footer />
+      <SidebarBlogs id={id as string}></SidebarBlogs>
+      {/* <Footer /> */}
     </div>
   );
 };
 
-export default Search;
+export default Blogs;
 
-const SidebarProfile = () => {
+const SidebarBlogs = ({ id }: { id: string | any }) => {
   const [id_us, setIdUs] = useState("");
   const id_user = Cookies.get(`user_id`);
-
   useEffect(() => {
     setIdUs(id_user as never);
   }, [id_user]);
@@ -59,7 +61,7 @@ const SidebarProfile = () => {
       href: `/dashboard/${id_user}/blogs`,
       icon: (
         <IconTable className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
-      )
+      ),
     },
     {
       label: "Kelas",
@@ -134,7 +136,7 @@ const SidebarProfile = () => {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Dashboard id={id as string} />
     </div>
   );
 };
@@ -178,107 +180,31 @@ const LogoIcon = () => {
 };
 
 // Dummy dashboard component with content
-const Dashboard = () => {
+const Dashboard = ({ id }: { id: string | any }) => {
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="flex flex-1 min-h-screen">
-      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <SettingView />
-      </div>
-    </div>
-  );
-};
-
-const SettingView = () => {
-  const [isFollowed, setIsFollowed] = React.useState(false);
-
-  const [datas, setDatas] = useState<any>();
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("https://mentorixid.vercel.app/api/users");
-      const users = await res.json();
-      setDatas(users);
-    };
-    fetchData();
-  }, []);
-
-  const handleFollow = async (id: string) => {
-    const idUserFollowing = Cookies.get("user_id");
-
-    try {
-      // Mengirim request untuk menambah follower
-      await axios.post("https://mentorixid.vercel.app/api/follower", {
-        idUser: id, // ID user yang di-follow
-        followerId: idUserFollowing, // ID user yang mengikuti (dari cookies)
-      });
-
-      // Mengirim request untuk menambah following
-      await axios.post("https://mentorixid.vercel.app/api/following", {
-        idUser: idUserFollowing, // ID user yang mengikuti
-        followingId: id, // ID user yang di-follow
-      });
-
-      // setIsFollowed(true); // Mengubah state di frontend
-    } catch (error) {
-      console.error("Error following user:", error);
-    }
-  };
-
-  const handleUnFollow = async (id: string) => {
-    const idUserFollowing = Cookies.get("user_id");
-
-    try {
-      // Mengirim request untuk menghapus follower
-      await axios.delete("https://mentorixid.vercel.app/api/follower", {
-        idUser: id, // ID user yang di-unfollow
-        followerId: idUserFollowing, // ID user yang berhenti mengikuti
-      } as never);
-
-      // Mengirim request untuk menghapus following
-      await axios.delete("https://mentorixid.vercel.app/api/following", {
-        idUser: idUserFollowing, // ID user yang berhenti mengikuti
-        followingId: id, // ID user yang di-unfollow
-      } as never);
-
-      // setIsFollowed(false); // Mengubah state di frontend
-    } catch (error) {
-      console.error("Error unfollowing user:", error);
-    }
-  };
-
-  const handleSearch = () => {
-    console.log("cari seseorang di mentorix id .");
-  };
-  return (
-    <section className=" h-screen md:p-8 p-8 flex flex-col gap-8 rounded-xl shadow-md mx-auto w-full bg-blue-100 overflow-scroll scrollbar-hide">
-      <div className="flex flex-col gap-4 items-center">
-        <h3 className="text-2xl capitalize text-center">
-          cari seseorang di mentorix id .
-        </h3>
-        <div className="flex border-2 gap-4 px-4 py-2 w-2/3 h-full border-black rounded-lg">
-          <input
-            type="text"
-            className="w-full outline-none bg-transparent"
-            placeholder="Cari seseorang di mentorix id ."
-          />
-          <button className="flex p-3 rounded-md justify-center items-center gap-2 bg-orange-400 h-8">
-            <FaSearch /> Cari
-          </button>
+    <div className="flex flex-col w-full md:p-12 p-4">
+      <div className="w-full md:h-full h-2/3 flex flex-col p-4 gap-8 md:overflow-scroll md:scrollbar-hide">
+        <div className="flex justify-between px-4 mb-2 items-center">
+          <h3 className="md:text-3xl font-semibold capitalize">your Blogs</h3>
+          <div className="flex gap-4 items-center">
+            lihat
+            <DropDownSelect />
+            <BlogForm/>
+          </div>
+        </div>
+        <div className="w-full overflow-x-auto rounded-xl grid md:grid-cols-4  md:gap-14 gap-24 px-8 bg-white py-8">
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
         </div>
       </div>
-      <div className="w-full md:px-6 px-2 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {datas?.data?.datas?.map((data: any, index: number) => (
-          <CardUser
-            follower={data.following.length}
-            following={data.followers.length}
-            userName={data.username}
-            id={data.id}
-            key={index}
-            handleFollow={() => handleFollow(data.id)}
-            handleUnFollow={() => handleUnFollow(data.id)}
-            // isFollowed={isFollowed}
-          />
-        ))}
-      </div>
-    </section>
+    </div>
   );
 };

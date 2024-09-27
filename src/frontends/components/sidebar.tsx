@@ -218,7 +218,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
               </p>
             </div>
           </div>
-          <div className="bg-blue-200 dark:bg-slate-500 rounded-md flex flex-col gap-2 py-2">
+          <div className="bg-base-300 dark:bg-slate-500 rounded-md flex flex-col gap-2 py-2">
             <Accordion>
               <AccordionItem
                 key="1"
@@ -241,7 +241,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
           </div>
 
           <div>
-            <div className="bg-blue-200 dark:bg-slate-500 rounded-md flex flex-col gap-4 py-4 px-4">
+            <div className="bg-base-300 dark:bg-slate-500 rounded-md flex flex-col gap-4 py-4 px-4">
               <h2 className="text-xl font-semibold dark:text-white">Kelas Saya</h2>
               <div className="flex md:flex-row flex-col md:gap-4 gap-4 items-center w-full">
                 <CardDemo

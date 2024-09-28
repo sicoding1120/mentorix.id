@@ -196,7 +196,7 @@ const SettingView = () => {
             {["Default", "Gelap"].map((value, idx) => (
               <div className="relative" key={idx}>
                 <button
-                  className={`relative py-4 px-2 rounded-lg border md:w-64 w-36 md:h-40 h-28 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                  className={`relative py-4 px-2 rounded-lg border grid-cols-1 md:w-full md:h-48 h-32 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
                     isSelected(value, theme)
                       ? "border-green-500 bg-green-100 dark:bg-green-200"
                       : "border-gray-300 bg-white dark:bg-color-background"
@@ -235,7 +235,7 @@ const SettingView = () => {
             {["Serif", "Sans-serif", "Monospace"].map((value, idx) => (
               <div className="relative" key={idx}>
                 <button
-                  className={`relative py-4 px-2 rounded-lg border md:w-64 w-36 md:h-40 h-28 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
+                  className={`relative py-4 px-2 grid-cols-1 rounded-lg border md:w-full w-36 md:h-40 h-28 flex justify-center items-center transition-all duration-300 ease-in-out hover:shadow-md ${
                     isSelected(value, fontType)
                       ? "border-green-500 bg-green-100 dark:bg-green-200"
                       : "border-gray-300 bg-white dark:bg-color-background"

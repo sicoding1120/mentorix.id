@@ -7,8 +7,10 @@ import {
   Button,
 } from "@nextui-org/react";
 import Image from "next/image";
+import Cookies from "js-cookie";
 
 export default function NavbarEl() {
+  const cookie = Cookies.get("user_id");
   return (
     <Navbar className="bg-color-primary bg-opacity-80 text-white py-2">
       <NavbarBrand className="gap-2">
@@ -41,11 +43,7 @@ export default function NavbarEl() {
         <NavbarItem className="hidden lg:flex">
           <label className="swap swap-rotate">
             {/* this hidden checkbox controls the state */}
-            <input
-              type="checkbox"
-              className="theme-controller"
-              value="dark"
-            />
+            <input type="checkbox" className="theme-controller" value="dark" />
 
             {/* sun icon */}
             <svg
@@ -76,6 +74,27 @@ export default function NavbarEl() {
             Sign Up
           </Link>
         </NavbarItem>
+        {cookie && (
+          <NavbarItem>
+          <ul
+            tabIndex={0}
+            className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+          >
+            <li>
+              <a className="justify-between">
+                Profile
+                <span className="badge">New</span>
+              </a>
+            </li>
+            <li>
+              <a>Settings</a>
+            </li>
+            <li>
+              <a>Logout</a>
+            </li>
+          </ul>
+        </NavbarItem>
+        )}
       </NavbarContent>
     </Navbar>
   );

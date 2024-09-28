@@ -19,7 +19,7 @@ const Mentor = () => {
     <section className="w-full h-full px-14 my-8">
       <Box className="flex flex-col w-full h-full gap-24">
         <Box className="w-full flex flex-col gap-4 md:flex-row items-center md:justify-between">
-          <Text className="md:text-6xl text-3xl dark:text-color-c4">
+          <Text className="md:text-6xl text-3xl dark:text-color-c4 font-bold">
             Temukan Mentor Favorit Kamu!
           </Text>
           <Box className="flex gap-4">

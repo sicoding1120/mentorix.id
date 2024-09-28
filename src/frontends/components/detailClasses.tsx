@@ -50,7 +50,7 @@ const DetailClasses = ({
       id_user: cookie,
       id_class: id,
     };
-    const res = await axios.put("https://mentorixid.vercel.app/api/class", datas);
+    const res = await axios.post("https://mentorixid.vercel.app/api/participants", datas);
     console.log("ok");
   };
   return (

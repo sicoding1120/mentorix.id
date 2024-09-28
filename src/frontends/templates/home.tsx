@@ -2,12 +2,13 @@
 import React from "react";
 import HeroSection from "@/frontends/fragments/home/heroSection";
 import Sponsor from "@/frontends/fragments/home/sponsor";
-import About from "@/frontends/fragments/home/about";
-import Instructor from "@/frontends/fragments/home/instructure";
 import Mentor from "@/frontends/fragments/home/mentor";
 import Testimonial from "@/frontends/fragments/home/testimonial.";
 import Footer from "../components/footer";
 import Navbar from "../components/navbar";
+import LearningPage from "../fragments/home/learnigPage";
+import AboutPage from "../fragments/home/about";
+import PopularClass from "../fragments/home/popularClass";
 
 const Home = () => {
   return (
@@ -20,10 +21,11 @@ const Home = () => {
         <div className="dark:bg-color-background bg-white">
           <Sponsor />
         </div>
-        <About />
-        <div className="bg-bgjoin bg-cover bg-center bg-no-repeat">
-          <Instructor />
+        <LearningPage />
+        <div className="">
+        <AboutPage />
         </div>
+        <PopularClass/>
         <div className="py-24">
           <Mentor />
         </div>

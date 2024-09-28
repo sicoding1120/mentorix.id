@@ -1,34 +1,19 @@
-"use client";
-import { Box, Flex, Text } from "@chakra-ui/react";
-import React from "react";
-import CardElement from "@/frontends/components/card";
-import DataCard from "@/data/card.json";
-import dataRandom from "@/data/dataRandom.json";
+import React from 'react'
+import Image from "next/image"
 
-const About = () => {
+const AboutPage = () => {
   return (
-    <section className="w-full md:h-screen h-full flex justify-center items-center md:px-14 px-4 bg-opacity-80 text-white">
-      <Flex gap={24} flexDirection={"column"} className="">
-        <Box>
-          <Flex flexDirection={"column"} gap={12}>
-            <Text className="md:text-5xl text-4xl text-center font-semibold text-color-primary">
-              MENTORIX
-            </Text>
-            <Box>
-              {dataRandom.id.Text.data.type.textAbout.map((items, index) => (
-                <Text
-                  className="md:text-xl text-sm md:text-center text-justify text-black md:px-32 px-6"
-                  key={index}
-                >
-                  {items.text}
-                </Text>
-              ))}
-            </Box>
-          </Flex>
-        </Box>
-      </Flex>
+      <section className='w-full md:h-screen h-full flex flex-col md:flex-row bg-white pt-24 md:pt-0'>
+          <div className='md:w-1/2 w-full h-full flex justify-center items-center'>
+              <Image src="/assets/olther/landing_mentorix_1.png" alt="alt" width={300} height={300} className='w-[500px]' />
+          </div>
+          <div className='md:w-1/2 w-full h-full flex flex-col md:gap-14 gap-8 py-36 px-14 justify-center'>
+              <h2 className='md:text-5xl text-3xl font-bold capitalize'>apakah kamu ingin bergabung di salah satu kelas kami ?</h2>
+              <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Doloremque ipsa quae eligendi voluptate nulla necessitatibus in, nihil, praesentium totam mollitia distinctio ipsam excepturi, aut animi consequatur maiores molestias corrupti ex!</p>
+              <button className= 'text-white capitalize w-1/2 btn bg-color-primary hover:bg-color-accent hover:text-color-primary border-none'>gabung kelas</button>
+          </div>
     </section>
-  );
-};
+  )
+}
 
-export default About;
+export default AboutPage

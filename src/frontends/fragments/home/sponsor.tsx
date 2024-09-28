@@ -5,27 +5,36 @@ import Image from "next/image";
 import dataRandom from "@/data/dataRandom.json";
 
 const Sponsor = () => {
+  return <SponsorEl />;
+};
+
+const SponsorEl = () => {
   return (
-    <section className="w-full h-1/2 flex justify-center items-center md:mt-0 mt-24 md:px-14 px-4 py-24">
-      <Flex flexDirection={"column"} gap={8}>
-        <Text className="md:text-5xl text-3xl text-center text-color-primary">
-          Sudah Berkolaborasi Dengan +32 Lembaga
-        </Text>
-        <Flex gap={4} className="text-center md:flex-row flex-col items-center">
-          {dataRandom.id.sponsor.data.map((items, index) => (
-            <Image
-              src={items.urlLogo}
-              alt={""}
-              width={300}
-              height={200}
-              key={index}
-              className="opacity-30 dark:opacity-70 dark:hover:opacity-100 bg-white hover:opacity-100 transition-all"
-            />
-          ))}
-        </Flex>
-      </Flex>
+    <section className="w-full md:h-[20vh] h-full bg-color-primary px-14 py-8">
+      <div className="md:flex grid grid-cols-2 justify-center md:gap-36 gap-14">
+        <div className="flex flex-col gap-1 items-center ">
+          <h3 className="text-white text-5xl font-bold">200K+</h3>
+          <span className="text-white text-md ">active student</span>
+        </div>
+
+        <div className="flex flex-col gap-1 items-center ">
+          <h3 className="text-white text-5xl font-bold">200K+</h3>
+          <span className="text-white text-md ">active student</span>
+        </div>
+
+        <div className="flex flex-col gap-1 items-center ">
+          <h3 className="text-white text-5xl font-bold">200K+</h3>
+          <span className="text-white text-md ">active student</span>
+        </div>
+
+        <div className="flex flex-col gap-1 items-center ">
+          <h3 className="text-white text-5xl font-bold">200K+</h3>
+          <span className="text-white text-md ">active student</span>
+        </div>
+
+        
+      </div>
     </section>
   );
 };
-
 export default Sponsor;

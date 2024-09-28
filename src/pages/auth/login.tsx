@@ -41,13 +41,13 @@ const Login = () => {
   }
 
   const handleLogin = async () => {
-    const passwordhash = await user.data.datas.find(
+    const passwordhash = await user?.data?.datas.find(
       (items: any) => items.email == email
     );
-    const emailUser = await user.data.datas.find(
+    const emailUser = await user?.data?.datas.find(
       (data: any) => data.email == email
     );
-    const idUSer = await user.data.datas.find(
+    const idUSer = await user?.data?.datas.find(
       (data: any) => data.email == email
     );
     const verifyAccount = await verifyPassword(password, passwordhash.password);

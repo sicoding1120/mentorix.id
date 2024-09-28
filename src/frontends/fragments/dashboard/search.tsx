@@ -215,7 +215,7 @@ const SettingView = () => {
   const handleFollow = async (id: string) => {
     const idUserFollowing = Cookies.get("user_id");
 
-    try {
+    // try {
       await axios.post("https://mentorixid.vercel.app/api/follower", {
         idUser: id,
         followerId: idUserFollowing,
@@ -225,9 +225,9 @@ const SettingView = () => {
         idUser: idUserFollowing,
         followingId: id,
       });
-    } catch (error) {
-      console.error("Error following user:", error);
-    }
+    // } catch (error) {
+      // console.error("Error following user:", error);
+    // }
   };
 
   const handleUnFollow = async (id: string) => {

@@ -59,6 +59,7 @@ const DetailClasses = ({
     fetchDataClass();
     const iu = Cookies.get("user_id");
     const u = user?.data?.datas.find((u: any) => u.id == iu)
+    console.log(u);
     const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title)
     if (!vuc) {
       setJoin(false)
@@ -78,14 +79,15 @@ const DetailClasses = ({
       id_progress: id_progress
     };
     const res = await axios.post("https://mentorixid.vercel.app/api/participants", datas);
-    console.log("ok");
-        const u = user?.data?.datas.find((u: any) => u.id == cookie);
-    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title);
+    const u = user?.data?.datas.find((u: any) => u.id == cookie);console.log(u);
+    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title);    console.log(vuc);
+    console.log(vuc);
     if (!vuc) {
       setJoin(false);
     } else {
       setJoin(true);
     }
+    console.log("ok");
   };
 
 

@@ -79,9 +79,16 @@ const DetailClasses = ({
     };
     const res = await axios.post("https://mentorixid.vercel.app/api/participants", datas);
     console.log("ok");
+        const u = user?.data?.datas.find((u: any) => u.id == cookie);
+    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title);
+    if (!vuc) {
+      setJoin(false);
+    } else {
+      setJoin(true);
+    }
   };
 
-  
+
   return (
     <main className="w-full h-full">
       <section

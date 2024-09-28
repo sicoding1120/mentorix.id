@@ -3,7 +3,6 @@ import Profile from "@/frontends/fragments/dashboard/profile";
 import Setting from "@/frontends/fragments/dashboard/setting";
 import { useRouter } from "next/router";
 import React, { useEffect } from "react";
-import Dashboard from '../../frontends/templates/dashboard';
 import Search from "@/frontends/fragments/dashboard/search";
 import Blogs from "@/frontends/fragments/dashboard/blogs";
 import Classes from "@/frontends/fragments/dashboard/classes";
@@ -26,7 +25,8 @@ const Dynamic = () => {
       content = <Classes />;
       break;
     case "Mentors":
-      content = <Mentors id={query.dashboard?.at(0)}/>
+      content = <Mentors id={query.dashboard?.at(0)} />
+      break;
     case "blogs":
       content = <Blogs id={query.dashboard?.at(0)} />;
       break;

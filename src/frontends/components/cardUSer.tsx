@@ -15,15 +15,15 @@ export default function CardUser({
   userName,
   id,
   handleFollow,
-    handleUnFollow,
-  // isFollowed,
-}: {
+  handleUnFollow,
+}: // isFollowed,
+{
   follower: number;
   following: number;
   userName: string;
   id: string;
   handleFollow: () => void;
-        handleUnFollow: () => void;
+  handleUnFollow: () => void;
   // isFollowed: boolean;
 }) {
   const [isFollowed, setIsFollowed] = React.useState(false);
@@ -34,7 +34,6 @@ export default function CardUser({
     }
     return str;
   };
-
 
   return (
     <Card className="md:max-w-[340px] w-full">
@@ -55,20 +54,18 @@ export default function CardUser({
             </h5>
           </div>
         </div>
-        <Button
-          className={
-            isFollowed
-              ? "bg-transparent text-foreground border-default-200"
-              : ""
-          }
-          color="primary"
-          radius="full"
-          size="sm"
-          variant={isFollowed ? "bordered" : "solid"}
-          onPress={isFollowed ? () => { handleUnFollow(); setIsFollowed(!isFollowed) } : () => { handleFollow(); setIsFollowed(!isFollowed) }}
-        >
-          {isFollowed ? "Unfollow" : "Follow"}
-        </Button>
+        {isFollowed ? null : (
+          <Button
+            className={""}
+            color="primary"
+            radius="full"
+            size="sm"
+            variant={"solid"}
+            onPress={handleFollow}
+          >
+            {"Follow"}
+          </Button>
+        )}
       </CardHeader>
       <CardBody className="px-3 py-0 text-small text-default-400 scrollbar-hide">
         <p>

@@ -6,12 +6,12 @@ import PaginationElement from "./pagination";
 import { useRouter } from "next/router";
 import { Accordion, AccordionItem } from "@nextui-org/accordion";
 import Link from "next/link";
+import ContainerClass from "./containerClass";
 
-const Class = () => {
+const Class = ({ isClasses }: any) => {
   const { icons } = useIcons();
   const { menu } = useData();
   const [data, setData] = useState<any>();
-  
 
   const router = useRouter();
   useEffect(() => {
@@ -31,7 +31,9 @@ const Class = () => {
     <main className="w-full h-full">
       <section className="w-full h-1/3 skeleton bg-blue-100 flex flex-col gap-6 justify-between items-center">
         <div className="w-full h-[60vh] py-8 px-4 flex flex-col gap-8 justify-center items-center">
-          <h2 className="md:text-6xl text-3xl font-semibold text-center">Jelajahi Koridor Kelas!</h2>
+          <h2 className="md:text-6xl text-3xl font-semibold text-center">
+            Jelajahi Koridor Kelas!
+          </h2>
           <p className="md:w-2/5 text-center text-slate-400 text-lg w-full">
             MENTORIX menyediakan berbagai macam kelas yang sudah berbasis
             industri untuk meningkatkan keterampilan digital kamu.
@@ -48,6 +50,11 @@ const Class = () => {
           </div>
         </div>
       </section>
+      {isClasses == true ? (
+        <section className="px-16">
+          <ContainerClass />
+        </section>
+      ): null}
       <section
         className="w-full h-full bg-white flex md:flex-row flex-col justify-between gap-8 md:px-24 px-4 py-8"
         id="koridor"

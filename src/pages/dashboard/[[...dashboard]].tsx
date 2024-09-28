@@ -6,6 +6,7 @@ import React, { useEffect } from "react";
 import Dashboard from '../../frontends/templates/dashboard';
 import Search from "@/frontends/fragments/dashboard/search";
 import Blogs from "@/frontends/fragments/dashboard/blogs";
+import Classes from "@/frontends/fragments/dashboard/classes";
 
 const Dynamic = () => {
   const { query } = useRouter();
@@ -20,6 +21,9 @@ const Dynamic = () => {
       break;
     case "Search":
       content = <Search />;
+      break;
+    case "class":
+      content = <Classes />;
       break;
     case "blogs":
       content = <Blogs id={query.dashboard?.at(0)} />;

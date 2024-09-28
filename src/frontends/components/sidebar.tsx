@@ -19,7 +19,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
-import { useColorMode } from "@chakra-ui/react";
+import { AccordionButton, AccordionIcon, AccordionPanel, Box, useColorMode } from "@chakra-ui/react";
 import { Accordion, AccordionItem } from "@chakra-ui/react";
 import Cookie from "js-cookie";
 import CardDemo from "./card";
@@ -97,9 +97,13 @@ export function SidebarDemo() {
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10 bg-base-200 dark:bg-color-primary">
+        <SidebarBody className="justify-between gap-10 bg-white dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            {open ? <Logo isDarkMode={isDarkMode} /> : <LogoIcon isDarkMode={isDarkMode} />}
+            {open ? (
+              <Logo isDarkMode={isDarkMode} />
+            ) : (
+              <LogoIcon isDarkMode={isDarkMode} />
+            )}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} className="font-medium" />
@@ -137,7 +141,11 @@ export const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={
+          isDarkMode
+            ? "/assets/logo/mentorix.png"
+            : "/assets/logo/mentorix2.png"
+        }
         alt="logo"
         width={50}
         height={50}
@@ -160,7 +168,11 @@ export const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={
+          isDarkMode
+            ? "/assets/logo/mentorix.png"
+            : "/assets/logo/mentorix2.png"
+        }
         alt="logo"
         width={50}
         height={50}
@@ -174,8 +186,8 @@ const Dashboard = ({ id }: { id: string | any }) => {
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
   return (
     <div className="flex flex-1">
-      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="w-full h-screen bg-base-200 dark:bg-color-primary rounded-md flex flex-col gap-8 md:p-24 p-8 overflow-scroll scrollbar-hide">
+      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 dark:bg-color-abu flex flex-col gap-2 flex-1 w-full h-full">
+        <div className="w-full h-screen dark:bg-color-primary rounded-md flex flex-col gap-8 md:p-24 p-8 overflow-scroll scrollbar-hide">
           <div className="flex md:flex-row flex-col items-center gap-8 md:gap-12">
             <div className="rounded-full w-28 h-w-28">
               <Image
@@ -190,13 +202,13 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 <h2 className="text-3xl font-bold">ahfary_</h2>
                 <Link
                   href={`/dashboard/${id}/profile`}
-                  className="btn btn-success px-12 text-white md:w-40 w-full"
+                  className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white md:w-40 w-full"
                 >
                   Edit Profil
                 </Link>
                 <Link
                   href={`/dashboard/${id}/sertifikasi`}
-                  className="btn btn-success px-12 text-white md:w-40 w-full"
+                  className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white md:w-40 w-full"
                 >
                   Achievment
                 </Link>
@@ -220,29 +232,53 @@ const Dashboard = ({ id }: { id: string | any }) => {
           </div>
           <div className="bg-base-300 dark:bg-slate-500 rounded-md flex flex-col gap-2 py-2">
             <Accordion>
-              <AccordionItem
-                key="1"
-                aria-label="Accordion 1"
-                title="Lengkapi Profil"
-                className="px-2"
-              >
-                {defaultContent}
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      Notifikasi 1
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </AccordionPanel>
               </AccordionItem>
-              <AccordionItem
-                key="2"
-                aria-label="Accordion 2"
-                title="Lanjutkan Bootcamp"
-                className="px-2"
-              >
-                {defaultContent}
+
+              <AccordionItem>
+                <h2>
+                  <AccordionButton>
+                    <Box as="span" flex="1" textAlign="left">
+                      Notifikasi 2
+                    </Box>
+                    <AccordionIcon />
+                  </AccordionButton>
+                </h2>
+                <AccordionPanel pb={4}>
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                  Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                  laboris nisi ut aliquip ex ea commodo consequat.
+                </AccordionPanel>
               </AccordionItem>
             </Accordion>
-            <Link href={"/courses"} className="flex justify-center items-center text- dark:text-white font-medium md:text-base text-sm">Lihat Semua</Link>
+            <Link
+              href={"/courses"}
+              className="flex justify-center items-center text- dark:text-white font-medium md:text-base text-sm"
+            >
+              Lihat Semua
+            </Link>
           </div>
 
           <div>
             <div className="bg-base-300 dark:bg-slate-500 rounded-md flex flex-col gap-4 py-4 px-4">
-              <h2 className="text-xl font-semibold dark:text-white">Kelas Saya</h2>
+              <h2 className="text-xl font-semibold dark:text-white">
+                Kelas Saya
+              </h2>
               <div className="flex md:flex-row flex-col md:gap-4 gap-4 items-center w-full">
                 <CardDemo
                   title="Frontend Developer"
@@ -270,8 +306,14 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 />
               </div>
               <div className="flex items-center justify-end gap-2">
-                <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {"<"} </button>
-                <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl"> {">"} </button>
+                <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl">
+                  {" "}
+                  {"<"}{" "}
+                </button>
+                <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl">
+                  {" "}
+                  {">"}{" "}
+                </button>
               </div>
             </div>
           </div>

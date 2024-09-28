@@ -16,6 +16,7 @@ const config: Config = {
           secondary: "#ECF0F1",
           accent: "#F39C12",
           background: "#C7D0D2",
+          abu: "#64748b"
         },
         blue: {
           500: '#3B82F6', // Tambahkan warna blue-500

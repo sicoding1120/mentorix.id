@@ -85,12 +85,12 @@ const SidebarProfile = () => {
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
+        "flex flex-col md:flex-row bg-gray-300 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
         "h-screen"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10 bg-base-200 dark:bg-color-primary">
+        <SidebarBody className="justify-between gap-10 bg-white dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             {open ? <Logo isDarkMode={isDarkMode} /> : <LogoIcon isDarkMode={isDarkMode} />}
             <div className="mt-8 flex flex-col gap-2">
@@ -166,7 +166,7 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
 const Dashboard = () => {
   return (
     <div className="flex flex-1 min-h-screen">
-      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
+      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-base-200 dark:bg-color-abu flex flex-col gap-2 flex-1 w-full h-full">
         <SettingView />
       </div>
     </div>
@@ -231,9 +231,9 @@ const SettingView = () => {
   };
 
   return (
-    <section className="h-screen md:p-8 p-8 flex flex-col gap-8 rounded-xl shadow-md mx-auto w-full bg-base-200 dark:text-white dark:bg-color-primary overflow-scroll scrollbar-hide">
+    <section className="h-screen md:p-8 p-8 flex flex-col gap-8 rounded-xl shadow-md mx-auto w-full bg-gray-300 dark:text-white dark:bg-color-primary overflow-scroll scrollbar-hide">
       <div className="flex flex-col gap-4 items-center">
-        <h3 className="text-2xl capitalize text-center">
+        <h3 className="text-2xl capitalize text-center text-color-primary font-semibold dark:text-color-background">
           cari seseorang di mentorix id.
         </h3>
         <div className="flex border-2 gap-4 px-4 py-2 w-2/3 h-full border-black dark:border-color-background rounded-lg">
@@ -242,7 +242,7 @@ const SettingView = () => {
             className="w-full outline-none bg-transparent"
             placeholder="Cari seseorang di mentorix id."
           />
-          <button className="flex p-3 rounded-md justify-center items-center gap-2 bg-orange-400 h-8">
+          <button className="btn bg-color-primary border-none px-8 hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 text-white">
             <FaSearch /> Cari
           </button>
         </div>

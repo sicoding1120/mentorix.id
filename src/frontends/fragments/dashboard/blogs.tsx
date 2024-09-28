@@ -86,12 +86,12 @@ const SidebarBlogs = ({ id }: { id: string | any }) => {
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
+        "flex flex-col md:flex-row bg-gray-300 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
         "h-screen"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10 bg-base-200 dark:bg-color-primary">
+        <SidebarBody className="justify-between gap-10 bg-white dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             {open ? (
               <Logo isDarkMode={isDarkMode} />
@@ -169,7 +169,7 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
 
 const Dashboard = ({ id, isDarkMode }: { id: string | any, isDarkMode: boolean }) => {
   return (
-    <div className="flex flex-col w-full md:p-12 p-4 bg-white dark:bg-slate-500 dark:text-white">
+    <div className="flex flex-col w-full md:p-12 p-4 bg-base-200 dark:bg-slate-500 dark:text-white">
       <div className="w-full md:h-full h-2/3 flex flex-col p-4 gap-8 md:overflow-scroll md:scrollbar-hide">
         <div className="flex justify-between px-4 mb-2 items-center">
           <h3 className="md:text-3xl font-semibold capitalize">your Blogs</h3>
@@ -179,7 +179,7 @@ const Dashboard = ({ id, isDarkMode }: { id: string | any, isDarkMode: boolean }
             <BlogForm />
           </div>
         </div>
-        <div className="w-full overflow-x-auto rounded-xl grid md:grid-cols-4 md:gap-14 gap-24 px-8 bg-base-200 dark:bg-color-primary py-8">
+        <div className="w-full overflow-x-auto rounded-xl grid md:grid-cols-4 md:gap-14 gap-24 px-8 bg-base-300 dark:bg-color-primary py-8">
           <BlogCard />
           <BlogCard />
           <BlogCard />

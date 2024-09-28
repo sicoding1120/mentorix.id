@@ -86,12 +86,12 @@ const SidebarProfile = ({ id }: { id: string | any }) => {
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row bg-gray-100 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
+        "flex flex-col md:flex-row bg-gray-300 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
         "h-screen"
       )}
     >
       <Sidebar open={open} setOpen={setOpen}>
-        <SidebarBody className="justify-between gap-10 bg-base-200 dark:bg-color-primary">
+        <SidebarBody className="justify-between gap-10 bg-white dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
             {open ? <Logo isDarkMode={isDarkMode} /> : <LogoIcon isDarkMode={isDarkMode} />}
             <div className="mt-8 flex flex-col gap-2">
@@ -189,8 +189,8 @@ const Dashboard = ({ id }: { id: string | any }) => {
 
   return (
     <div className="flex flex-1">
-      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-white dark:bg-neutral-900 flex flex-col gap-2 flex-1 w-full h-full">
-        <div className="flex flex-col gap-4 bg-base-200 dark:bg-color-primary dark:text-white rounded-md w-full h-full md:p-24 p-8 overflow-scroll scrollbar-hide">
+      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-base-200 dark:bg-color-abu flex flex-col gap-2 flex-1 w-full h-full">
+        <div className="flex flex-col gap-4 bg-base-300 dark:bg-color-primary dark:text-white rounded-md w-full h-full md:p-24 p-8 overflow-scroll scrollbar-hide">
           <h2 className="text-3xl font-bold text-center">Detail Profil</h2>
           <div className="flex gap-6 md:flex-row flex-col justify-center items-center md:justify-start">
             <div className="rounded-full w-28 h-w-28 overflow-hidden">
@@ -202,7 +202,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
               />
             </div>
             <div className="flex flex-col gap-2">
-              <button className="btn btn-success px-12 text-white">
+              <button className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white">
                 Unggah Foto
               </button>
               <Link href={"/dashboard/avatar"}>Gunakan Karakter Avatar</Link>
@@ -252,7 +252,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
                 </div>
                 <Link
                   href={"/dashboard/verify"}
-                  className="text-blue-500 font-medium md:text-base text-sm"
+                  className="text-blue-300 font-medium md:text-base text-sm"
                 >
                   Verifikasi Email
                 </Link>
@@ -307,7 +307,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
 
               <div className="flex md:justify-end py-4">
                 <button
-                  className="btn btn-success text-white md:w-56 w-full"
+                  className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white md:w-56 w-full"
                   type="submit"
                 >
                   Simpan Perubahan

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Sidebar, SidebarBody, SidebarLink } from "@/frontends/components/ui/sidebar";
 import {
-  Icon24Hours,
   IconArrowLeft,
   IconBrandTabler,
   IconPaperclip,

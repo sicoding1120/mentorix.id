@@ -17,10 +17,10 @@ const Dynamic = () => {
       content = <Profile id={query.dashboard?.at(0)} />;
       break;
     case "setting":
-      content = <Setting />;
+      content = <Setting id={query.dashboard?.at(0)} />;
       break;
     case "Search":
-      content = <Search />;
+      content = <Search id={query.dashboard?.at(0)} />;
       break;
     case "class":
       content = <Classes />;

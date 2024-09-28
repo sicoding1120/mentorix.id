@@ -21,10 +21,10 @@ import { cn } from "@/frontends/lib/util";
 import Cookies from "js-cookie";
 import Footer from "@/frontends/components/footer";
 
-const Setting = () => {
+const Setting = ({ id }: { id: string | any }) => {
   return (
     <div>
-      <SidebarProfile />
+      <SidebarProfile id={id as never} />
       <Footer />
     </div>
   );
@@ -32,12 +32,10 @@ const Setting = () => {
 
 export default Setting;
 
-const SidebarProfile = () => {
+const SidebarProfile = ({ id }: { id: string | any }) => {
   const [id_us, setIdUs] = useState("");
   const id_user = Cookies.get(`user_id`);
-  const [open, setOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false); // State for dark mode
-
+  
   useEffect(() => {
     setIdUs(id_user as never);
   }, [id_user]);
@@ -101,10 +99,18 @@ const SidebarProfile = () => {
     },
   ];
 
+  const [open, setOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const darkMode = document.body.classList.contains("dark");
+    setIsDarkMode(darkMode);
+  }, []);
+
   return (
     <div
       className={cn(
-        "flex flex-col md:flex-row bg-gray-300 dark:bg-color-primary w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
+        "flex flex-col md:flex-row bg-gray-300 dark:bg-neutral-800 w-full flex-1 mx-auto border border-neutral-200 dark:border-neutral-700 overflow-hidden",
         "h-screen"
       )}
     >
@@ -137,7 +143,7 @@ const SidebarProfile = () => {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Dashboard id={id as string} isDarkMode={false} />
     </div>
   );
 };
@@ -149,7 +155,7 @@ const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={isDarkMode ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
         alt="logo"
         width={50}
         height={50}
@@ -172,7 +178,7 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={isDarkMode ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
         alt="logo"
         width={50}
         height={50}
@@ -181,7 +187,7 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
-const Dashboard = () => {
+const Dashboard = ({ id, isDarkMode }: { id: string | any, isDarkMode: boolean }) => {
   return (
     <div className="flex flex-1 min-h-screen">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-base-200 dark:bg-color-abu flex flex-col gap-2 flex-1 w-full h-full">

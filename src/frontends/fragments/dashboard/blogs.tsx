@@ -38,12 +38,10 @@ export default Blogs;
 const SidebarBlogs = ({ id }: { id: string | any }) => {
   const [id_us, setIdUs] = useState("");
   const id_user = Cookies.get(`user_id`);
+  
   useEffect(() => {
     setIdUs(id_user as never);
   }, [id_user]);
-
-  const [open, setOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const links = [
     {
@@ -104,6 +102,14 @@ const SidebarBlogs = ({ id }: { id: string | any }) => {
     },
   ];
 
+  const [open, setOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const darkMode = document.body.classList.contains("dark");
+    setIsDarkMode(darkMode);
+  }, []);
+
   return (
     <div
       className={cn(
@@ -114,11 +120,7 @@ const SidebarBlogs = ({ id }: { id: string | any }) => {
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10 bg-white dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            {open ? (
-              <Logo isDarkMode={isDarkMode} />
-            ) : (
-              <LogoIcon isDarkMode={isDarkMode} />
-            )}
+            {open ? <Logo isDarkMode={isDarkMode} /> : <LogoIcon isDarkMode={isDarkMode} />}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} className="font-medium" />
@@ -144,7 +146,7 @@ const SidebarBlogs = ({ id }: { id: string | any }) => {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard id={id as string} isDarkMode={isDarkMode} />
+      <Dashboard id={id as string} isDarkMode={false} />
     </div>
   );
 };
@@ -153,10 +155,10 @@ const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
-      className="font-normal flex space-x-2 items-center text-sm py-1 relative z-20"
+      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={isDarkMode ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
         alt="logo"
         width={50}
         height={50}
@@ -176,10 +178,10 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
-      className="font-normal flex space-x-2 items-center text-sm py-1 relative z-20"
+      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={isDarkMode ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
         alt="logo"
         width={50}
         height={50}

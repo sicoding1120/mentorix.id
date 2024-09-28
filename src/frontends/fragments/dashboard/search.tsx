@@ -23,10 +23,10 @@ import Cookies from "js-cookie";
 import { FaSearch } from "react-icons/fa";
 import CardUser from "@/frontends/components/cardUSer";
 
-const Search = () => {
+const Search = ({ id }: { id: string | any }) => {
   return (
     <div>
-      <SidebarProfile />
+      <SidebarProfile id={id as never} />
       <Footer />
     </div>
   );
@@ -34,12 +34,10 @@ const Search = () => {
 
 export default Search;
 
-const SidebarProfile = () => {
+const SidebarProfile = ({ id }: { id: string | any }) => {
   const [id_us, setIdUs] = useState("");
   const id_user = Cookies.get(`user_id`);
-  const [open, setOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
+  
   useEffect(() => {
     setIdUs(id_user as never);
   }, [id_user]);
@@ -103,6 +101,14 @@ const SidebarProfile = () => {
     },
   ];
 
+  const [open, setOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
+
+  useEffect(() => {
+    const darkMode = document.body.classList.contains("dark");
+    setIsDarkMode(darkMode);
+  }, []);
+
   return (
     <div
       className={cn(
@@ -139,7 +145,7 @@ const SidebarProfile = () => {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Dashboard id={id as string} isDarkMode={false} />
     </div>
   );
 };
@@ -151,7 +157,7 @@ const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={isDarkMode ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
         alt="logo"
         width={50}
         height={50}
@@ -174,7 +180,7 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
       className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={isDarkMode ? "/assets/logo/MENTORIX2.png" : "/assets/logo/MENTORIX.png"}
         alt="logo"
         width={50}
         height={50}
@@ -183,8 +189,7 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
-
-const Dashboard = () => {
+const Dashboard = ({ id, isDarkMode }: { id: string | any, isDarkMode: boolean }) => {
   return (
     <div className="flex flex-1 min-h-screen">
       <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-base-200 dark:bg-color-abu flex flex-col gap-2 flex-1 w-full h-full">

@@ -19,7 +19,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
-import { AccordionButton, AccordionIcon, AccordionPanel, Box, useColorMode } from "@chakra-ui/react";
+import { AccordionButton, AccordionIcon, AccordionPanel, Box, useColorMode, filter } from '@chakra-ui/react';
 import { Accordion, AccordionItem } from "@chakra-ui/react";
 import Cookie from "js-cookie";
 import CardDemo from "./card";
@@ -183,6 +183,18 @@ export const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
 };
 
 const Dashboard = ({ id }: { id: string | any }) => {
+  const [user,setUser] = useState<any>()
+  useEffect(() => {
+    const fetchDataUser = async() => {
+      const res = await fetch(`https://mentorixid.vercel.app/api/users/`);
+      const data = await res.json(); 
+      setUser(data);
+    }
+    fetchDataUser();
+  },[])
+
+  const users = user?.data?.datas.find((items: any) => items.id == id);
+
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
   return (
@@ -200,7 +212,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
             </div>
             <div className="flex flex-col gap-4">
               <div className="flex md:flex-row flex-col items-center gap-4">
-                <h2 className="text-3xl font-bold">ahfary_</h2>
+                <h2 className="text-3xl font-bold">{users.username}</h2>
                 <Link
                   href={`/dashboard/${id}/profile`}
                   className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white md:w-40 w-full"
@@ -216,11 +228,11 @@ const Dashboard = ({ id }: { id: string | any }) => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex gap-2 items-center">
-                  <p className="font-medium">0</p>
+                  <p className="font-medium">{users.follower.length}</p>
                   <p>Followers</p>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <p className="font-medium">0</p>
+                  <p className="font-medium">{users.following.length}</p>
                   <p>Following</p>
                 </div>
               </div>
@@ -276,7 +288,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
           </div>
 
           <div>
-            <ContainerClass />
+            <ContainerClass id={id} />
           </div>
         </div>
       </div>

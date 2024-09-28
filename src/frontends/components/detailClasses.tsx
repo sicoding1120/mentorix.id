@@ -80,16 +80,8 @@ const DetailClasses = ({
       "https://mentorixid.vercel.app/api/participants",
       datas
     );
-    const u = user?.data?.datas.find((u: any) => u.id == cookie);
-    console.log(u);
-    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title);
-    console.log(vuc);
-    if (!vuc) {
-      setJoin(false);
-    } else {
-      setJoin(true);
-    }
     toast.success("berhasil join class");
+    router.push(`/courses/class/${title}/learn/1`)
   };
 
   return (

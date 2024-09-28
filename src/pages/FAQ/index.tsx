@@ -11,8 +11,8 @@ const FAQ = () => {
       <div className="w-full h-full skeleton pt-16">
         <div className="flex flex-col justify-center items-center gap-4 py-24">
           <p className="text-base text-slate-400">FAQs</p>
-          <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
-          <p className="text-xl text-slate-400">
+          <h2 className="text-3xl font-bold text-center">Frequently Asked Questions</h2>
+          <p className="text-xl text-slate-400 text-center">
             Punya pertanyaan? Kami disini untuk membantu anda.
           </p>
           <input
@@ -22,8 +22,8 @@ const FAQ = () => {
           />
         </div>
       </div>
-      <div className="px-24 py-32">
-        <div className="grid grid-cols-3 gap-24">
+      <div className="md:px-24 px-3 py-32">
+        <div className="grid md:grid-cols-3 grid-cols-1 md:gap-24 gap-12">
           <div className="flex flex-col gap-4 w-96">
             <div className="avatar">
               <div className="w-16 rounded-full skeleton">

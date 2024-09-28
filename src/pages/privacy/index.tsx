@@ -7,9 +7,9 @@ const Privacy = () => {
     <div className="w-full h-screen">
       <Navbar />
       <div className="flex justify-center items-center bg-bgprivacy bg-cover bg-center bg-no-repeat h-2/3">
-        <h1 className="text-5xl font-bold text-white">Kebijakan Privasi</h1>
+        <h1 className="md:text-5xl text-3xl font-bold text-white">Kebijakan Privasi</h1>
       </div>
-      <div className="px-12 py-12">
+      <div className="md:px-12 px-4 py-12">
         <div className="flex flex-col gap-4 rounded-md border-2 border-color-primary w-full h-full p-8">
           <span className="text-sm">Berlaku efektif : 12 september 2024</span>
           <p className="text-lg">

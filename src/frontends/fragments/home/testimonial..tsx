@@ -38,12 +38,12 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
-    <Box className="py-8 md:px-24">
+    <Box className="py-8 md:px-24 px-8">
       <Text
         fontSize="4xl"
         textAlign="start"
         mb={8}
-        className="text-color-c5 dark:text-color-c4 font-semibold w-1/2"
+        className="text-color-c5 dark:text-color-c4 font-semibold md:w-1/2"
       >
         Apa yang mereka katakan tentang layanan profesional kami
       </Text>

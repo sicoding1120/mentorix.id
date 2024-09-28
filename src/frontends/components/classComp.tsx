@@ -29,32 +29,34 @@ const Class = ({ isClasses }: any) => {
   const [category, setCategory] = React.useState("All categories");
   return (
     <main className="w-full h-full">
-      <section className="w-full h-1/3 skeleton bg-blue-100 flex flex-col gap-6 justify-between items-center">
-        <div className="w-full h-[60vh] py-8 px-4 flex flex-col gap-8 justify-center items-center">
-          <h2 className="md:text-6xl text-3xl font-semibold text-center">
-            Jelajahi Koridor Kelas!
-          </h2>
-          <p className="md:w-2/5 text-center text-slate-400 text-lg w-full">
-            MENTORIX menyediakan berbagai macam kelas yang sudah berbasis
-            industri untuk meningkatkan keterampilan digital kamu.
-          </p>
-          <div className="flex gap-4 items-center">
-            <input
-              type="text"
-              placeholder="Search"
-              className="input input-bordered md:w-auto w-full"
-            />
-            <Link href={"#koridor"} className="btn btn-success text-white">
-              jelajah
-            </Link>
+      <div className="bg-no-repeat bg-cover bg-fixed bg-bgcourses">
+        <section className="w-full h-1/3 bg-color-primary bg-opacity-30 flex flex-col gap-6 justify-between items-center">
+          <div className="w-full h-[60vh] py-8 px-4 flex flex-col gap-8 justify-center items-center">
+            <h2 className="md:text-6xl text-color-secondary text-3xl font-semibold text-center">
+              Jelajahi Koridor Kelas!
+            </h2>
+            <p className="md:w-2/5 text-center text-white text-lg w-full">
+              MENTORIX menyediakan berbagai macam kelas yang sudah berbasis
+              industri untuk meningkatkan keterampilan digital kamu.
+            </p>
+            <div className="flex gap-4 items-center">
+              <input
+                type="text"
+                placeholder="Search"
+                className="input input-bordered md:w-auto w-full"
+              />
+              <Link href={"#koridor"} className="btn btn-success text-white">
+                jelajah
+              </Link>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
       {isClasses == true ? (
         <section className="px-16">
           <ContainerClass />
         </section>
-      ): null}
+      ) : null}
       <section
         className="w-full h-full bg-white flex md:flex-row flex-col justify-between gap-8 md:px-24 px-4 py-8"
         id="koridor"
@@ -77,84 +79,84 @@ const Class = ({ isClasses }: any) => {
             ) : (
               <>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
                 <div className="flex w-[300px] h-[450px] flex-col gap-4 ">
-                  <div className="skeleton bg-blue-100 h-32 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-28"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-full"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
-                  <div className="skeleton bg-blue-100 h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-32 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-28"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-full"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
+                  <div className="skeleton bg-color-secondary h-4 w-1/2"></div>
                 </div>
               </>
             )}
@@ -178,7 +180,7 @@ const Class = ({ isClasses }: any) => {
 
 export const SideBarClass = () => {
   return (
-    <div className="sticky top-4 md:w-1/5 h-full w-full py-4 my-24 px-4 bg-blue-100 border-2 rounded-md">
+    <div className="sticky top-4 md:w-1/5 h-full w-full py-4 my-24 px-4 bg-color-secondary text-color-primary border-2 rounded-md">
       <h2 className="text-2xl font-medium px-2">Filter Kelas</h2>
       <Accordion>
         <AccordionItem title="Topik">

@@ -27,6 +27,7 @@ const config: Config = {
         bgprivacy: 'url(/assets/background/privacy.jpg)',
         bgblog: 'url(/assets/background/blog.jpg)',
         bgjoin: 'url(/assets/background/bg-join.png)',
+        bgcourses: 'url(/assets/background/courses.jpg)',
       },
       animation: {
         move: "move 5s linear infinite",

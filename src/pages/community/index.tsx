@@ -1,3 +1,4 @@
+import Footer from "@/frontends/components/footer";
 import NavbarEl from "@/frontends/components/navbar";
 import React from "react";
 import { BsFillLightningChargeFill } from "react-icons/bs";
@@ -10,11 +11,11 @@ const Community = () => {
       <NavbarEl />
       <div className="w-full h-[50vh] bg-bgblog bg-cover bg-center">
         <div className="w-full h-full bg-color-primary/50 flex justify-center items-center">
-          <div className=" w-1/3 flex flex-col gap-3 text-center">
-            <h1 className="text-5xl text-white font-bold capitalize ">
+          <div className=" md:w-1/3 w-full px-12 flex flex-col gap-3 text-center">
+            <h1 className="md:text-5xl text-3xl text-white font-bold capitalize">
               komunitas sosial
             </h1>
-            <p className=" text-slate-300 text-lg">
+            <p className=" text-slate-300 md:text-lg text-base">
               bergabung di beberapa komunitas yang ada di mentorix untuk
               mengetahui berbagai informasi tentang dunia IT
             </p>
@@ -34,7 +35,7 @@ const Community = () => {
             </div>
             <p className="text-xl font-semibold capitalize">komunitas sosial</p>
           </div>
-          <div className="w-full h-full grid grid-cols-4 gap-4">
+          <div className="w-full h-full grid md:grid-cols-4 grid-cols-1 gap-6">
             <CardCom />
             <CardCom />
             <CardCom />
@@ -47,13 +48,14 @@ const Community = () => {
           </div>
         </div>
       </div>
+      <Footer />
     </section>
   );
 };
 
 const CardCom = () => {
   return (
-    <div className="w-full flex flex-col gap-4 h-[210px] border border-transparent hover:scale-105 hover:border-2 hover:border-color-primary transition-all bg-white rounded-xl shadow-sm p-4">
+    <div className="w-full flex flex-col gap-4 h-full md:h-[210px] border border-transparent hover:scale-105 hover:border-2 hover:border-color-primary transition-all bg-white rounded-xl shadow-sm p-4">
       <div className="flex justify-between items-center">
         <div className="w-12 h-12 bg-red-500 rounded-md"></div>
         <button className="px-2 py-1 h-10 rounded-lg border-color-primary border-2 flex gap-2 items-center capitalize font-semibold">

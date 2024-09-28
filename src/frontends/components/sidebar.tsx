@@ -212,7 +212,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
             </div>
             <div className="flex flex-col gap-4">
               <div className="flex md:flex-row flex-col items-center gap-4">
-                <h2 className="text-3xl font-bold">{users.username}</h2>
+                <h2 className="text-3xl font-bold">{users?.username}</h2>
                 <Link
                   href={`/dashboard/${id}/profile`}
                   className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white md:w-40 w-full"
@@ -228,11 +228,11 @@ const Dashboard = ({ id }: { id: string | any }) => {
               </div>
               <div className="flex items-center gap-4">
                 <div className="flex gap-2 items-center">
-                  <p className="font-medium">{users.follower.length}</p>
+                  <p className="font-medium">{users?.follower?.length}</p>
                   <p>Followers</p>
                 </div>
                 <div className="flex gap-2 items-center">
-                  <p className="font-medium">{users.following.length}</p>
+                  <p className="font-medium">{users?.following?.length}</p>
                   <p>Following</p>
                 </div>
               </div>

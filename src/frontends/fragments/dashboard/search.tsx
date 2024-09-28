@@ -22,6 +22,7 @@ import axios from "axios";
 import Cookies from "js-cookie";
 import { FaSearch } from "react-icons/fa";
 import CardUser from "@/frontends/components/cardUSer";
+import { toast } from "react-toastify";
 
 const Search = ({ id }: { id: string | any }) => {
   return (
@@ -225,6 +226,8 @@ const SettingView = () => {
         idUser: idUserFollowing,
         followingId: id,
       });
+    
+    toast.success("anda telah mengfollow user ini");
     // } catch (error) {
       // console.error("Error following user:", error);
     // }

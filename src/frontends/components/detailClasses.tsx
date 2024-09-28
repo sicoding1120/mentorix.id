@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
 import axios from "axios";
 import { useLogic } from "@/backends/logic";
 import { filter } from "@chakra-ui/react";
-
+import { toast, ToastContainer } from "react-toastify";
 
 const logic = new useLogic();
 const DetailClasses = ({
@@ -42,13 +42,13 @@ const DetailClasses = ({
 
   useEffect(() => {
     const fetchDataUser = async () => {
-      const res = await fetch('https://mentorixid.vercel.app/api/users');
-      const dt = await res.json()
-      setUser(dt)
-    }
+      const res = await fetch("https://mentorixid.vercel.app/api/users");
+      const dt = await res.json();
+      setUser(dt);
+    };
 
     fetchDataUser();
-  },[])
+  }, []);
 
   useEffect(() => {
     const fetchDataClass = async () => {
@@ -58,17 +58,15 @@ const DetailClasses = ({
     };
     fetchDataClass();
     const iu = Cookies.get("user_id");
-    const u = user?.data?.datas.find((u: any) => u.id == iu)
+    const u = user?.data?.datas.find((u: any) => u.id == iu);
     console.log(u);
-    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title)
+    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title);
     if (!vuc) {
-      setJoin(false)
+      setJoin(false);
     } else {
-      setJoin(true)
+      setJoin(true);
     }
   }, [title, user?.data?.datas]);
-
-
 
   const handleJoinClass = async (id: string | any) => {
     const cookie = Cookies.get("user_id");
@@ -76,20 +74,23 @@ const DetailClasses = ({
     const datas = {
       id_user: cookie,
       id_class: id,
-      id_progress: id_progress
+      id_progress: id_progress,
     };
-    const res = await axios.post("https://mentorixid.vercel.app/api/participants", datas);
-    const u = user?.data?.datas.find((u: any) => u.id == cookie);console.log(u);
-    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title);    console.log(vuc);
+    const res = await axios.post(
+      "https://mentorixid.vercel.app/api/participants",
+      datas
+    );
+    const u = user?.data?.datas.find((u: any) => u.id == cookie);
+    console.log(u);
+    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title);
     console.log(vuc);
     if (!vuc) {
       setJoin(false);
     } else {
       setJoin(true);
     }
-    console.log("ok");
+    toast.success("berhasil join class");
   };
-
 
   return (
     <main className="w-full h-full">
@@ -118,7 +119,11 @@ const DetailClasses = ({
           </div>
           <button
             className="btn w-1/4 text-lg capitalize"
-            onClick={() => join === true ? router.push(`/courses/class/${title}/learn/1`) : handleJoinClass(id)}
+            onClick={() =>
+              join === true
+                ? router.push(`/courses/class/${title}/learn/1`)
+                : handleJoinClass(id)
+            }
           >
             {join === true ? "lanjut belajar" : "gabung kelas"}
           </button>
@@ -217,6 +222,7 @@ const DetailClasses = ({
           <CardDemo />
         </div>
       </section>
+      <ToastContainer/>
     </main>
   );
 };

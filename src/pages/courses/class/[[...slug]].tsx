@@ -35,14 +35,14 @@ export const ClassRouter = () => {
   const [datas,setDatas] = useState<any>()
   useEffect(() => {
     const fetchData = async () => {
-      const res = await fetch("/api/class");
+      const res = await fetch("https://mentorixid.vercel.app/api/class");
       const data = await res.json();
       setDatas(data);
     }
     fetchData();
   }, [])
 
-  
+
   const { query } = useRouter();
   const path = query.slug;
 

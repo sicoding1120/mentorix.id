@@ -42,7 +42,7 @@ const DetailClasses = ({
 
   useEffect(() => {
     const fetchDataUser = async () => {
-      const res = await fetch('/api/users');
+      const res = await fetch('https://mentorixid.vercel.app/api/users');
       const dt = await res.json()
       setUser(dt)
     }
@@ -52,7 +52,7 @@ const DetailClasses = ({
 
   useEffect(() => {
     const fetchDataClass = async () => {
-      const res = await fetch("/api/class");
+      const res = await fetch("https://mentorixid.vercel.app/api/class");
       const data = await res.json();
       setData(data);
     };
@@ -80,6 +80,8 @@ const DetailClasses = ({
     const res = await axios.post("https://mentorixid.vercel.app/api/participants", datas);
     console.log("ok");
   };
+
+  
   return (
     <main className="w-full h-full">
       <section

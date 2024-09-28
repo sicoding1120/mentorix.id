@@ -9,11 +9,12 @@ import Navbar from "../components/navbar";
 import LearningPage from "../fragments/home/learnigPage";
 import AboutPage from "../fragments/home/about";
 import PopularClass from "../fragments/home/popularClass";
+import NavbarEl from "../components/navbar";
 
 const Home = () => {
   return (
     <div>
-      <Navbar />
+      <NavbarEl />
       <div className="flex flex-col">
         <div className="bg-bgLanding bg-fixed bg-cover bg-center bg-no-repeat">
           <HeroSection />

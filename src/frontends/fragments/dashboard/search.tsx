@@ -231,7 +231,7 @@ const SettingView = () => {
   };
 
   return (
-    <section className="h-screen md:p-8 p-8 flex flex-col gap-8 rounded-xl shadow-md mx-auto w-full bg-gray-300 dark:text-white dark:bg-color-primary overflow-scroll scrollbar-hide">
+    <section className="h-screen md:p-8 p-8 flex flex-col gap-8 rounded-xl shadow-md mx-auto w-full bg-base-300 dark:text-white dark:bg-color-primary overflow-scroll scrollbar-hide">
       <div className="flex flex-col gap-4 items-center">
         <h3 className="text-2xl capitalize text-center text-color-primary font-semibold dark:text-color-background">
           cari seseorang di mentorix id.

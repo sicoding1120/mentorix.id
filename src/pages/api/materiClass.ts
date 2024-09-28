@@ -6,12 +6,7 @@ const classes = new classService();
 
 export default async function Class(req: NextApiRequest, res: NextApiResponse) {
   switch (req.method) {
-    case "GET":
-      await classes._getClassAllWithRelations(req, res, error)
-      break
     case "POST":
-      await classes._createClass(req, res, error)
-    case "PUT":
-      await classes._updateDataClass(req,res)
+      await classes._createMateriClass(req,res)
   }
 }

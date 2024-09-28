@@ -42,7 +42,7 @@ model User {
   followers       UserFollower[]  @relation("followers")
   following       UserFollower[]  @relation("following")
   FotoProfile     Image?          @relation("ProfilePicture")
-  password        String         @unique
+  password        String          @unique
   rixpoin         Int?
   otp             String?
   otpExpires      DateTime?
@@ -65,14 +65,13 @@ model User {
 }
 
 model Achievement {
-  id        String   @id @unique @default(uuid())
-  title     String
+  id          String   @id @unique @default(uuid())
+  title       String
   description String?
-  createdAt DateTime @default(now())
-  user      User?    @relation(fields: [userId], references: [id])
-  userId    String?
+  createdAt   DateTime @default(now())
+  user        User?    @relation(fields: [userId], references: [id])
+  userId      String?
 }
-
 
 model progressClass {
   id       String  @id @unique @default(uuid())
@@ -80,15 +79,16 @@ model progressClass {
   user_id  String
   class_id String
   class    Class   @relation(fields: [class_id], references: [id_credential])
-  user     User    @relation("progressClass",fields: [user_id], references: [id])
+  user     User    @relation("progressClass", fields: [user_id], references: [id])
   userId   String?
 
   @@unique([user_id, class_id])
 }
 
 model MateriClass {
-  id                 String?
-  urlYoutube         String   @unique
+  id                 String  @unique
+  urlYoutube         String?
+  title              String?
   content            String[]
   Class              Class?   @relation("MateriClass", fields: [Classid_credential], references: [id_credential])
   Classid_credential String?

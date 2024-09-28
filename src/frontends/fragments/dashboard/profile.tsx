@@ -41,37 +41,58 @@ const SidebarProfile = ({ id }: { id: string | any }) => {
     {
       label: "Dashboard",
       href: `/dashboard/${id_user}`,
-      icon: <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
+      icon: (
+        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
+    },
+    {
+      label: "Mentors",
+      href: `/dashboard/${id_user}/Mentors`,
+      icon: (
+        <IconBrandTabler className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
     },
     {
       label: "Blogs",
       href: `/dashboard/${id_user}/blogs`,
-      icon: <IconTable className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
+      icon: (
+        <IconTable className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
     },
     {
       label: "Kelas",
       href: `/dashboard/${id_user}/class`,
-      icon: <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
+      icon: (
+        <IconPaperclip className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
     },
     {
       label: "Profil",
       href: `/dashboard/${id_user}/profile`,
-      icon: <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
+      icon: (
+        <IconUserBolt className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
     },
     {
       label: "Search",
       href: `/dashboard/${id_user}/Search`,
-      icon: <IconSearch className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
+      icon: (
+        <IconSearch className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
     },
     {
       label: "Pengaturan",
       href: `/dashboard/${id_user}/setting`,
-      icon: <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
+      icon: (
+        <IconSettings className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
     },
     {
       label: "Keluar",
       href: "/auth/logout",
-      icon: <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />,
+      icon: (
+        <IconArrowLeft className="text-neutral-700 dark:text-neutral-200 h-6 w-6 flex-shrink-0" />
+      ),
     },
   ];
 

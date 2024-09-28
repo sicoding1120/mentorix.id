@@ -1,6 +1,9 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { RestApi } from "../utils/response";
 import prisma from "../utils/prisma";
+import { useLogic } from "../logic";
+
+const logic = new useLogic()
 
 export class classService {
   async _getClassAllWithRelations(
@@ -36,7 +39,34 @@ export class classService {
     res.status(201).json(RestApi._createDataSuccess(create as never))
   }
 
+
+  async _updateDataClass(req: NextApiRequest, res: NextApiResponse) {
+    const update = await prisma.class.update({
+      where: {
+        id_credential : req.body.where
+      },
+      data: req.body.data
+    })
+    res.status(200).json(RestApi._updateDataSuccess(update as never))
+  }
+
+  async _createMateriClass(req: NextApiRequest, res: NextApiResponse) {
+    const idMateri = logic.generateUUID();
+    const create = await prisma.materiClass.create({
+      data: {
+        title: req.body.title,
+        id: idMateri,
+        Classid_credential: req.body.id_credential,
+        urlYoutube: req.body.urlYoutube,
+        content: req.body.content,
+    }
+    })
+    
+    res.status(201).json(RestApi._createDataSuccess(create as never))
+  }
+
   async _updatePesertaClass(req: NextApiRequest, res: NextApiResponse, error: any) {
+
     const update = await prisma.class.update({
       where: {
         id_credential: req.body.id_class
@@ -60,7 +90,14 @@ export class classService {
           }
         }
       }
-       
+    })
+    const userProgressCreate = await prisma.progressClass.create({
+      data: {
+        id: req.body.id_progress,
+        progress: 0, 
+        user_id: req.body.id_user,
+        class_id: req.body.id_class
+      }
     })
     res.status(200).json(RestApi._updateDataSuccess(update as never))
   }

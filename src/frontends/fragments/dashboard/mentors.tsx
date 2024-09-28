@@ -1,10 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
+import { useState } from "react";
 import {
   Sidebar,
   SidebarBody,
   SidebarLink,
 } from "@/frontends/components/ui/sidebar";
 import {
+  Icon24Hours,
   IconArrowLeft,
   IconBrandTabler,
   IconPaperclip,
@@ -12,37 +14,36 @@ import {
   IconSettings,
   IconTable,
   IconUserBolt,
+  IconX,
 } from "@tabler/icons-react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { cn } from "@/frontends/lib/util";
-import Footer from "@/frontends/components/footer";
-import axios from "axios";
+import BlogCard from "@/frontends/components/blogCard";
+import DropDownSelect from "@/frontends/components/ui/dropdown";
+import BlogForm from "@/frontends/components/ui/BlogsForm";
 import Cookies from "js-cookie";
-import { FaSearch } from "react-icons/fa";
-import CardUser from "@/frontends/components/cardUSer";
 
-const Search = () => {
+const Mentors = ({ id }: { id: string | any }) => {
   return (
     <div>
-      <SidebarProfile />
-      <Footer />
+      <SidebarBlogs id={id as string}></SidebarBlogs>
     </div>
   );
 };
 
-export default Search;
+export default Mentors;
 
-const SidebarProfile = () => {
+const SidebarBlogs = ({ id }: { id: string | any }) => {
   const [id_us, setIdUs] = useState("");
   const id_user = Cookies.get(`user_id`);
-  const [open, setOpen] = useState(false);
-  const [isDarkMode, setIsDarkMode] = useState(false);
-
   useEffect(() => {
     setIdUs(id_user as never);
   }, [id_user]);
+
+  const [open, setOpen] = useState(false);
+  const [isDarkMode, setIsDarkMode] = useState(false);
 
   const links = [
     {
@@ -113,7 +114,11 @@ const SidebarProfile = () => {
       <Sidebar open={open} setOpen={setOpen}>
         <SidebarBody className="justify-between gap-10 bg-white dark:bg-color-primary">
           <div className="flex flex-col flex-1 overflow-y-auto overflow-x-hidden">
-            {open ? <Logo isDarkMode={isDarkMode} /> : <LogoIcon isDarkMode={isDarkMode} />}
+            {open ? (
+              <Logo isDarkMode={isDarkMode} />
+            ) : (
+              <LogoIcon isDarkMode={isDarkMode} />
+            )}
             <div className="mt-8 flex flex-col gap-2">
               {links.map((link, idx) => (
                 <SidebarLink key={idx} link={link} className="font-medium" />
@@ -139,7 +144,7 @@ const SidebarProfile = () => {
           </div>
         </SidebarBody>
       </Sidebar>
-      <Dashboard />
+      <Dashboard id={id as string} isDarkMode={isDarkMode} />
     </div>
   );
 };
@@ -148,10 +153,14 @@ const Logo = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
-      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
+      className="font-normal flex space-x-2 items-center text-sm py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={
+          isDarkMode
+            ? "/assets/logo/mentorix.png"
+            : "/assets/logo/mentorix2.png"
+        }
         alt="logo"
         width={50}
         height={50}
@@ -171,10 +180,14 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   return (
     <Link
       href="#"
-      className="font-normal flex space-x-2 items-center text-sm text-black py-1 relative z-20"
+      className="font-normal flex space-x-2 items-center text-sm py-1 relative z-20"
     >
       <Image
-        src={isDarkMode ? "/assets/logo/mentorix.png" : "/assets/logo/mentorix2.png"}
+        src={
+          isDarkMode
+            ? "/assets/logo/mentorix.png"
+            : "/assets/logo/mentorix2.png"
+        }
         alt="logo"
         width={50}
         height={50}
@@ -183,104 +196,35 @@ const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
   );
 };
 
-
-const Dashboard = () => {
+const Dashboard = ({
+  id,
+  isDarkMode,
+}: {
+  id: string | any;
+  isDarkMode: boolean;
+}) => {
   return (
-    <div className="flex flex-1 min-h-screen">
-      <div className="p-2 md:p-10 border border-neutral-200 dark:border-neutral-700 bg-base-200 dark:bg-color-abu flex flex-col gap-2 flex-1 w-full h-full">
-        <SettingView />
-      </div>
-    </div>
-  );
-};
-
-const SettingView = () => {
-  const [isFollowed, setIsFollowed] = React.useState(false);
-  const [datas, setDatas] = useState<any>();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("https://mentorixid.vercel.app/api/users");
-      const users = await res.json();
-      setDatas(users);
-    };
-    fetchData();
-  }, []);
-
-  const handleFollow = async (id: string) => {
-    const idUserFollowing = Cookies.get("user_id");
-
-    try {
-      await axios.post("https://mentorixid.vercel.app/api/follower", {
-        idUser: id,
-        followerId: idUserFollowing,
-      });
-
-      await axios.post("https://mentorixid.vercel.app/api/following", {
-        idUser: idUserFollowing,
-        followingId: id,
-      });
-    } catch (error) {
-      console.error("Error following user:", error);
-    }
-  };
-
-  const handleUnFollow = async (id: string) => {
-    const idUserFollowing = Cookies.get("user_id");
-
-    try {
-      await axios.delete("https://mentorixid.vercel.app/api/follower", {
-        data: {
-          idUser: id,
-          followerId: idUserFollowing,
-        },
-      });
-
-      await axios.delete("https://mentorixid.vercel.app/api/following", {
-        data: {
-          idUser: idUserFollowing,
-          followingId: id,
-        },
-      });
-    } catch (error) {
-      console.error("Error unfollowing user:", error);
-    }
-  };
-
-  const handleSearch = () => {
-    console.log("cari seseorang di mentorix id .");
-  };
-
-  return (
-    <section className="h-screen md:p-8 p-8 flex flex-col gap-8 rounded-xl shadow-md mx-auto w-full bg-base-300 dark:text-white dark:bg-color-primary overflow-scroll scrollbar-hide">
-      <div className="flex flex-col gap-4 items-center">
-        <h3 className="text-2xl capitalize text-center text-color-primary font-semibold dark:text-color-background">
-          cari seseorang di mentorix id.
-        </h3>
-        <div className="flex border-2 gap-4 px-4 py-2 w-2/3 h-full border-black dark:border-color-background rounded-lg">
-          <input
-            type="text"
-            className="w-full outline-none bg-transparent"
-            placeholder="Cari seseorang di mentorix id."
-          />
-          <button className="btn bg-color-primary border-none px-8 hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 text-white">
-            <FaSearch /> Cari
-          </button>
+    <div className="flex flex-col w-full md:p-12 p-4 bg-base-200 dark:bg-slate-500 dark:text-white">
+      <div className="w-full md:h-full h-2/3 flex flex-col p-4 gap-8 md:overflow-scroll md:scrollbar-hide">
+        <div className="flex justify-between px-4 mb-2 items-center">
+          <h3 className="md:text-3xl font-semibold capitalize">your Blogs</h3>
+          <div className="flex gap-4 items-center">
+            lihat
+            <DropDownSelect />
+            <BlogForm />
+          </div>
+        </div>
+        <div className="w-full overflow-x-auto rounded-xl grid md:grid-cols-4 md:gap-14 gap-24 px-8 bg-base-300 dark:bg-color-primary py-8">
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
+          <BlogCard />
         </div>
       </div>
-      <div className="w-full md:px-6 px-2 grid grid-cols-2 md:grid-cols-4 gap-4">
-        {datas?.data?.datas?.map((data: any, index: number) => (
-          <CardUser
-            follower={data.following.length}
-            following={data.followers.length}
-            userName={data.username}
-            id={data.id}
-            key={index}
-            handleFollow={() => handleFollow(data.id)}
-            handleUnFollow={() => handleUnFollow(data.id)}
-          />
-        ))}
-      </div>
-    </section>
+    </div>
   );
 };

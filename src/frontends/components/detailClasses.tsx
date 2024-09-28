@@ -6,7 +6,11 @@ import { IoMedalOutline } from "react-icons/io5";
 import { useRouter } from "next/router";
 import Cookies from "js-cookie";
 import axios from "axios";
+import { useLogic } from "@/backends/logic";
+import { filter } from "@chakra-ui/react";
 
+
+const logic = new useLogic();
 const DetailClasses = ({
   id,
   title,
@@ -33,22 +37,45 @@ const DetailClasses = ({
   const { icons } = useIcons();
   const router = useRouter();
   const [data, setData] = React.useState<any>();
+  const [user, setUser] = React.useState<any>();
+  const [join, setJoin] = React.useState<any>();
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("https://mentorixid.vercel.app/api/class");
+    const fetchDataUser = async () => {
+      const res = await fetch('/api/users');
+      const dt = await res.json()
+      setUser(dt)
+    }
+
+    fetchDataUser();
+  },[])
+
+  useEffect(() => {
+    const fetchDataClass = async () => {
+      const res = await fetch("/api/class");
       const data = await res.json();
       setData(data);
     };
+    fetchDataClass();
+    const iu = Cookies.get("user_id");
+    const u = user?.data?.datas.find((u: any) => u.id == iu)
+    const vuc = u?.enrolledClasses.find((vuc: any) => vuc.title == title)
+    if (!vuc) {
+      setJoin(false)
+    } else {
+      setJoin(true)
+    }
+  }, [title, user?.data?.datas]);
 
-    fetchData();
-  }, []);
+
 
   const handleJoinClass = async (id: string | any) => {
     const cookie = Cookies.get("user_id");
+    const id_progress = logic.generateUUID();
     const datas = {
       id_user: cookie,
       id_class: id,
+      id_progress: id_progress
     };
     const res = await axios.post("https://mentorixid.vercel.app/api/participants", datas);
     console.log("ok");
@@ -80,9 +107,9 @@ const DetailClasses = ({
           </div>
           <button
             className="btn w-1/4 text-lg capitalize"
-            onClick={() => handleJoinClass(id)}
+            onClick={() => join === true ? router.push(`/courses/class/${title}/learn/1`) : handleJoinClass(id)}
           >
-            ikuti kelas
+            {join === true ? "lanjut belajar" : "gabung kelas"}
           </button>
         </div>
       </section>

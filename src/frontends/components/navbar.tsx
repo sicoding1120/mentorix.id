@@ -25,17 +25,17 @@ export default function NavbarEl() {
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
+          <Link color="foreground" href="/courses" className="text-white">
             Kursus
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="#" className="text-white">
+          <Link href="community" className="text-white">
             Komunitas
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link color="foreground" href="#" className="text-white">
+          <Link color="foreground" href="/blog" className="text-white">
             Blog
           </Link>
         </NavbarItem>
@@ -63,12 +63,12 @@ export default function NavbarEl() {
         {!cookie && (
           <>
             <NavbarItem className="hidden lg:flex">
-              <Link href="#" className="text-white">
+              <Link href="/auth/login" className="text-white">
                 Sign In
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="#" className="text-white btn btn-success">
+              <Link href="/auth/register" className="text-white btn btn-success">
                 Sign Up
               </Link>
             </NavbarItem>

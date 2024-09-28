@@ -6,7 +6,7 @@ import React from 'react'
 const Classes = () => {
   return (
     <div className="w-full h-full">
-      <NavbarEl />
+    <NavbarEl />
     <Class isClasses={true} />
   </div>
   )

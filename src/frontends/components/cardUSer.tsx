@@ -61,7 +61,7 @@ export default function CardUser({
             radius="full"
             size="sm"
             variant={"solid"}
-            onPress={handleFollow}
+            onPress={() => { handleFollow(); setIsFollowed(true) }}
           >
             {"Follow"}
           </Button>

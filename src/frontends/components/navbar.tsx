@@ -1,7 +1,7 @@
 import {Navbar, NavbarBrand, NavbarContent, NavbarItem, Link, Button} from "@nextui-org/react";
 import Image from "next/image";
 
-export default function App() {
+export default function NavbarEl() {
   return (
     <Navbar className="bg-color-primary bg-opacity-80 text-white py-2">
       <NavbarBrand className="gap-2">

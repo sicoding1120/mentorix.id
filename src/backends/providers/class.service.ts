@@ -54,7 +54,7 @@ export class classService {
     const idMateri = logic.generateUUID();
     const create = await prisma.materiClass.create({
       data: {
-        title: req.body.title,
+        // title: req.body.title,
         id: idMateri,
         Classid_credential: req.body.id_credential,
         urlYoutube: req.body.urlYoutube,

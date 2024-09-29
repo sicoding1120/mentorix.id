@@ -9,6 +9,8 @@ import axios from "axios";
 import { useLogic } from "@/backends/logic";
 import { filter } from "@chakra-ui/react";
 import { toast, ToastContainer } from "react-toastify";
+import Footer from "./footer";
+import NavbarEl from "./navbar";
 
 const logic = new useLogic();
 const DetailClasses = ({
@@ -86,6 +88,7 @@ const DetailClasses = ({
 
   return (
     <main className="w-full h-full">
+      <NavbarEl />
       <section
         id="picture of detail class"
         className="w-full h-[60vh] py-6 px-10 pb-6  "
@@ -214,6 +217,7 @@ const DetailClasses = ({
           <CardDemo />
         </div>
       </section>
+      <Footer />
       <ToastContainer/>
     </main>
   );

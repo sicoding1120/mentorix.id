@@ -3,7 +3,7 @@ import Link from "next/link";
 import React from "react";
 
 const HeroSection = () => (
-  <section className="md:h-screen h-[110vh] w-full md:px-14 px-4 bg-color-primary bg-opacity-disabled">
+  <section className="md:h-screen h-[110vh] w-full md:px-14 px-4 bg-color-primary bg-opacity-60 dark:bg-opacity-70">
     <Topic />
   </section>
 );

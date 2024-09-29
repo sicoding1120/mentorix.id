@@ -103,7 +103,7 @@ const Login = () => {
               </label>
             </div>
             <Link
-              href={"/auth/forgotPassword"}
+              href={"/resetPass"}
               className="text-blue-500 font-semibold text-sm"
             >
               Lupa Password

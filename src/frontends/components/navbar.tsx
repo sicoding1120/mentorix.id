@@ -14,14 +14,9 @@ export default function NavbarEl() {
   const [userId, setUserId] = useState(null);
 
   useEffect(() => {
-    const cookieUserId: any = Cookies.get("userId");
-    if (cookieUserId) {
-      try {
-        setUserId(JSON.parse(cookieUserId));
-      } catch (error) {
-        setUserId(cookieUserId);
-      }
-    }
+    const cookieUserId: any = Cookies.get("user_id");
+    console.log("Cookie user_id:", cookieUserId);
+    setUserId(cookieUserId);
   }, []);
 
   return (
@@ -57,7 +52,7 @@ export default function NavbarEl() {
           <>
             <NavbarItem className="hidden lg:flex">
               <Link href="#" className="text-white">
-                Sign In (Tidak ada userId)
+                Sign In
               </Link>
             </NavbarItem>
             <NavbarItem>
@@ -94,7 +89,6 @@ export default function NavbarEl() {
                 </li>
               </ul>
             </div>
-            <p>User ID: {userId} (Ada userId)</p>{" "}
           </NavbarItem>
         )}
       </NavbarContent>

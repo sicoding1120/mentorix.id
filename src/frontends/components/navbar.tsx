@@ -11,7 +11,7 @@ import Cookies from "js-cookie";
 import React from "react";
 
 export default function NavbarEl() {
-  const cookie = Cookies.get("user_id");
+  const cookie = Cookies.get("status_login");
 
   return (
     <Navbar className="bg-color-primary bg-opacity-80 text-white py-2">
@@ -42,7 +42,7 @@ export default function NavbarEl() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        {!cookie && (
+        {!cookie ||cookie === "false" ? (
           <>
             <NavbarItem className="hidden lg:flex">
               <Link href="/auth/login" className="text-white">
@@ -50,15 +50,17 @@ export default function NavbarEl() {
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="/auth/register" className="text-white btn btn-success">
+              <Link
+                href="/auth/register"
+                className="text-white btn btn-success"
+              >
                 Sign Up
               </Link>
             </NavbarItem>
           </>
-        )}
-        {cookie && (
+        ) : (
           <NavbarItem>
-            <div className="dropdown dropdown-end">
+            <section className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-circle avatar">
                 <Image
                   src="/assets/images/avatar.png" // Avatar user
@@ -70,7 +72,7 @@ export default function NavbarEl() {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-black"
               >
                 <li>
                   <a className="justify-between">
@@ -85,7 +87,7 @@ export default function NavbarEl() {
                   <a>Logout</a>
                 </li>
               </ul>
-            </div>
+            </section>
           </NavbarItem>
         )}
       </NavbarContent>

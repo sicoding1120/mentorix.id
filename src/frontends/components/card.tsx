@@ -19,7 +19,7 @@ const CardDemo = ({title,level,lesson,time,price, discountPrice}: any) => {
           <MdSignalCellular1Bar />
           {level}
         </div>
-        <div className="flex justify-between">
+        <div className="flex justify-between w-full gap-2">
           <div className="flex gap-2 items-center">
             <icons.book size={20} />
             {lesson} lesson

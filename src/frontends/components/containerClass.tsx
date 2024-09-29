@@ -12,8 +12,9 @@ const ContainerClass = ({id}:any) => {
     };
     fetchDataUser();
   }, []);
+  
   const findUser = user?.data?.datas.find((item: any) => item.id == id);
-  console.log(findUser.enrolledClasses);
+  // console.log(findUser.enrolledClasses);
   return (
     <div className="w-full h-full px-6 py-4">
       <div className="bg-base-300 dark:bg-slate-500 rounded-md flex flex-col gap-4 py-4 px-4">

@@ -183,21 +183,35 @@ export const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
 };
 
 const Dashboard = ({ id }: { id: string | any }) => {
-//   const [user,setUser] = useState<any>()
-//   useEffect(() => {
-//     const fetchDataUser = async () => {
-//       const res = await fetch(`https://mentorixid.vercel.app/api/users/`);
-//       const data = await res.json();
-//       setUser(data);
-//     }
-//     fetchDataUser();
-//   }, [])
-  
-// console.log(user);
-  // const users = user?.data?.datas.find((items: any) => items.id == id);
-  // console.log(users);
-  // console.log(id);
   const userId = Cookie.get('user_id')
+  const [user,setUser] = useState<any>()
+  const [userNow,setUserNow] = useState<any>()
+  const [classes,setClass] = useState<any>()
+  useEffect(() => {
+    const fetchDataUser = async () => {
+      const res = await fetch(`https://mentorixid.vercel.app/api/users`);
+      const data = await res.json();
+      setUser(data);
+    }
+    fetchDataUser();
+  }, [])
+
+  useEffect(() => {
+    const filterUser = user.data.datas.find((user: any) => user.id == userId) 
+    setUserNow(filterUser)
+  },[user.data.datas, userId])
+
+  useEffect(() => {
+    const fetchDataUser = async () => {
+      const res = await fetch(`https://mentorixid.vercel.app/api/class`);
+      const data = await res.json();
+      setClass(data);
+    };
+    fetchDataUser();
+  }, [])
+  
+  console.log(userNow);
+  
 
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
@@ -292,7 +306,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
           </div>
 
           <div>
-            <ContainerClass />
+            <ContainerClass data={classes}/>
           </div>
         </div>
       </div>

@@ -89,19 +89,19 @@ export default function NavbarEl() {
               </label>
               <ul
                 tabIndex={0}
-                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow text-black"
               >
                 <li>
-                  <a className="justify-between">
+                  <Link href={`/dashboard/${cookie}/profile`} className="justify-between">
                     Profile
                     <span className="badge">New</span>
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a>Settings</a>
+                  <Link href={`/dashboard/${cookie}/settings`}>Settings</Link>
                 </li>
                 <li>
-                  <a>Logout</a>
+                  <Link href="/logout" >Logout</Link>
                 </li>
               </ul>
             </div>

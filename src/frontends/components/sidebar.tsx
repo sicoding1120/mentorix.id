@@ -196,7 +196,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
 // console.log(user);
   // const users = user?.data?.datas.find((items: any) => items.id == id);
   // console.log(users);
-  console.log(id);
+  // console.log(id);
   const userId = Cookie.get('user_id')
 
   const defaultContent =
@@ -292,7 +292,7 @@ const Dashboard = ({ id }: { id: string | any }) => {
           </div>
 
           <div>
-            <ContainerClass id={userId} />
+            <ContainerClass />
           </div>
         </div>
       </div>

@@ -149,7 +149,7 @@ const DetailClasses = ({
           </div>
         </div>
         <div className="md:w-1/3 w-full md:h-[97vh] h-full sticky top-2 px-6 py-2 flex flex-col gap-5">
-          <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
+          <div className="w-full h-full border-2 border-slate-200 rounded-lg md:p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
             <h3 className="text-2xl font-bold capitalize">detail kelas</h3>
             <div className="px-4 flex flex-col h-3/4">
               <div className="w-full h-[60px] flex gap-4  font-semibold">
@@ -166,7 +166,7 @@ const DetailClasses = ({
               </div>
             </div>
           </div>
-          <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
+          <div className="w-full h-full border-2 border-slate-200 rounded-lg md:p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
             <h3 className="text-2xl font-bold capitalize">mentor kelas</h3>
             <div className="w-full h-[60px] flex gap-4 items-center">
               <div className="w-12 h-12 rounded-full bg-red-500"></div>
@@ -182,7 +182,7 @@ const DetailClasses = ({
             </div>
           </div>
           <div className="w-full h-full border-2 border-slate-200 rounded-lg overflow-scroll scrollbar-hide">
-            <div className="flex flex-col gap-2 px-4 py-2 rounded-lg h-full ">
+            <div className="flex flex-col gap-2 md:px-4 py-2 rounded-lg h-full ">
               <div className="flex justify-between">
                 <h3 className="text-2xl font-semibold capitalize ">materi</h3>
                 <button className="text-blue-500 capitalize font-semibold underline">

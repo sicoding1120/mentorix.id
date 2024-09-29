@@ -205,7 +205,7 @@ const DetailClasses = ({
           </div>
         </div>
       </section>
-      <section className="w-full h-full md:px-16 px-8 py-14 flex flex-col gap-14">
+      <section className="w-full h-full md:px-16 px-8 py-14 flex items-center flex-col gap-14">
         <h2 className="text-4xl font-bold capitalize">
           Recommendasi kelas untuk kamu
         </h2>

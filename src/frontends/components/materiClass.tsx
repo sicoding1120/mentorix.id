@@ -8,9 +8,9 @@ const MateriClass = ({ data, id,title }: { data: any; id?:string | number| any, 
   return (
     <div className="w-full h-screen">
       <Navbar />
-      <div className="w-full h-screen px-12 pt-24">
-        <div className="flex gap-8 ">
-          <div className="w-3/4 h-[85vh] overflow-scroll scrollbar-default scroll-b flex flex-col gap-12 border-2 rounded-md p-12">
+      <div className="w-full h-screen md:px-12 px-6 md:py-24 py-12">
+        <div className="flex md:flex-row flex-col-reverse gap-8 ">
+          <div className="md:w-3/4 w-full h-[85vh] overflow-scroll scrollbar-default scroll-b flex flex-col gap-12 border-2 rounded-md p-4 md:p-12">
             <h1 className="text-3xl font-bold">Pengantar Kelas</h1>
             <p className="text-lg text-slate-500">
               Dikelas ini, Lorem ipsum dolor sit amet consectetur, adipisicing
@@ -47,7 +47,7 @@ const MateriClass = ({ data, id,title }: { data: any; id?:string | number| any, 
             </button>
           </div>
           {/* bikin sidebar */}
-          <div className="w-1/4 flex flex-col p-4 border-2 h-[85vh] overflow-scroll scrollbar-hide rounded-md">
+          <div className="md:w-1/4 w-full flex flex-col p-4 border-2 md:h-[85vh] h-full overflow-scroll scrollbar-hide rounded-md">
             
             <Accordion defaultExpandedKeys={["1"]}>
               <AccordionItem key='1' aria-label="Accordion 1" title={"Materi Kelas"}>

@@ -1,35 +1,32 @@
 import React, { useEffect } from "react";
 import CardDemo from "./card";
+import Cookies from "js-cookie";
 
-const ContainerClass = ({ id }: any) => {
-  const [user, setUser] = React.useState<any>();
+const ContainerClass = () => {
+  // const [user, setUser] = React.useState<any>();
+  // const userID = Cookies.get("user_id")
 
-  useEffect(() => {
-    const fetchDataUser = async () => {
-      try {
-        const res = await fetch(`https://mentorixid.vercel.app/api/users/`);
-        const data = await res.json();
-        setUser(data);
-      } catch (error) {
-        console.error("Error fetching user data:", error);
-      }
-    };
-    fetchDataUser();
-  }, []);
-
-  const findUser = user?.data?.datas?.find((item: any) => item.id == id);
-
-  // Pengecekan sebelum mengakses enrolledClasses
-  if (!findUser || !findUser.enrolledClasses) {
-    return <p>No enrolled classes found or user not found.</p>;
-  }
-
+  // useEffect(() => {
+  //   const fetchDataUser = async () => {
+  //     try {
+  //       const res = await fetch(`/api/users/`);
+  //       const data = await res.json();
+  //       setUser(data);
+  //     } catch (error) {
+  //       console.error("Error fetching user data:", error);
+  //     }
+  //   };
+  //   fetchDataUser();
+  // }, []);
+  
+  // const findUser = user?.data?.datas.find((item: any) => item.id == userID);
+  // console.log(findUser.enrolledClasses);
   return (
     <div className="w-full h-full px-6 py-4">
       <div className="bg-base-300 dark:bg-slate-500 rounded-md flex flex-col gap-4 py-4 px-4">
         <h2 className="text-xl font-semibold dark:text-white">Kelas Saya</h2>
         <div className="flex md:flex-row flex-col md:gap-4 gap-4 items-center w-full">
-          {findUser.enrolledClasses.map((item: any) => (
+          {/* {findUser.enrolledClasses.map((item: any) => (
             <CardDemo
               key={item as never}
               title={item.title}
@@ -39,7 +36,7 @@ const ContainerClass = ({ id }: any) => {
               price={item.price}
               discountPrice={item.discountPrice}
             />
-          ))}
+          ))} */}
         </div>
         <div className="flex items-center justify-end gap-2">
           <button className="rounded-full w-12 h-12 bg-success flex justify-center items-center text-white font-bold text-xl">

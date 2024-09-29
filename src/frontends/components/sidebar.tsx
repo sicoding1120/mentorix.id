@@ -183,19 +183,21 @@ export const LogoIcon = ({ isDarkMode }: { isDarkMode: boolean }) => {
 };
 
 const Dashboard = ({ id }: { id: string | any }) => {
-  const [user,setUser] = useState<any>()
-  useEffect(() => {
-    const fetchDataUser = async() => {
-      const res = await fetch(`https://mentorixid.vercel.app/api/users/`);
-      const data = await res.json(); 
-      setUser(data);
-    }
-    fetchDataUser();
-  }, [])
+//   const [user,setUser] = useState<any>()
+//   useEffect(() => {
+//     const fetchDataUser = async () => {
+//       const res = await fetch(`https://mentorixid.vercel.app/api/users/`);
+//       const data = await res.json();
+//       setUser(data);
+//     }
+//     fetchDataUser();
+//   }, [])
   
-console.log(user);
+// console.log(user);
   // const users = user?.data?.datas.find((items: any) => items.id == id);
   // console.log(users);
+  // console.log(id);
+  const userId = Cookie.get('user_id')
 
   const defaultContent =
     "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.";
@@ -216,13 +218,13 @@ console.log(user);
               <div className="flex md:flex-row flex-col items-center gap-4">
                 <h2 className="text-3xl font-bold">{"guest"}</h2>
                 <Link
-                  href={`/dashboard/${id}/profile`}
+                  href={`/dashboard/${userId}/profile`}
                   className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white md:w-40 w-full"
                 >
                   Edit Profil
                 </Link>
                 <Link
-                  href={`/dashboard/${id}/sertifikasi`}
+                  href={`/dashboard/${userId}/sertifikasi`}
                   className="btn bg-color-primary border-none hover:bg-color-primary/80 dark:bg-color-abu dark:hover:bg-color-abu/80 px-12 text-white md:w-40 w-full"
                 >
                   Achievment
@@ -290,7 +292,7 @@ console.log(user);
           </div>
 
           <div>
-            <ContainerClass id={id} />
+            <ContainerClass />
           </div>
         </div>
       </div>

@@ -88,7 +88,6 @@ const DetailClasses = ({
 
   return (
     <main className="w-full h-full">
-      <NavbarEl />
       <section
         id="picture of detail class"
         className="w-full h-[60vh] py-6 px-10 pb-6  "

@@ -50,12 +50,12 @@ export default function NavbarEl() {
         {!userId ? (
           <>
             <NavbarItem className="hidden lg:flex">
-              <Link href="#" className="text-white">
+              <Link href="/auth/login" className="text-white">
                 Sign In
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link href="#" className="text-white btn btn-success">
+              <Link href="/auth/register" className="text-white btn btn-success">
                 Sign Up
               </Link>
             </NavbarItem>

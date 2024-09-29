@@ -9,7 +9,7 @@ const ContainerClass = () => {
   useEffect(() => {
     const fetchDataUser = async () => {
       try {
-        const res = await fetch(`https://mentorixid.vercel.app/api/users/`);
+        const res = await fetch(`/api/users/`);
         const data = await res.json();
         setUser(data);
       } catch (error) {
@@ -18,8 +18,9 @@ const ContainerClass = () => {
     };
     fetchDataUser();
   }, []);
+  
   const findUser = user?.data?.datas.find((item: any) => item.id == userID);
-  console.log(findUser);
+  console.log(findUser.enrolledClasses);
   return (
     <div className="w-full h-full px-6 py-4">
       <div className="bg-base-300 dark:bg-slate-500 rounded-md flex flex-col gap-4 py-4 px-4">

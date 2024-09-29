@@ -54,7 +54,7 @@ const MateriClass = ({ data, id,title }: { data: any; id?:string | number| any, 
                 <ul className="list-disc flex flex-col gap-4 pl-6">
               {
                 data?.materiList?.map((title: any) => (
-                  <Link href={`/dashboard/${judulClass}/learn/${title}`} key={title} className="hover:text-blue-500 cursor-pointer">{title}</Link>
+                  <Link href={`/courses/class/${judulClass}/learn/${title}`} key={title} className="hover:text-blue-500 cursor-pointer">{title}</Link>
                 ))
               }
             </ul>

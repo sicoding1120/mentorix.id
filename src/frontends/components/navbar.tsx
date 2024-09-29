@@ -8,6 +8,7 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import Cookies from "js-cookie";
+import React from "react";
 
 export default function NavbarEl() {
   const cookie = Cookies.get("user_id");

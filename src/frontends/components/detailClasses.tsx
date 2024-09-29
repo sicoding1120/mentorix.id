@@ -90,15 +90,15 @@ const DetailClasses = ({
     <main className="w-full h-full">
       <section
         id="picture of detail class"
-        className="w-full h-[60vh] py-6 px-10 pb-6  "
+        className="w-full h-[60vh] py-6 md:px-10 px-4 pb-6  "
       >
         <div className="w-full h-full bg-red-500/20 rounded-xl"></div>
         <div className="w-28 h-28 bg-blue-500 rounded-full ml-20 relative bottom-16"></div>
       </section>
-      <section className="w-full h-full  pt-14 px-16 flex flex-col gap-6">
+      <section className="w-full h-full  pt-14 md:px-16 px-8 flex flex-col gap-6">
         <div className="flex flex-col gap-3 ">
-          <h2 className="text-6xl font-bold capitalize">{title}</h2>
-          <h6 className="text-xl font-semibold ">MENTORIX Academy</h6>
+          <h2 className="md:text-6xl text-2xl font-bold capitalize">{title}</h2>
+          <h6 className="md:text-xl text-lg font-semibold ">MENTORIX Academy</h6>
         </div>
         <div className="flex flex-col gap-4 border-b pb-12">
           <div className="flex gap-4 items-center">
@@ -112,7 +112,7 @@ const DetailClasses = ({
             </div>
           </div>
           <button
-            className="btn w-1/4 text-lg capitalize"
+            className="btn md:w-1/4 w-full text-lg capitalize"
             onClick={() =>
               join === true
                 ? router.push(`/courses/class/${title}/learn/1`)
@@ -123,8 +123,8 @@ const DetailClasses = ({
           </button>
         </div>
       </section>
-      <section className="w-full h-full flex gap-8 px-16">
-        <div className="w-2/3 h-full  py-8 flex flex-col gap-8 pr-6">
+      <section className="w-full h-full flex md:flex-row flex-col gap-8 md:px-16 px-8">
+        <div className="md:w-2/3 w-full h-full  py-8 flex flex-col gap-8 pr-6">
           <div className="w-full flex flex-col gap-6">
             <h4 className="text-2xl font-bold capitalize">tentang kelas ini</h4>
             <p>{desc}</p>
@@ -148,7 +148,7 @@ const DetailClasses = ({
             </ul>
           </div>
         </div>
-        <div className="w-1/3 h-[97vh] sticky top-2 px-6 py-2 flex flex-col gap-5">
+        <div className="md:w-1/3 w-full md:h-[97vh] h-full sticky top-2 px-6 py-2 flex flex-col gap-5">
           <div className="w-full h-full border-2 border-slate-200 rounded-lg p-4 flex flex-col gap-4 overflow-scroll scrollbar-hide">
             <h3 className="text-2xl font-bold capitalize">detail kelas</h3>
             <div className="px-4 flex flex-col h-3/4">
@@ -205,11 +205,11 @@ const DetailClasses = ({
           </div>
         </div>
       </section>
-      <section className="w-full h-full px-16 py-14 flex flex-col gap-14">
+      <section className="w-full h-full md:px-16 px-8 py-14 flex flex-col gap-14">
         <h2 className="text-4xl font-bold capitalize">
           Recommendasi kelas untuk kamu
         </h2>
-        <div className="grid grid-cols-4 gap-4">
+        <div className="grid md:grid-cols-4 grid-cols-1 gap-4">
           <CardDemo />
           <CardDemo />
           <CardDemo />
